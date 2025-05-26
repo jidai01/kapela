@@ -52,7 +52,7 @@
     <!-- START NAVBAR -->
     <nav class="navbar navbar-expand-lg bg-secondary pb-0 d-flex flex-column">
         <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-center p-3 px-4" style="min-height: 80px;">
-            <img src="{{ asset('img/logo.jpg') }}" alt="logo-sanbello" width="60" height="60"
+            <img src="{{ asset('storage/img/logo.jpg') }}" alt="logo-sanbello" width="60" height="60"
                 class="border border-3 border-white rounded-circle mb-2 mb-md-0 me-md-5">
             <h1 class="text-center m-0 responsive-heading">
                 <strong>Kapela St. Agustinus Bello</strong>
@@ -111,7 +111,7 @@
     <footer class="bg-secondary text-white mt-auto">
         <div class="container-fluid px-5 py-3 d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
-                <img src="{{ asset('img/logo.jpg') }}" alt="logo-sanbello" width="40" height="40"
+                <img src="{{ asset('storage/img/logo.jpg') }}" alt="logo-sanbello" width="40" height="40"
                     class="border border-3 border-white rounded-circle me-2">
                 <h6 class="m-0 text-black">Kapela St. Agustinus Bello</h6>
             </div>
