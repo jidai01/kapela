@@ -10,7 +10,7 @@ class CheckRole
 {
     public function handle(Request $request, Closure $next, string $role): Response
     {
-        if (auth()->check() && auth()->user()->role === $role) {
+        if (auth()->Guard::check() && auth()->Guard::user()->role === $role) {
             return $next($request);
         }
 
