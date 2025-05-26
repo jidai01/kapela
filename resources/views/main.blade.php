@@ -93,7 +93,7 @@
                         <a class="nav-link py-1" href="#">Berita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-dark text-light nav-link py-1" href="#">LOGIN</a>
+                        <a class="btn btn-outline-dark text-light nav-link py-1" href="/login">LOGIN</a>
                     </li>
                 </ul>
             </div>
