@@ -1,4 +1,8 @@
-@extends('main')
+@extends('template/main')
+
+@section('menu-navbar')
+    @include('view-umum/menu-beranda')
+@endsection
 
 @section('content')
     <div class="container-fluid p-0 mb-5">

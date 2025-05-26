@@ -10,27 +10,27 @@ class BerandaController extends Controller
     {
         $title = "Beranda";
         $content = "Halaman Beranda";
-        return view('beranda', compact('title', 'content'));
+        return view('view-umum/beranda', compact('title', 'content'));
     }
 
     public function berandaAdmin()
     {
         $title = "Beranda Admin";
         $content = "Halaman Beranda Admin";
-        return view('beranda-admin', compact('title', 'content'));
+        return view('view-admin/beranda-admin', compact('title', 'content'));
     }
 
     public function berandaKetua()
     {
         $title = "Beranda Ketua";
         $content = "Halaman Beranda Ketua";
-        return view('beranda-ketua', compact('title', 'content'));
+        return view('view-ketua/beranda-ketua', compact('title', 'content'));
     }
 
     public function berandaHumas()
     {
         $title = "Beranda Humas";
         $content = "Halaman Beranda Humas";
-        return view('beranda-humas', compact('title', 'content'));
+        return view('view-humas/beranda-humas', compact('title', 'content'));
     }
 }

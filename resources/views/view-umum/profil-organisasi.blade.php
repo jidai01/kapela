@@ -1,4 +1,9 @@
-@extends('main')
+@extends('template/main')
+
+@section('menu-navbar')
+    @include('view-umum/menu-beranda')
+@endsection
+
 @section('content')
     <div class="container-fluid p-0 mt-5 mb-5">
         <h4 class="border-top border-bottom border-2 border-dark py-1 m-0 mb-3 d-flex justify-content-center">

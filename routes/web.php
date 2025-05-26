@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/autentikasi', [LoginController::class, 'authenticate']);
-// Route logout
+
 Route::post('/logout', function () {
      Auth::logout();
      request()->session()->invalidate();

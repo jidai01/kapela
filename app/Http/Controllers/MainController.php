@@ -10,6 +10,6 @@ class MainController extends Controller
     {
         $title = "Main";
         $content = "";
-        return view('main', compact('title', 'content'));
+        return view('template/main', compact('title', 'content'));
     }
 }

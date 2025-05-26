@@ -11,7 +11,7 @@ class LoginController extends Controller
     public function login()
     {
         $title = "Login";
-        return view('login', compact('title'));
+        return view('view-umum/login', compact('title'));
     }
 
     public function authenticate(Request $request): RedirectResponse
