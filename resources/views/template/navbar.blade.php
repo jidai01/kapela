@@ -21,7 +21,7 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link py-1 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link py-1 dropdown-toggle" href="/profil" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">Profil</a>
                         <ul class="dropdown-menu p-0 py-1">
                             <li>
@@ -39,10 +39,10 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link py-1" href="#">Pengumuman</a>
+                        <a class="nav-link py-1" href="/pengumuman">Pengumuman</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link py-1" href="#">Berita</a>
+                        <a class="nav-link py-1" href="/berita">Berita</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-outline-success text-light nav-link my-1 py-1" href="/login">LOGIN</a>
