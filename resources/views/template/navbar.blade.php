@@ -24,15 +24,18 @@
                         <a class="nav-link py-1 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">Profil</a>
                         <ul class="dropdown-menu p-0 py-1">
-                            <li><a class="dropdown-item d-flex justify-content-center"
+                            <li>
+                                <a class="dropdown-item d-flex justify-content-center"
                                     href="/profil/sejarah">Sejarah</a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider m-0">
                             </li>
-                            <li><a class="dropdown-item d-flex justify-content-center"
+                            <li>
+                                <a class="dropdown-item d-flex justify-content-center"
                                     href="/profil/organisasi">Struktur
-                                    Organisasi</a></li>
+                                    Organisasi</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -53,28 +56,49 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">Data</a>
                             <ul class="dropdown-menu p-0 py-1">
                                 @if ($role === 'admin')
-                                    <li><a class="dropdown-item d-flex justify-content-center" href="#">User</a>
+                                    <li>
+                                        <a class="dropdown-item d-flex justify-content-center"
+                                            href="/kelola/data-user">User</a>
                                     </li>
-                                    <li><a class="dropdown-item d-flex justify-content-center"
-                                            href="#">Wilayah</a>
+                                    <li>
+                                        <a class="dropdown-item d-flex justify-content-center"
+                                            href="/kelola/data-wilayah">Wilayah</a>
                                     </li>
-                                    <li><a class="dropdown-item d-flex justify-content-center" href="#">KUB</a>
+                                    <li>
+                                        <a class="dropdown-item d-flex justify-content-center"
+                                            href="/kelola/data-kub">KUB</a>
                                     </li>
-                                    <li><a class="dropdown-item d-flex justify-content-center"
-                                            href="#">Sakramen</a>
+                                    <li>
+                                        <a class="dropdown-item d-flex justify-content-center"
+                                            href="/kelola/data-sakramen">Sakramen</a>
                                     </li>
-                                    <li><a class="dropdown-item d-flex justify-content-center" href="#">Umat</a>
+                                    <li>
+                                        <a class="dropdown-item d-flex justify-content-center"
+                                            href="/kelola/data-umat">Umat</a>
                                     </li>
-                                    <li><a class="dropdown-item d-flex justify-content-center" href="#">Kegiatan
-                                            Wilayah</a></li>
-                                    <li><a class="dropdown-item d-flex justify-content-center" href="#">Kegiatan
-                                            KUB</a></li>
-                                    <li><a class="dropdown-item d-flex justify-content-center" href="#">Penerimaan
-                                            Sakramen</a></li>
+                                    <li>
+                                        <a class="dropdown-item d-flex justify-content-center"
+                                            href="/kelola/data-kegiatan-wilayah">Kegiatan
+                                            Wilayah</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-flex justify-content-center"
+                                            href="/kelola/data-kegiatan-kub">Kegiatan
+                                            KUB</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-flex justify-content-center"
+                                            href="/kelola/data-penerimaan-sakramen">Penerimaan
+                                            Sakramen</a>
+                                    </li>
                                 @endif
-                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Pengumuman</a>
+                                <li>
+                                    <a class="dropdown-item d-flex justify-content-center"
+                                        href="/kelola/data-pengumuman">Pengumuman</a>
                                 </li>
-                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Berita</a>
+                                <li>
+                                    <a class="dropdown-item d-flex justify-content-center"
+                                        href="/kelola/data-berita">Berita</a>
                                 </li>
                             </ul>
                         </li>
@@ -85,12 +109,21 @@
                             <a class="nav-link py-1 dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">Laporan</a>
                             <ul class="dropdown-menu p-0 py-1">
-                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Laporan
-                                        Kegiatan Wilayah</a></li>
-                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Laporan
-                                        Kegiatan KUB</a></li>
-                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Laporan
-                                        Penerimaan Sakramen</a></li>
+                                <li>
+                                    <a class="dropdown-item d-flex justify-content-center"
+                                        href="/laporan/kegiatan-wilayah">Laporan
+                                        Kegiatan Wilayah</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex justify-content-center"
+                                        href="/laporan/kegiatan-kub">Laporan
+                                        Kegiatan KUB</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex justify-content-center"
+                                        href="/laporan/penerimaan-sakramen">Laporan
+                                        Penerimaan Sakramen</a>
+                                </li>
                             </ul>
                         </li>
                     @endif
