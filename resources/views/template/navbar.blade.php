@@ -17,7 +17,7 @@
 
         @if (!Auth::check())
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-                <ul class="navbar-nav d-flex justify-content-center text-center">
+                <ul class="navbar-nav d-flex justify-content-center align-items-center text-center">
                     <li class="nav-item">
                         <a class="nav-link py-1" href="/">Beranda</a>
                     </li>
@@ -48,7 +48,7 @@
                         <a class="nav-link py-1" href="#">Berita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-dark text-light nav-link py-1" href="/login">LOGIN</a>
+                        <a class="btn btn-outline-success text-light nav-link my-1 py-1" href="/login">LOGIN</a>
                     </li>
                 </ul>
             </div>
@@ -57,49 +57,65 @@
                 $role = Auth::user()->role;
             @endphp
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Data
-                </a>
-                <ul class="dropdown-menu text-start">
-                    @if ($role === 'admin')
-                        <li><a class="dropdown-item" href="#">User</a></li>
-                        <li><a class="dropdown-item" href="#">Wilayah</a></li>
-                        <li><a class="dropdown-item" href="#">KUB</a></li>
-                        <li><a class="dropdown-item" href="#">Sakramen</a></li>
-                        <li><a class="dropdown-item" href="#">Umat</a></li>
-                        <li><a class="dropdown-item" href="#">Kegiatan Wilayah</a></li>
-                        <li><a class="dropdown-item" href="#">Kegiatan KUB</a></li>
-                        <li><a class="dropdown-item" href="#">Penerimaan Sakramen</a></li>
-                    @endif
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav d-flex justify-content-center align-items-center text-center">
 
-                    @if (in_array($role, ['admin', 'humas']))
-                        <li><a class="dropdown-item" href="#">Pengumuman</a></li>
-                        <li><a class="dropdown-item" href="#">Berita</a></li>
-                    @endif
-                </ul>
-            </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link py-1 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Data
+                        </a>
+                        <ul class="dropdown-menu p-0 py-1">
+                            @if ($role === 'admin')
+                                <li><a class="dropdown-item d-flex justify-content-center" href="#">User</a></li>
+                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Wilayah</a>
+                                </li>
+                                <li><a class="dropdown-item d-flex justify-content-center" href="#">KUB</a></li>
+                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Sakramen</a>
+                                </li>
+                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Umat</a></li>
+                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Kegiatan
+                                        Wilayah</a></li>
+                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Kegiatan
+                                        KUB</a></li>
+                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Penerimaan
+                                        Sakramen</a></li>
+                            @endif
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Laporan
-                </a>
-                <ul class="dropdown-menu text-start">
+                            @if (in_array($role, ['admin', 'humas']))
+                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Pengumuman</a>
+                                </li>
+                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Berita</a>
+                                </li>
+                            @endif
+                        </ul>
+                    </li>
+
                     @if (in_array($role, ['admin', 'ketua']))
-                        <li><a class="dropdown-item" href="#">Laporan Kegiatan Wilayah</a></li>
-                        <li><a class="dropdown-item" href="#">Laporan Kegiatan KUB</a></li>
-                        <li><a class="dropdown-item" href="#">Laporan Penerimaan Sakramen</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link py-1 dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Laporan
+                            </a>
+                            <ul class="dropdown-menu p-0 py-1">
+                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Laporan
+                                        Kegiatan Wilayah</a></li>
+                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Laporan
+                                        Kegiatan KUB</a></li>
+                                <li><a class="dropdown-item d-flex justify-content-center" href="#">Laporan
+                                        Penerimaan Sakramen</a></li>
+                            </ul>
+                        </li>
                     @endif
-                </ul>
-            </li>
 
-            <li class="nav-item">
-                <form action="{{ route('logout') }}" method="POST" class="d-flex align-items-center">
-                    @csrf
-                    <button type="submit" class="btn btn-outline-danger text-light my-1">Logout</button>
-                </form>
-            </li>
+                    <li class="nav-item">
+                        <form action="{{ route('logout') }}" method="POST" class="d-flex align-items-center">
+                            @csrf
+                            <button type="submit"
+                                class="btn btn-outline-danger text-light nav-link my-1 py-1">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
         @endif
 </nav>
