@@ -6,4 +6,7 @@
 </main>
 <!-- END CONTENT -->
 
-@include('template/footer')
+{{-- Tambahkan pengecekan di sini --}}
+@if (!isset($hideFooter) || !$hideFooter)
+    @include('template/footer')
+@endif
