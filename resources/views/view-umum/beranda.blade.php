@@ -26,7 +26,7 @@
                 {{-- Slide 1 --}}
                 <div class="carousel-item active">
                     <div class="ratio ratio-21x9">
-                        <img src="{{ asset('storage/img/logo.jpg') }}" alt="logo-sanbello" class="d-block w-100">
+                        <img src="{{ asset('storage/img/logo.png') }}" alt="logo-sanbello" class="d-block w-100">
                     </div>
                     <div class="carousel-caption d-none d-md-block">
                         <h5><em>"Bersama Membangun Iman Umat Bello yang Beriman dan Bermartabat."</em></h5>
@@ -36,7 +36,7 @@
                 {{-- Slide 2 --}}
                 <div class="carousel-item">
                     <div class="ratio ratio-21x9">
-                        <img src="{{ asset('img/logo.jpg') }}" alt="logo-sanbello" class="d-block w-100">
+                        <img src="{{ asset('storage/img/logo.png') }}" alt="logo-sanbello" class="d-block w-100">
                     </div>
                     <div class="carousel-caption d-none d-md-block">
                         <h5><em>Second slide label</em></h5>
@@ -46,7 +46,7 @@
                 {{-- Slide 3 --}}
                 <div class="carousel-item">
                     <div class="ratio ratio-21x9">
-                        <img src="{{ asset('img/logo.jpg') }}" alt="logo-sanbello" class="d-block w-100">
+                        <img src="{{ asset('storage/img/logo.jpg') }}" alt="logo-sanbello" class="d-block w-100">
                     </div>
                     <div class="carousel-caption d-none d-md-block">
                         <h5><em>Third slide label</em></h5>

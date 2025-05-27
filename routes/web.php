@@ -12,13 +12,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/autentikasi', [LoginController::class, 'authenticate']);
 
-Route::post('/logout', function () {
-     Auth::logout();
-     request()->session()->invalidate();
-     request()->session()->regenerateToken();
-     return redirect('/');
-})->name('logout');
-
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/', [BerandaController::class, 'beranda']);
 

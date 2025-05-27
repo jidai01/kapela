@@ -40,7 +40,7 @@
     <nav class="navbar navbar-expand-lg bg-secondary pb-0 d-flex flex-column">
         <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-center p-3 px-4"
             style="min-height: 80px;">
-            <img src="{{ asset('storage/img/logo.jpg') }}" alt="logo-sanbello" width="60" height="60"
+            <img src="{{ asset('storage/img/logo.png') }}" alt="logo-sanbello" width="60" height="60"
                 class="border border-3 border-white rounded-circle mb-2 mb-md-0 me-md-5">
             <h1 class="text-center m-0 responsive-heading">
                 <strong>Kapela St. Agustinus Bello</strong>

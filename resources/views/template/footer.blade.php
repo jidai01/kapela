@@ -2,7 +2,7 @@
 <footer class="bg-secondary text-white mt-auto">
     <div class="container-fluid px-5 py-3 d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
-            <img src="{{ asset('storage/img/logo.jpg') }}" alt="logo-sanbello" width="40" height="40"
+            <img src="{{ asset('storage/img/logo.png') }}" alt="logo-sanbello" width="40" height="40"
                 class="border border-3 border-white rounded-circle me-2">
             <h6 class="m-0 text-black">Kapela St. Agustinus Bello</h6>
         </div>
