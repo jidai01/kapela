@@ -1,7 +1,7 @@
 @extends('template/main')
 
 @section('menu-navbar')
-    @include('view-humas/menu-beranda-humas')
+    @include('template/navbar')
 @endsection
 
 @section('content')

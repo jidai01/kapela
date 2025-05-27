@@ -1,7 +1,7 @@
 @extends('template/main')
 
 @section('menu-navbar')
-    @include('view-ketua/menu-beranda-ketua')
+    @include('template/navbar')
 @endsection
 
 @section('content')

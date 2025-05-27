@@ -1,5 +1,3 @@
-@include('template/top')
-
 @include('template/header')
 
 <!-- START CONTENT -->
@@ -9,5 +7,3 @@
 <!-- END CONTENT -->
 
 @include('template/footer')
-
-@include('template/bottom')

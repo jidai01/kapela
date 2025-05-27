@@ -1,4 +1,4 @@
-@include('template/top')
+@include('template/header')
 </head>
 
 <body class="bg-secondary">

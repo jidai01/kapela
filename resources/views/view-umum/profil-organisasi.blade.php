@@ -1,7 +1,7 @@
 @extends('template/main')
 
 @section('menu-navbar')
-    @include('view-umum/menu-beranda')
+    @include('template/navbar')
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
             <div class="container">
 
                 <!-- PELINDUNG -->
-                <h5 class="border border-1 border-dark py-1 m-0 mb-3 d-flex justify-content-center" data-bs-toggle="collapse"
+                <h5 class="border border-dark py-1 m-0 mb-3 d-flex justify-content-center" data-bs-toggle="collapse"
                     href="#pelindungCards" role="button" aria-expanded="false" aria-controls="pelindungCards"
                     style="cursor: pointer;">
                     Pelindung
@@ -25,7 +25,7 @@
                         @for ($i = 0; $i < 2; $i++)
                             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 d-flex justify-content-center">
                                 <div class="card" style="width: 10rem;">
-                                    <img src="{{ asset('storage/img/logo.jpg') }}" alt="logo-sanbello" class="card-img-top">
+                                    <img src="{{ asset('storage/img/logo.png') }}" alt="logo-sanbello" class="card-img-top">
                                     <div class="card-body px-1">
                                         <h6 class="card-title text-center">nama</h6>
                                         <p class="card-text text-center">posisi</p>
@@ -37,7 +37,7 @@
                 </div>
 
                 <!-- PENASIHAT -->
-                <h5 class="border border-1 border-dark py-1 m-0 mb-3 d-flex justify-content-center"
+                <h5 class="border border-dark py-1 m-0 mb-3 d-flex justify-content-center"
                     data-bs-toggle="collapse" href="#penasihatCards" role="button" aria-expanded="false"
                     aria-controls="penasihatCards" style="cursor: pointer;">
                     Penasihat
@@ -48,7 +48,7 @@
                         @for ($i = 0; $i < 5; $i++)
                             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 d-flex justify-content-center">
                                 <div class="card" style="width: 10rem;">
-                                    <img src="{{ asset('storage/img/logo.jpg') }}" alt="logo-sanbello" class="card-img-top">
+                                    <img src="{{ asset('storage/img/logo.png') }}" alt="logo-sanbello" class="card-img-top">
                                     <div class="card-body px-1">
                                         <h6 class="card-title text-center">nama</h6>
                                         <p class="card-text text-center">posisi</p>
@@ -60,7 +60,7 @@
                 </div>
 
                 <!-- PENGURUS INTI -->
-                <h5 class="border border-1 border-dark py-1 m-0 mb-3 d-flex justify-content-center"
+                <h5 class="border border-dark py-1 m-0 mb-3 d-flex justify-content-center"
                     data-bs-toggle="collapse" href="#pengurusintiCards" role="button" aria-expanded="false"
                     aria-controls="pengurusintiCards" style="cursor: pointer;">
                     Pengurus Inti
@@ -71,7 +71,7 @@
                     <div class="row justify-content-center mb-3">
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 d-flex justify-content-center">
                             <div class="card" style="width: 10rem;">
-                                <img src="{{ asset('storage/img/logo.jpg') }}" alt="logo-sanbello" class="card-img-top">
+                                <img src="{{ asset('storage/img/logo.png') }}" alt="logo-sanbello" class="card-img-top">
                                 <div class="card-body px-1">
                                     <h6 class="card-title text-center">nama</h6>
                                     <p class="card-text text-center">posisi</p>
@@ -84,7 +84,7 @@
                         @for ($i = 1; $i < 12; $i++)
                             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 d-flex justify-content-center">
                                 <div class="card" style="width: 10rem;">
-                                    <img src="{{ asset('storage/img/logo.jpg') }}" alt="logo-sanbello" class="card-img-top">
+                                    <img src="{{ asset('storage/img/logo.png') }}" alt="logo-sanbello" class="card-img-top">
                                     <div class="card-body px-1">
                                         <h6 class="card-title text-center">nama</h6>
                                         <p class="card-text text-center">posisi</p>

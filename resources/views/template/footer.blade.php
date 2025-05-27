@@ -3,7 +3,7 @@
     <div class="container-fluid px-5 py-3 d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <img src="{{ asset('storage/img/logo.png') }}" alt="logo-sanbello" width="40" height="40"
-                class="border border-3 border-white rounded-circle me-2">
+                class="border border-white rounded-circle me-2">
             <h6 class="m-0 text-black">Kapela St. Agustinus Bello</h6>
         </div>
 
@@ -33,3 +33,10 @@
     </div>
 </footer>
 <!-- END FOOTER -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+</script>
+</body>
+
+</html>

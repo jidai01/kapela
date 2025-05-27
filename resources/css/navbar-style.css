@@ -1,0 +1,32 @@
+.navbar-toggler {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    line-height: 1;
+    width: 50px;
+    height: 32px;
+}
+
+.navbar-toggler-icon {
+    background-size: 80% 80%;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.dropdown-item:active {
+    background-color: black !important;
+    color: white !important;
+}
+
+@media (max-width: 576px) {
+    .responsive-heading {
+        font-size: 6vw;
+    }
+}
+
+@media (min-width: 992px) {
+    .responsive-heading {
+        font-size: 5vw;
+    }
+}
