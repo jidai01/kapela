@@ -1,0 +1,14 @@
+#sidebarMenu {
+    width: 250px;
+}
+
+@media (max-width: 991.98px) {
+    #sidebarMenu {
+        position: relative;
+        height: auto;
+    }
+
+    main {
+        margin-left: 0 !important;
+    }
+}
