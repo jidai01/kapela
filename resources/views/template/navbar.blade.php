@@ -25,13 +25,13 @@
                             aria-expanded="false">Profil</a>
                         <ul class="dropdown-menu p-0 py-1">
                             <li><a class="dropdown-item d-flex justify-content-center"
-                                    href="/profil-sejarah">Sejarah</a>
+                                    href="/profil/sejarah">Sejarah</a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider m-0">
                             </li>
                             <li><a class="dropdown-item d-flex justify-content-center"
-                                    href="/profil-organisasi">Struktur
+                                    href="/profil/organisasi">Struktur
                                     Organisasi</a></li>
                         </ul>
                     </li>

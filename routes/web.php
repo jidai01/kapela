@@ -28,5 +28,5 @@ Route::middleware([CekLogin::class, CheckRole::class . ':humas'])->group(functio
      Route::get('/beranda/humas', [BerandaController::class, 'berandaHumas'])->name('beranda.humas');
 });
 
-Route::get('/profil-sejarah', [ProfilController::class, 'sejarah']);
-Route::get('/profil-organisasi', [ProfilController::class, 'organisasi']);
+Route::get('/profil/sejarah', [ProfilController::class, 'sejarah']);
+Route::get('/profil/organisasi', [ProfilController::class, 'organisasi']);
