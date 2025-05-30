@@ -3,6 +3,7 @@
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WilayahController;
 use App\Http\Middleware\CekLogin;
 use App\Http\Middleware\CheckRole;
@@ -31,6 +32,8 @@ Route::middleware([CekLogin::class, CheckRole::class . ':humas'])->group(functio
 
 Route::get('/profil/sejarah', [ProfilController::class, 'sejarah']);
 Route::get('/profil/organisasi', [ProfilController::class, 'organisasi']);
+
+Route::get('/kelola/data-user', [UserController::class, 'user']);
 
 Route::get('/kelola/data-wilayah', [WilayahController::class, 'wilayah']);
 // Route::get('/tambahPengarang', [PengarangController::class, 'tambah']);
