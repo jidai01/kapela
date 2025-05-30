@@ -3,6 +3,7 @@
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\WilayahController;
 use App\Http\Middleware\CekLogin;
 use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Auth;
@@ -30,3 +31,10 @@ Route::middleware([CekLogin::class, CheckRole::class . ':humas'])->group(functio
 
 Route::get('/profil/sejarah', [ProfilController::class, 'sejarah']);
 Route::get('/profil/organisasi', [ProfilController::class, 'organisasi']);
+
+Route::get('/kelola/data-wilayah', [WilayahController::class, 'wilayah']);
+// Route::get('/tambahPengarang', [PengarangController::class, 'tambah']);
+// Route::post('/kirimPengarang', [PengarangController::class, 'kirim']);
+// Route::get('/editPengarang/{id}', [PengarangController::class, 'edit']);
+// Route::post('/updatePengarang', [PengarangController::class, 'update']);
+// Route::get('/deletePengarang/{id}', [PengarangController::class, 'delete']);

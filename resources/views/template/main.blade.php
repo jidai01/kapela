@@ -10,3 +10,5 @@
 @if (!isset($hideFooter) || !$hideFooter)
     @include('template/footer')
 @endif
+
+@include('template/bottom')

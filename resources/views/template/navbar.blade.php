@@ -13,7 +13,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse d-flex justify-content-center align-items-center" id="navbarSupportedContent">
             <ul class="navbar-nav d-flex justify-content-center align-items-center text-center">
                 @if (!Auth::check())
                     <li class="nav-item">
@@ -128,11 +128,12 @@
                         </li>
                     @endif
 
-                    <li class="nav-item">
-                        <form action="{{ route('logout') }}" method="POST" class="d-flex align-items-center">
+                    <li class="nav-item d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <form action="{{ route('logout') }}" method="POST"
+                            class="d-flex justify-content-center align-items-center" style="height: 100%;">
                             @csrf
                             <button type="submit"
-                                class="btn btn-outline-danger text-light nav-link my-1 py-1">Logout</button>
+                                class="btn btn-outline-danger text-light nav-link my-0 py-1">Logout</button>
                         </form>
                     </li>
                 @endif
@@ -140,3 +141,5 @@
         </div>
     </div>
 </nav>
+
+@include('template/bottom')

@@ -7,3 +7,5 @@
 @section('content')
     
 @endsection
+
+@include('template/bottom')

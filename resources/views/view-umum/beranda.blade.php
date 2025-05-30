@@ -73,3 +73,5 @@
 
     </div>
 @endsection
+
+@include('template/bottom')
