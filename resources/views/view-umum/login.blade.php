@@ -14,12 +14,14 @@
 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <div class="input-group">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="password"
-                        required>
-                    <button type="button" class="btn btn-outline-dark" onclick="togglePassword()">
-                        -
-                    </button>
+                <input type="password" class="form-control" id="password" name="password" placeholder="password"
+                    required>
+                <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" id="showPassword"
+                        onclick="document.getElementById('password').type = this.checked ? 'text' : 'password'">
+                    <label class="form-check-label" for="showPassword">
+                        Tampilkan Password
+                    </label>
                 </div>
             </div>
 
@@ -39,13 +41,5 @@
         <a href="/" class="btn btn-outline-secondary w-100">← Kembali ke Halaman Utama</a>
     </div>
 </div>
-
-<script>
-    function togglePassword() {
-        const passwordInput = document.getElementById("password");
-        const isPassword = passwordInput.type === "text";
-        passwordInput.type = isPassword ? "password" : "text";
-    }
-</script>
 
 @include('template/bottom')
