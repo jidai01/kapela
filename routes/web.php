@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/autentikasi', [LoginController::class, 'authenticate']);
 
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/', [BerandaController::class, 'beranda']);
 

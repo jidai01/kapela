@@ -131,11 +131,8 @@
                         </li>
                     @endif
 
-                    <li class="nav-item d-flex justify-content-center align-items-center">
-                        <form action="{{ route('logout') }}" method="POST" class="m-0">
-                            @csrf
-                            <button type="submit" class="btn btn-outline-dark text-light nav-link py-1">LOGOUT</button>
-                        </form>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-dark text-light nav-link py-1" href="/logout">LOGOUT</a>
                     </li>
                 @endif
             </ul>
