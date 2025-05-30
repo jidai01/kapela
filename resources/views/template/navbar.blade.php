@@ -15,7 +15,7 @@
 
         <div class="collapse navbar-collapse d-flex justify-content-center align-items-center"
             id="navbarSupportedContent">
-            <ul class="navbar-nav d-flex justify-content-center align-items-center text-center">
+            <ul class="navbar-nav d-flex justify-content-center align-items-center text-center py-1">
                 @if (!Auth::check())
                     <li class="nav-item">
                         <a class="nav-link py-1" href="/">Beranda</a>
@@ -46,7 +46,7 @@
                         <a class="nav-link py-1" href="/berita">Berita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-success text-light nav-link my-1 py-1" href="/login">LOGIN</a>
+                        <a class="btn btn-outline-dark text-light nav-link py-1" href="/login">LOGIN</a>
                     </li>
                 @else
                     @php $role = Auth::user()->role; @endphp
@@ -133,7 +133,7 @@
                         <form action="{{ route('logout') }}" method="POST" class="m-0">
                             @csrf
                             <button type="submit"
-                                class="btn btn-outline-danger text-light nav-link my-1 py-1">LOGOUT</button>
+                                class="btn btn-outline-dark text-light nav-link py-1">LOGOUT</button>
                         </form>
                     </li>
                 @endif
