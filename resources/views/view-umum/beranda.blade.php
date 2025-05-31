@@ -1,5 +1,9 @@
 @extends('template/main')
 
+@php
+    $hideFooter = true;
+@endphp
+
 @section('menu-navbar')
     @include('template/navbar')
 @endsection
@@ -46,7 +50,7 @@
                 {{-- Slide 3 --}}
                 <div class="carousel-item">
                     <div class="ratio ratio-21x9">
-                        <img src="{{ asset('storage/img/logo.jpg') }}" alt="logo-sanbello" class="d-block w-100">
+                        <img src="{{ asset('storage/img/logo.png') }}" alt="logo-sanbello" class="d-block w-100">
                     </div>
                     <div class="carousel-caption d-none d-md-block">
                         <h5><em>Third slide label</em></h5>

@@ -99,5 +99,3 @@
         </div>
     </div>
 @endsection
-
-@include('template/bottom')
