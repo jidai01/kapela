@@ -29,7 +29,11 @@ Route::middleware([CekLogin::class, CheckRole::class . ':humas'])->group(functio
 Route::get('/profil/sejarah', [ProfilController::class, 'sejarah']);
 Route::get('/profil/organisasi', [ProfilController::class, 'organisasi']);
 
-Route::get('/kelola/data-user', [UserController::class, 'user']);
+Route::get('/kelola/data-user', [UserController::class, 'user'])->middleware(CekLogin::class);
+Route::get('/kelola/tambah-user', [UserController::class, 'tambah'])->middleware(CekLogin::class);
+Route::post('/kelola/kirim-user', [UserController::class, 'kirim'])->middleware(CekLogin::class);
+Route::get('/kelola/edit-user/{id}', [UserController::class, 'edit'])->middleware(CekLogin::class);
+Route::post('/kelola/update-user', [UserController::class, 'update'])->middleware(CekLogin::class);
 
 Route::get('/kelola/data-wilayah', [WilayahController::class, 'wilayah']);
 // Route::get('/tambahPengarang', [PengarangController::class, 'tambah']);

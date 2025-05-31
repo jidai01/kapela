@@ -11,7 +11,7 @@
 @section('content')
     <div class="container-fluid d-flex flex-column">
         <h2 class="text-center">Daftar {{ $title }}</h2>
-        <a href="/tambah-user" class="btn btn-sm btn-success m-2 align-self-start">Tambah User</a>
+        <a href="/kelola/tambah-user" class="btn btn-sm btn-success m-2 align-self-start">Tambah User</a>
 
         <div class="table-responsive">
             <table class="table table-bordered">
@@ -28,12 +28,12 @@
                     @forelse ($user as $index => $row)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $row->name }}</td>
+                            <td>{{ $row->id }}</td>
                             <td>{{ $row->email }}</td>
                             <td>{{ $row->role }}</td>
                             <td>
-                                <a href="/edit-user/{{ $row->id }}" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="/delete-user/{{ $row->id }}" class="btn btn-sm btn-danger"
+                                <a href="/kelola/edit-user/{{ $row->id }}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="/kelola/delete-user/{{ $row->id }}" class="btn btn-sm btn-danger"
                                     onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
                             </td>
                         </tr>
