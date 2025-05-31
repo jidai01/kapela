@@ -1,4 +1,3 @@
-<!-- START FOOTER -->
 <footer class="bg-secondary text-white mt-auto">
     <div class="container-fluid px-5 py-3 d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
@@ -32,6 +31,3 @@
         <small>© 2025 Kapela St. Agustinus Bello</small>
     </div>
 </footer>
-<!-- END FOOTER -->
-
-@include('template/bottom')

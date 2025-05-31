@@ -1,14 +1,20 @@
 @include('template/header')
 
-<!-- START CONTENT -->
-<main class="flex-grow-1">
-    @yield('content')
-</main>
-<!-- END CONTENT -->
+@yield('menu-navbar')
 
-{{-- Tambahkan pengecekan di sini --}}
+<div class="d-flex flex-row">
+    @yield('menu-sidebar')
+
+    @yield('content')
+</div>
+
 @if (!isset($hideFooter) || !$hideFooter)
     @include('template/footer')
 @endif
 
-@include('template/bottom')
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+</script>
+</body>
+
+</html>

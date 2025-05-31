@@ -1,4 +1,4 @@
-.navbar-toggler {
+/* .navbar-toggler {
     padding: 0.25rem 0.5rem;
     font-size: 0.8rem;
     line-height: 1;
@@ -23,10 +23,16 @@
     .responsive-heading {
         font-size: 6vw;
     }
+    .responsive-siding {
+        font-size: 2vw;
+    }
 }
 
 @media (min-width: 992px) {
     .responsive-heading {
         font-size: 5vw;
     }
-}
+    .responsive-siding {
+        font-size: 1vw;
+    }
+} */

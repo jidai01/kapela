@@ -41,5 +41,3 @@
         <a href="/" class="btn btn-outline-secondary w-100">← Kembali ke Halaman Utama</a>
     </div>
 </div>
-
-@include('template/bottom')
