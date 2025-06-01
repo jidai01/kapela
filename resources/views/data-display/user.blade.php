@@ -28,12 +28,12 @@
                     @forelse ($user as $index => $row)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $row->id }}</td>
+                            <td>{{ $row->name }}</td>
                             <td>{{ $row->email }}</td>
                             <td>{{ $row->role }}</td>
                             <td>
-                                <a href="/kelola/edit-user/{{ $row->id }}" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="/kelola/delete-user/{{ $row->id }}" class="btn btn-sm btn-danger"
+                                <a href="/kelola/edit-user/{{ $row->id_user }}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="/kelola/delete-user/{{ $row->id_user }}" class="btn btn-sm btn-danger"
                                     onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
                             </td>
                         </tr>

@@ -32,6 +32,7 @@ Route::get('/kelola/tambah-user', [UserController::class, 'tambah'])->middleware
 Route::post('/kelola/kirim-user', [UserController::class, 'kirim'])->middleware(CekLogin::class);
 Route::get('/kelola/edit-user/{id}', [UserController::class, 'edit'])->middleware(CekLogin::class);
 Route::post('/kelola/update-user', [UserController::class, 'update'])->middleware(CekLogin::class);
+Route::get('/kelola/delete-user/{id}', [UserController::class, 'delete'])->middleware(CekLogin::class);
 
 Route::get('/kelola/data-wilayah', [WilayahController::class, 'wilayah']);
 // Route::get('/tambahPengarang', [PengarangController::class, 'tambah']);
