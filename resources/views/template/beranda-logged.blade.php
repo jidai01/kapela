@@ -97,7 +97,8 @@
                             <div class="card h-100 shadow-sm bg-danger text-white">
                                 <div class="card-body d-flex flex-column justify-content-between">
                                     <h5 class="card-title">Logout</h5>
-                                    <a class="btn btn-light mt-3" href="/logout"><i class="bi bi-box-arrow-right"></i>
+                                    <a class="btn btn-light mt-3" onclick="return confirm('Yakin ingin keluar?')"
+                                        href="/logout"><i class="bi bi-box-arrow-right"></i>
                                         Keluar</a>
                                 </div>
                             </div>

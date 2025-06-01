@@ -68,7 +68,8 @@
                     @if (in_array($role, ['admin', 'humas']))
                         @if ($role === 'admin')
                             <li>
-                                <a class="nav-link text-start text-light btn btn-outline-dark p-1" href="/kelola/data-user">
+                                <a class="nav-link text-start text-light btn btn-outline-dark p-1"
+                                    href="/kelola/data-user">
                                     DataUser
                                 </a>
                             </li>
@@ -79,7 +80,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link text-start text-light btn btn-outline-dark p-1" href="/kelola/data-kub">
+                                <a class="nav-link text-start text-light btn btn-outline-dark p-1"
+                                    href="/kelola/data-kub">
                                     Data KUB
                                 </a>
                             </li>
@@ -90,7 +92,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link text-start text-light btn btn-outline-dark p-1" href="/kelola/data-umat">
+                                <a class="nav-link text-start text-light btn btn-outline-dark p-1"
+                                    href="/kelola/data-umat">
                                     Data Umat
                                 </a>
                             </li>
@@ -120,7 +123,8 @@
                             </a>
                         </li>
                         <li>
-                            <a class="nav-link text-start text-light btn btn-outline-dark p-1" href="/kelola/data-berita">
+                            <a class="nav-link text-start text-light btn btn-outline-dark p-1"
+                                href="/kelola/data-berita">
                                 Data Berita
                             </a>
                         </li>
@@ -134,7 +138,8 @@
                             </a>
                         </li>
                         <li>
-                            <a class="nav-link text-start text-light btn btn-outline-dark p-1" href="/laporan/kegiatan-kub">
+                            <a class="nav-link text-start text-light btn btn-outline-dark p-1"
+                                href="/laporan/kegiatan-kub">
                                 Laporan Kegiatan KUB
                             </a>
                         </li>
@@ -147,7 +152,8 @@
                     @endif
 
                     <li class="nav-item">
-                        <a class="btn btn-outline-danger text-light nav-link text-start text-dark p-1" href="/logout">
+                        <a class="btn btn-outline-danger text-light nav-link text-start text-dark p-1"
+                            onclick="return confirm('Yakin ingin keluar?')" href="/logout">
                             <i class="bi bi-box-arrow-right text-light"></i> LOGOUT
                         </a>
                     </li>
