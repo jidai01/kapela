@@ -15,7 +15,7 @@
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="password"
-                    required>
+                    autocomplete="off" required>
                 <div class="form-check mt-2">
                     <input class="form-check-input" type="checkbox" id="showPassword"
                         onclick="document.getElementById('password').type = this.checked ? 'text' : 'password'">

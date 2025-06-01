@@ -1,7 +1,7 @@
 @extends('template/main')
 
 @php
-    $hideFooter = true;
+    $hideFooter = false;
 @endphp
 
 @section('menu-navbar')

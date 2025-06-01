@@ -31,11 +31,11 @@ class LoginController extends Controller
             if ($user->role === $request->role) {
                 switch ($user->role) {
                     case 'admin':
-                        return redirect()->route('beranda.admin');
+                        return redirect()->route('beranda/admin');
                     case 'ketua':
-                        return redirect()->route('beranda.ketua');
+                        return redirect()->route('beranda/ketua');
                     case 'humas':
-                        return redirect()->route('beranda.humas');
+                        return redirect()->route('beranda/humas');
                     default:
                         Auth::logout();
                         return back()->withErrors([
