@@ -35,9 +35,9 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-dark w-100 mb-2">Login</button>
+            <button type="submit" class="btn btn-dark w-100 mb-2"><i class="bi bi-box-arrow-in-right"></i> Login</button>
         </form>
 
-        <a href="/" class="btn btn-outline-secondary w-100">← Kembali ke Halaman Utama</a>
+        <a href="/" class="btn btn-outline-secondary w-100"><i class="bi bi-arrow-return-left"></i> Kembali ke Halaman Utama</a>
     </div>
 </div>

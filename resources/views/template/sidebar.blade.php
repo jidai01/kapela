@@ -85,7 +85,7 @@
                     @endif
 
                     <li class="nav-item">
-                        <a class="btn btn-outline-dark text-light nav-link btn btn-outline-light py-1" href="/logout">LOGOUT</a>
+                        <a class="btn btn-outline-danger text-light nav-link py-1" href="/logout"><i class="bi bi-box-arrow-right"></i> LOGOUT</a>
                     </li>
                 @endif
             </ul>

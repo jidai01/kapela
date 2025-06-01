@@ -15,10 +15,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav d-flex justify-content-center align-items-center mx-auto mb-2 mb-lg-0">
                 @if (!Auth::check())
-                    <li class="nav-item">
+                    <li class="nav-item mx-1 w-100">
                         <a class="nav-link text-center py-1" href="/">Beranda</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item mx-1 w-100 dropdown">
                         <a class="nav-link text-center py-1 dropdown-toggle" href="/profil" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
                         <ul class="dropdown-menu p-0 py-1">
@@ -31,14 +31,14 @@
                                     href="/profil/organisasi">Struktur Organisasi</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item mx-1 w-100">
                         <a class="nav-link text-center py-1" href="/pengumuman">Pengumuman</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item mx-1 w-100">
                         <a class="nav-link text-center py-1" href="/berita">Berita</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-dark py-1 px-3" href="/login">LOGIN</a>
+                    <li class="nav-item mx-1 w-100">
+                        <a class="btn btn-dark text-center py-1 w-100" href="/login">LOGIN</a>
                     </li>
                 @endif
             </ul>

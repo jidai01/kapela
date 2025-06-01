@@ -12,7 +12,7 @@
                         <div class="card h-100 shadow-sm">
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <h5 class="card-title">Data User</h5>
-                                <a class="btn btn-primary mt-3" href="/kelola/data-user">Masuk</a>
+                                <a class="btn btn-primary mt-3" href="/kelola/data-user"><i class="bi bi-arrow-right"></i> Masuk</a>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                             <div class="card h-100 shadow-sm">
                                 <div class="card-body d-flex flex-column justify-content-between">
                                     <h5 class="card-title">{{ $menu['title'] }}</h5>
-                                    <a class="btn btn-primary mt-3" href="{{ $menu['url'] }}">Masuk</a>
+                                    <a class="btn btn-primary mt-3" href="{{ $menu['url'] }}"><i class="bi bi-arrow-right"></i> Masuk</a>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                     <div class="card h-100 shadow-sm">
                         <div class="card-body d-flex flex-column justify-content-between">
                             <h5 class="card-title">Data Pengumuman</h5>
-                            <a class="btn btn-primary mt-3" href="/kelola/data-pengumuman">Masuk</a>
+                            <a class="btn btn-primary mt-3" href="/kelola/data-pengumuman"><i class="bi bi-arrow-right"></i> Masuk</a>
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                     <div class="card h-100 shadow-sm">
                         <div class="card-body d-flex flex-column justify-content-between">
                             <h5 class="card-title">Data Berita</h5>
-                            <a class="btn btn-primary mt-3" href="/kelola/data-berita">Masuk</a>
+                            <a class="btn btn-primary mt-3" href="/kelola/data-berita"><i class="bi bi-arrow-right"></i> Masuk</a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                         <div class="card h-100 shadow-sm">
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <h5 class="card-title">{{ $menu['title'] }}</h5>
-                                <a class="btn btn-primary mt-3" href="{{ $menu['url'] }}">Masuk</a>
+                                <a class="btn btn-primary mt-3" href="{{ $menu['url'] }}"><i class="bi bi-arrow-right"></i> Masuk</a>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                 <div class="card h-100 shadow-sm bg-danger text-white">
                     <div class="card-body d-flex flex-column justify-content-between">
                         <h5 class="card-title">Logout</h5>
-                        <a class="btn btn-light mt-3" href="/logout">Keluar</a>
+                        <a class="btn btn-light mt-3" href="/logout"><i class="bi bi-box-arrow-right"></i> Keluar</a>
                     </div>
                 </div>
             </div>

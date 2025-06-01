@@ -61,8 +61,8 @@
                     </select>
                 </div>
 
-                <button type="submit" class="btn btn-dark w-100 mb-2">Tambah User</button>
-                <a href="/kelola/data-user" class="btn btn-outline-secondary w-100">← Kembali</a>
+                <button type="submit" class="btn btn-dark w-100 mb-2"><i class="bi bi-save"></i> Tambah User</button>
+                <a href="/kelola/data-user" class="btn btn-outline-secondary w-100"><i class="bi bi-arrow-return-left"></i> Kembali</a>
             </form>
         </div>
     </div>
