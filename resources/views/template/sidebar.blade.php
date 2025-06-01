@@ -59,33 +59,97 @@
                 @if (Auth::check())
                     @php $role = Auth::user()->role; @endphp
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-light py-1" href="/beranda/{{ $role }}">Beranda</a>
+                        <a class="nav-link text-start text-light btn btn-outline-dark py-1"
+                            href="/beranda/{{ $role }}">
+                            Beranda
+                        </a>
                     </li>
 
                     @if (in_array($role, ['admin', 'humas']))
                         @if ($role === 'admin')
-                            <li><a class="nav-link btn btn-outline-light" href="/kelola/data-user">Data User</a></li>
-                            <li><a class="nav-link btn btn-outline-light" href="/kelola/data-wilayah">Data Wilayah</a></li>
-                            <li><a class="nav-link btn btn-outline-light" href="/kelola/data-kub">Data KUB</a></li>
-                            <li><a class="nav-link btn btn-outline-light" href="/kelola/data-sakramen">Data Sakramen</a></li>
-                            <li><a class="nav-link btn btn-outline-light" href="/kelola/data-umat">Data Umat</a></li>
-                            <li><a class="nav-link btn btn-outline-light" href="/kelola/data-kegiatan-wilayah">Data Kegiatan Wilayah</a></li>
-                            <li><a class="nav-link btn btn-outline-light" href="/kelola/data-kegiatan-kub">Data Kegiatan KUB</a></li>
-                            <li><a class="nav-link btn btn-outline-light" href="/kelola/data-penerimaan-sakramen">Data Penerimaan Sakramen</a>
+                            <li>
+                                <a class="nav-link text-start text-light btn btn-outline-dark" href="/kelola/data-user">
+                                    DataUser
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-start text-light btn btn-outline-dark"
+                                    href="/kelola/data-wilayah">
+                                    Data Wilayah
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-start text-light btn btn-outline-dark" href="/kelola/data-kub">
+                                    Data KUB
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-start text-light btn btn-outline-dark"
+                                    href="/kelola/data-sakramen">
+                                    Data Sakramen
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-start text-light btn btn-outline-dark" href="/kelola/data-umat">
+                                    Data Umat
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-start text-light btn btn-outline-dark"
+                                    href="/kelola/data-kegiatan-wilayah">
+                                    Data Kegiatan Wilayah
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-start text-light btn btn-outline-dark"
+                                    href="/kelola/data-kegiatan-kub">
+                                    Data Kegiatan KUB
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-start text-light btn btn-outline-dark"
+                                    href="/kelola/data-penerimaan-sakramen">
+                                    Data Penerimaan Sakramen
+                                </a>
                             </li>
                         @endif
-                        <li><a class="nav-link btn btn-outline-light" href="/kelola/data-pengumuman">Data Pengumuman</a></li>
-                        <li><a class="nav-link btn btn-outline-light" href="/kelola/data-berita">Data Berita</a></li>
+                        <li>
+                            <a class="nav-link text-start text-light btn btn-outline-dark"
+                                href="/kelola/data-pengumuman">
+                                Data Pengumuman
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-start text-light btn btn-outline-dark" href="/kelola/data-berita">
+                                Data Berita
+                            </a>
+                        </li>
                     @endif
 
                     @if (in_array($role, ['admin', 'ketua']))
-                        <li><a class="nav-link btn btn-outline-light" href="/laporan/kegiatan-wilayah">Laporan Kegiatan Wilayah</a></li>
-                        <li><a class="nav-link btn btn-outline-light" href="/laporan/kegiatan-kub">Laporan Kegiatan KUB</a></li>
-                        <li><a class="nav-link btn btn-outline-light" href="/laporan/penerimaan-sakramen">Laporan Penerimaan Sakramen</a></li>
+                        <li>
+                            <a class="nav-link text-start text-light btn btn-outline-dark"
+                                href="/laporan/kegiatan-wilayah">
+                                Laporan Kegiatan Wilayah
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-start text-light btn btn-outline-dark" href="/laporan/kegiatan-kub">
+                                Laporan Kegiatan KUB
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-start text-light btn btn-outline-dark"
+                                href="/laporan/penerimaan-sakramen">
+                                Laporan Penerimaan Sakramen
+                            </a>
+                        </li>
                     @endif
 
                     <li class="nav-item">
-                        <a class="btn btn-outline-danger text-light nav-link py-1" href="/logout"><i class="bi bi-box-arrow-right"></i> LOGOUT</a>
+                        <a class="btn btn-outline-danger text-light nav-link text-start text-dark py-1" href="/logout">
+                            <i class="bi bi-box-arrow-right text-light"></i> LOGOUT
+                        </a>
                     </li>
                 @endif
             </ul>
