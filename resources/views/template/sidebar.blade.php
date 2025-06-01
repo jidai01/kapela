@@ -61,7 +61,7 @@
                     <li class="nav-item">
                         <a class="nav-link text-start text-light btn btn-outline-dark p-1 py-1"
                             href="/beranda/{{ $role }}">
-                            Beranda
+                            Beranda {{ ucfirst(strtolower($role)) }}
                         </a>
                     </li>
 
@@ -70,7 +70,7 @@
                             <li>
                                 <a class="nav-link text-start text-light btn btn-outline-dark p-1"
                                     href="/kelola/data-user">
-                                    DataUser
+                                    Data User
                                 </a>
                             </li>
                             <li>

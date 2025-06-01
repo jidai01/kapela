@@ -16,7 +16,7 @@
             </div>
             <div class="card-body bg-dark d-flex justify-content-start m-0">
                 <a href="/kelola/tambah-user" class="btn btn-success shadow-sm">
-                    <i class="bi bi-plus-circle"></i> Tambah User
+                    <i class="bi bi-plus-circle"></i> Tambah {{ $title }}
                 </a>
             </div>
             <div class="card-body bg-light p-0">
@@ -50,7 +50,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5" class="text-center text-muted py-3">Tidak ada data User.</td>
+                                    <td colspan="5" class="text-center text-muted py-3">Tidak ada {{ $title }}.</td>
                                 </tr>
                             @endforelse
                         </tbody>

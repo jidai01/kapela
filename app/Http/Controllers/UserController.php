@@ -24,7 +24,7 @@ class UserController extends Controller
     public function kirim(Request $request): RedirectResponse
     {
         $validasi = $request->validate([
-            'name' => 'required',
+            'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
             'role' => 'required',

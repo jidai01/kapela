@@ -92,7 +92,6 @@
                             @endforeach
                         @endif
 
-                        {{-- Logout --}}
                         <div class="col">
                             <div class="card h-100 shadow-sm bg-danger text-white">
                                 <div class="card-body d-flex flex-column justify-content-between">

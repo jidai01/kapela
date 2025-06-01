@@ -34,7 +34,13 @@ Route::get('/kelola/edit-user/{id}', [UserController::class, 'edit'])->middlewar
 Route::post('/kelola/update-user', [UserController::class, 'update'])->middleware(CekLogin::class);
 Route::get('/kelola/delete-user/{id}', [UserController::class, 'delete'])->middleware(CekLogin::class);
 
-Route::get('/kelola/data-wilayah', [WilayahController::class, 'wilayah']);
+Route::get('/kelola/data-wilayah', [WilayahController::class, 'wilayah'])->middleware(CekLogin::class);
+Route::get('/kelola/tambah-wilayah', [WilayahController::class, 'tambah'])->middleware(CekLogin::class);
+Route::post('/kelola/kirim-wilayah', [WilayahController::class, 'kirim'])->middleware(CekLogin::class);
+Route::get('/kelola/edit-wilayah/{id}', [WilayahController::class, 'edit'])->middleware(CekLogin::class);
+Route::post('/kelola/update-wilayah', [WilayahController::class, 'update'])->middleware(CekLogin::class);
+Route::get('/kelola/delete-wilayah/{id}', [WilayahController::class, 'delete'])->middleware(CekLogin::class);
+
 // Route::get('/tambahPengarang', [PengarangController::class, 'tambah']);
 // Route::post('/kirimPengarang', [PengarangController::class, 'kirim']);
 // Route::get('/editPengarang/{id}', [PengarangController::class, 'edit']);

@@ -16,51 +16,56 @@ class WilayahController extends Controller
         return view('data-display/wilayah', compact('title',  'wilayah'));
     }
 
-    // public function tambah()
-    // {
-    //     $title = "Tambah Wilayah";
-    //     $content = "Ini halaman Tambah Wilayah dari controller";
-    //     return view('tambah-wilayah', compact('title', 'content'));
-    // }
+    public function tambah()
+    {
+        $title = "Tambah Data Wilayah";
+        return view('data-add/tambah-wilayah', compact('title'));
+    }
 
-    // public function kirim(Request $request): RedirectResponse
-    // {
-    //     $validasi = $request->validate([
-    //         'nama_pengarang' => 'required',
-    //     ]);
-    //     $path = $request->file('cover')->storePublicly('pengarang', 'public');
-    //     $validasi['cover'] = $path;
+    public function kirim(Request $request): RedirectResponse
+    {
+        $validasi = $request->validate([
+            'nama_wilayah' => 'required|unique:wilayah,nama_wilayah',
+            'ketua_wilayah' => 'nullable|string',
+            'jumlah_anggota' => 'nullable|integer|min:0',
+        ]);
 
-    //     Pengarang::insert($validasi);
+        $validasi['ketua_wilayah'] = $validasi['ketua_wilayah'] ?? '-';
+        $validasi['jumlah_anggota'] = $validasi['jumlah_anggota'] ?? 0;
 
-    //     return redirect('/pengarang');
-    // }
+        Wilayah::create($validasi);
 
-    // public function update(Request $request): RedirectResponse
-    // {
-    //     $id_pengarang = $request->id_pengarang;
+        return redirect('kelola/data-wilayah');
+    }
 
-    //     $validasi = $request->validate([
-    //         'nama_pengarang' => 'required'
-    //     ]);
+    public function edit($id)
+    {
+        $title = "Edit Data Wilayah";
+        $wilayah = Wilayah::find($id);
 
-    //     Pengarang::where('id_pengarang', $id_pengarang)->update($validasi);
+        return view('data-edit/edit-wilayah', compact('title', 'wilayah'));
+    }
 
-    //     return redirect('/pengarang');
-    // }
+    public function update(Request $request): RedirectResponse
+    {
+        $id_wilayah = $request->id_wilayah;
 
-    // public function edit($id)
-    // {
-    //     $title = "Edit Pengarang";
-    //     $content = "Ini halaman Edit Pengarang dari controller";
-    //     $pengarang = Pengarang::find($id);
+        $validasi = $request->validate([
+            'nama_wilayah' => 'required|unique:wilayah,nama_wilayah,' . $id_wilayah . ',id_wilayah',
+            'ketua_wilayah' => 'nullable|string',
+            'jumlah_anggota' => 'nullable|integer|min:0',
+        ]);
 
-    //     return view('editPengarang', compact('title', 'content', 'pengarang'));
-    // }
+        $wilayah = Wilayah::where('id_wilayah', $id_wilayah)->firstOrFail();
 
-    // public function delete($id): RedirectResponse
-    // {
-    //     Pengarang::where('id_pengarang', $id)->delete();
-    //     return redirect('/pengarang');
-    // }
+        $wilayah->update($validasi);
+
+        return redirect('kelola/data-wilayah');
+    }
+
+    public function delete($id): RedirectResponse
+    {
+        Wilayah::where('id_wilayah', $id)->delete();
+        return redirect('kelola/data-wilayah');
+    }
 }
