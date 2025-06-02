@@ -14,33 +14,31 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav d-flex justify-content-center align-items-center mx-auto mb-2 mb-lg-0">
-                @if (!Auth::check())
-                    <li class="nav-item mx-1 w-100">
-                        <a class="nav-link text-center py-1" href="/">Beranda</a>
-                    </li>
-                    <li class="nav-item mx-1 w-100 dropdown">
-                        <a class="nav-link text-center py-1 dropdown-toggle" href="/profil" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
-                        <ul class="dropdown-menu p-0 py-1">
-                            <li><a class="dropdown-item d-flex justify-content-center"
-                                    href="/profil/sejarah">Sejarah</a></li>
-                            <li>
-                                <hr class="dropdown-divider m-0">
-                            </li>
-                            <li><a class="dropdown-item d-flex justify-content-center"
-                                    href="/profil/organisasi">Struktur Organisasi</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item mx-1 w-100">
-                        <a class="nav-link text-center py-1" href="/pengumuman">Pengumuman</a>
-                    </li>
-                    <li class="nav-item mx-1 w-100">
-                        <a class="nav-link text-center py-1" href="/berita">Berita</a>
-                    </li>
-                    <li class="nav-item mx-1 w-100">
-                        <a class="btn btn-dark text-center py-1 w-100" href="/login">LOGIN</a>
-                    </li>
-                @endif
+                <li class="nav-item mx-1 w-100">
+                    <a class="nav-link text-center py-1" href="/">Beranda</a>
+                </li>
+                <li class="nav-item mx-1 w-100 dropdown">
+                    <a class="nav-link text-center py-1 dropdown-toggle" href="/profil" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Profil</a>
+                    <ul class="dropdown-menu p-0 py-1">
+                        <li><a class="dropdown-item d-flex justify-content-center" href="/profil/sejarah">Sejarah</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider m-0">
+                        </li>
+                        <li><a class="dropdown-item d-flex justify-content-center" href="/profil/organisasi">Struktur
+                                Organisasi</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item mx-1 w-100">
+                    <a class="nav-link text-center py-1" href="/pengumuman">Pengumuman</a>
+                </li>
+                <li class="nav-item mx-1 w-100">
+                    <a class="nav-link text-center py-1" href="/berita">Berita</a>
+                </li>
+                <li class="nav-item mx-1 w-100">
+                    <a class="btn btn-dark text-center py-1 w-100" href="/login">LOGIN</a>
+                </li>
             </ul>
         </div>
     </div>
