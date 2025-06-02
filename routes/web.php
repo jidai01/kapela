@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\KubController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\UserController;
@@ -40,6 +41,13 @@ Route::post('/kelola/kirim-wilayah', [WilayahController::class, 'kirim'])->middl
 Route::get('/kelola/edit-wilayah/{id}', [WilayahController::class, 'edit'])->middleware(CekLogin::class);
 Route::post('/kelola/update-wilayah', [WilayahController::class, 'update'])->middleware(CekLogin::class);
 Route::get('/kelola/delete-wilayah/{id}', [WilayahController::class, 'delete'])->middleware(CekLogin::class);
+
+Route::get('/kelola/data-kub', [KubController::class, 'kub'])->middleware(CekLogin::class);
+Route::get('/kelola/tambah-kub', [KubController::class, 'tambah'])->middleware(CekLogin::class);
+Route::post('/kelola/kirim-kub', [KubController::class, 'kirim'])->middleware(CekLogin::class);
+Route::get('/kelola/edit-kub/{id}', [KubController::class, 'edit'])->middleware(CekLogin::class);
+Route::post('/kelola/update-kub', [KubController::class, 'update'])->middleware(CekLogin::class);
+Route::get('/kelola/delete-kub/{id}', [KubController::class, 'delete'])->middleware(CekLogin::class);
 
 // Route::get('/tambahPengarang', [PengarangController::class, 'tambah']);
 // Route::post('/kirimPengarang', [PengarangController::class, 'kirim']);

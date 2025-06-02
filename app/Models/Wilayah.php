@@ -16,7 +16,7 @@ class Wilayah extends Model
     ];
     public $timestamps = false;
 
-    // function buku() : HasMany {
-    //     return $this->hasMany(Buku::class, 'id_pengarang', 'id_pengarang');
-    // }
+    function kub() : HasMany {
+        return $this->hasMany(Kub::class, 'id_wilayah', 'id_wilayah');
+    }
 }
