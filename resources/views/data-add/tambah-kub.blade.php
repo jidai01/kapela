@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="ketua_kub" class="form-label">Nama Wilayah</label>
+                    <label for="id_wilayah" class="form-label">Nama Wilayah</label>
                     <select class="form-control mb-4" name="id_wilayah">
                         <option value="">-- Pilih Wilayah --</option>
                         @foreach ($wilayahlist as $wilayah)

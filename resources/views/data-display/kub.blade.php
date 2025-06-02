@@ -45,7 +45,7 @@
                                             class="btn btn-sm btn-warning text-dark m-1">
                                             <i class="bi bi-pencil"></i> Edit
                                         </a>
-                                        <a href="/kelola/delete-kub/{{ $row->id_wilayah }}"
+                                        <a href="/kelola/delete-kub/{{ $row->id_kub }}"
                                             class="btn btn-sm btn-danger text-dark m-1"
                                             onclick="return confirm('Yakin ingin menghapus?')">
                                             <i class="bi bi-trash"></i> Hapus
@@ -54,7 +54,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5" class="text-center text-muted py-3">Tidak ada {{ $title }}.
+                                    <td colspan="6" class="text-center text-muted py-3">Tidak ada {{ $title }}.
                                     </td>
                                 </tr>
                             @endforelse

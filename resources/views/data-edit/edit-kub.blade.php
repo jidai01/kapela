@@ -34,15 +34,27 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="ketua_wilayah" class="form-label">Ketua Wilayah</label>
-                    <input type="text" class="form-control" id="ketua_wilayah" name="ketua_wilayah"
-                        value="{{ old('ketua_wilayah', $wilayah->ketua_wilayah) }}" required>
+                    <label for="ketua_kub" class="form-label">Ketua KUB</label>
+                    <input type="text" class="form-control" id="ketua_kub" name="ketua_kub"
+                        value="{{ old('ketua_kub', $kub->ketua_kub) }}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_wilayah" class="form-label">Nama Wilayah</label>
+                    <select class="form-control mb-4" name="id_wilayah">
+                        <option value="">-- Pilih Wilayah --</option>
+                        @foreach ($wilayahlist as $wilayah)
+                            <option value="{{ $wilayah->id_wilayah }}" @selected($wilayah->id_wilayah == $kub->id_wilayah)>
+                                {{ $wilayah->nama_wilayah }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="mb-3">
                     <label for="jumlah_anggota" class="form-label">Jumlah Anggota</label>
                     <input type="text" class="form-control" id="jumlah_anggota" name="jumlah_anggota"
-                        value="{{ old('jumlah_anggota', $wilayah->jumlah_anggota) }}" required>
+                        value="{{ old('jumlah_anggota', $kub->jumlah_anggota) }}" required>
                 </div>
 
                 <button type="submit" class="btn btn-dark w-100 mb-2"><i class="bi bi-save"></i> Simpan Perubahan</button>

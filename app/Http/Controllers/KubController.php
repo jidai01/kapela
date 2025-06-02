@@ -30,6 +30,8 @@ class KubController extends Controller
             'ketua_kub' => 'nullable|string',
             'id_wilayah' => 'required',
             'jumlah_anggota' => 'nullable|integer|min:0',
+        ], [
+            'id_wilayah.required' => 'The nama wilayah field is required',
         ]);
 
         $validasi['ketua_kub'] = $validasi['ketua_kub'] ?? '-';
@@ -50,26 +52,29 @@ class KubController extends Controller
         return view('data-edit/edit-kub', compact('title', 'kub', 'wilayahlist'));
     }
 
-    // public function update(Request $request): RedirectResponse
-    // {
-    //     $id_wilayah = $request->id_wilayah;
+    public function update(Request $request): RedirectResponse
+    {
+        $id_kub = $request->id_kub;
 
-    //     $validasi = $request->validate([
-    //         'nama_wilayah' => 'required|unique:wilayah,nama_wilayah,' . $id_wilayah . ',id_wilayah',
-    //         'ketua_wilayah' => 'nullable|string',
-    //         'jumlah_anggota' => 'nullable|integer|min:0',
-    //     ]);
+        $validasi = $request->validate([
+            'nama_kub' => 'required|unique:kub,nama_kub,' . $id_kub . ',id_kub',
+            'ketua_kub' => 'nullable|string',
+            'id_wilayah' => 'required',
+            'jumlah_anggota' => 'nullable|integer|min:0',
+        ], [
+            'id_wilayah.required' => 'The nama wilayah field is required',
+        ]);
 
-    //     $wilayah = Wilayah::where('id_wilayah', $id_wilayah)->firstOrFail();
+        $kub = Kub::where('id_kub', $id_kub)->firstOrFail();
 
-    //     $wilayah->update($validasi);
+        $kub->update($validasi);
 
-    //     return redirect('kelola/data-wilayah');
-    // }
+        return redirect('kelola/data-kub');
+    }
 
-    // public function delete($id): RedirectResponse
-    // {
-    //     Wilayah::where('id_wilayah', $id)->delete();
-    //     return redirect('kelola/data-wilayah');
-    // }
+    public function delete($id): RedirectResponse
+    {
+        Kub::where('id_kub', $id)->delete();
+        return redirect('kelola/data-kub');
+    }
 }
