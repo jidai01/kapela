@@ -5,6 +5,7 @@ use App\Http\Controllers\KubController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SakramenController;
+use App\Http\Controllers\UmatController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WilayahController;
 use App\Http\Middleware\CekLogin;
@@ -56,6 +57,13 @@ Route::post('/kelola/kirim-sakramen', [SakramenController::class, 'kirim'])->mid
 Route::get('/kelola/edit-sakramen/{id}', [SakramenController::class, 'edit'])->middleware(CekLogin::class);
 Route::post('/kelola/update-sakramen', [SakramenController::class, 'update'])->middleware(CekLogin::class);
 Route::get('/kelola/delete-sakramen/{id}', [SakramenController::class, 'delete'])->middleware(CekLogin::class);
+
+Route::get('/kelola/data-umat', [UmatController::class, 'umat'])->middleware(CekLogin::class);
+Route::get('/kelola/tambah-umat', [UmatController::class, 'tambah'])->middleware(CekLogin::class);
+Route::post('/kelola/kirim-umat', [UmatController::class, 'kirim'])->middleware(CekLogin::class);
+Route::get('/kelola/edit-umat/{id}', [UmatController::class, 'edit'])->middleware(CekLogin::class);
+Route::post('/kelola/update-umat', [UmatController::class, 'update'])->middleware(CekLogin::class);
+Route::get('/kelola/delete-umat/{id}', [UmatController::class, 'delete'])->middleware(CekLogin::class);
 
 // Route::get('/tambahPengarang', [PengarangController::class, 'tambah']);
 // Route::post('/kirimPengarang', [PengarangController::class, 'kirim']);

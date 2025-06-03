@@ -33,7 +33,7 @@
                             @forelse ($sakramen as $index => $row)
                                 <tr>
                                     <td class="text-center align-middle">{{ $loop->iteration }}</td>
-                                    <td class="align-middle">{{ $row->nama_sakramen }}</td>
+                                    <td class="text-center align-middle">{{ $row->nama_sakramen }}</td>
                                     <td class="d-flex justify-content-center align-items-center">
                                         <a href="/kelola/edit-sakramen/{{ $row->id_sakramen }}" class="btn btn-sm btn-warning text-dark m-1">
                                             <i class="bi bi-pencil"></i> Edit

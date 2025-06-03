@@ -35,8 +35,8 @@
                             @forelse ($wilayah as $index => $row)
                                 <tr>
                                     <td class="text-center align-middle">{{ $loop->iteration }}</td>
-                                    <td class="align-middle">{{ $row->nama_wilayah }}</td>
-                                    <td class="align-middle">{{ $row->ketua_wilayah }}</td>
+                                    <td class="text-center align-middle">{{ $row->nama_wilayah }}</td>
+                                    <td class="text-center align-middle">{{ $row->ketua_wilayah }}</td>
                                     <td class="text-center align-middle">{{ $row->jumlah_anggota }}</td>
                                     <td class="d-flex justify-content-center align-items-center">
                                         <a href="/kelola/edit-wilayah/{{ $row->id_wilayah }}" class="btn btn-sm btn-warning text-dark m-1">

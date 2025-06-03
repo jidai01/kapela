@@ -19,4 +19,9 @@ class Wilayah extends Model
     function kub() : HasMany {
         return $this->hasMany(Kub::class, 'id_wilayah', 'id_wilayah');
     }
+
+    public function umat()
+    {
+        return $this->hasMany(Umat::class, 'id_wilayah', 'id_wilayah');
+    }
 }

@@ -19,4 +19,9 @@ class Kub extends Model
     {
         return $this->belongsTo(Wilayah::class, 'id_wilayah', 'id_wilayah');
     }
+
+    public function umat()
+    {
+        return $this->hasMany(Umat::class, 'id_kub', 'id_kub');
+    }
 }

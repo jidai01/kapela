@@ -35,8 +35,8 @@
                             @forelse ($user as $index => $row)
                                 <tr>
                                     <td class="text-center align-middle">{{ $loop->iteration }}</td>
-                                    <td class="align-middle">{{ $row->name }}</td>
-                                    <td class="align-middle">{{ $row->email }}</td>
+                                    <td class="text-center align-middle">{{ $row->name }}</td>
+                                    <td class="text-center align-middle">{{ $row->email }}</td>
                                     <td class="text-center align-middle">{{ $row->role }}</td>
                                     <td class="d-flex justify-content-center align-items-center">
                                         <a href="/kelola/edit-user/{{ $row->id_user }}" class="btn btn-sm btn-warning text-dark m-1">
