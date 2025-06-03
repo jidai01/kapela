@@ -17,31 +17,48 @@ class UmatController extends Controller
         return view('data-display/umat', compact('title',  'umat'));
     }
 
-    // public function tambah()
-    // {
-    //     $title = "Tambah Data KUB";
-    //     $wilayahlist = Wilayah::all();
-    //     return view('data-add/tambah-kub', compact('title', 'wilayahlist'));
-    // }
+    public function tambah()
+    {
+        $title = "Tambah Data Umat";
+        $kublist = Kub::all();
+        $wilayahlist = Wilayah::all();
+        return view('data-add/tambah-umat', compact('title', 'kublist', 'wilayahlist'));
+    }
 
-    // public function kirim(Request $request): RedirectResponse
-    // {
-    //     $validasi = $request->validate([
-    //         'nama_kub' => 'required|unique:kub,nama_kub',
-    //         'ketua_kub' => 'nullable|string',
-    //         'id_wilayah' => 'required',
-    //         'jumlah_anggota' => 'nullable|integer|min:0',
-    //     ], [
-    //         'id_wilayah.required' => 'The nama wilayah field is required',
-    //     ]);
+    public function kirim(Request $request): RedirectResponse
+    {
+        $validasi = $request->validate([
+            'nik' => 'required|unique:umat,nik',
+            'nama_lengkap' => 'required',
+            'tanggal_lahir' => 'nullable|date',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'nullable|string',
+            'nomor_telepon' => 'nullable|string',
+            'pekerjaan' => 'nullable|string',
+            'id_kub' => 'required|exists:kub,id_kub',
+            'status_baptis' => 'nullable|string',
+            'status_komuni' => 'nullable|string',
+            'status_krisma' => 'nullable|string',
+            'status_nikah' => 'nullable|string',
+        ], [
+            'id_kub.required' => 'The field nama KUB is required',
+        ]);
 
-    //     $validasi['ketua_kub'] = $validasi['ketua_kub'] ?? '-';
-    //     $validasi['jumlah_anggota'] = $validasi['jumlah_anggota'] ?? 0;
+        $kub = Kub::findOrFail($request->id_kub);
+        $validasi['id_wilayah'] = $kub->id_wilayah;
 
-    //     Kub::create($validasi);
+        $validasi['alamat'] = $validasi['alamat'] ?? '-';
+        $validasi['nomor_telepon'] = $validasi['nomor_telepon'] ?? '-';
+        $validasi['pekerjaan'] = $validasi['pekerjaan'] ?? '-';
+        $validasi['status_baptis'] = $validasi['status_baptis'] ?? '-';
+        $validasi['status_komuni'] = $validasi['status_komuni'] ?? '-';
+        $validasi['status_krisma'] = $validasi['status_krisma'] ?? '-';
+        $validasi['status_nikah'] = $validasi['status_nikah'] ?? '-';
 
-    //     return redirect('kelola/data-kub');
-    // }
+        Umat::create($validasi);
+
+        return redirect('kelola/data-umat');
+    }
 
     // public function edit($id)
     // {

@@ -10,6 +10,7 @@ class Umat extends Model
     protected $primaryKey = 'nik';
 
     protected $fillable = [
+        'nik',
         'id_kub',
         'id_wilayah',
         'nama_lengkap',
