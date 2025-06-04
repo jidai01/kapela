@@ -25,6 +25,7 @@
                         <thead class="table-secondary">
                             <tr>
                                 <th class="text-center align-middle">No</th>
+                                <th class="text-center align-middle">NIK</th>
                                 <th class="text-center align-middle">Nama Lengkap</th>
                                 <th class="text-center align-middle">Tanggal Lahir</th>
                                 <th class="text-center align-middle">Jenis Kelamin</th>
@@ -44,6 +45,7 @@
                             @forelse ($umat as $index => $row)
                                 <tr>
                                     <td class="text-center align-middle">{{ $loop->iteration }}</td>
+                                    <td class="text-center align-middle">{{ $row->nik }}</td>
                                     <td class="text-center align-middle">{{ $row->nama_lengkap }}</td>
                                     <td class="text-center align-middle">{{ $row->tanggal_lahir }}</td>
                                     <td class="text-center align-middle">{{ $row->jenis_kelamin }}</td>
