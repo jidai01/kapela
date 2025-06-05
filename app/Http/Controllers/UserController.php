@@ -12,7 +12,7 @@ class UserController extends Controller
     {
         $title = "Data User";
         $user = User::select('id_user', 'name', 'email', 'role')->get();
-        return view('data-display/user', compact('title',  'user'));
+        return view('data-display/user', compact('title', 'user'));
     }
 
     public function tambah()
@@ -25,7 +25,7 @@ class UserController extends Controller
     {
         $validasi = $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:user,email',
             'password' => 'required|min:8',
             'role' => 'required',
         ]);
@@ -45,7 +45,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $title = "Edit Data User";
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
         return view('data-edit/edit-user', compact('title', 'user'));
     }
@@ -56,7 +56,7 @@ class UserController extends Controller
 
         $validasi = $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $id_user . ',id_user',
+            'email' => 'required|email|unique:user,email,' . $id_user . ',id_user',
             'password' => 'nullable|min:8',
             'role' => 'required',
         ]);
@@ -71,7 +71,7 @@ class UserController extends Controller
         }
 
         if (!empty($request->password)) {
-            $validasi['password'] = bcrypt($request->password);
+            $validasi['password'] = $request->password;
         } else {
             $validasi['password'] = $user->password;
         }
