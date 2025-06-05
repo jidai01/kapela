@@ -15,7 +15,6 @@ class ProfilController extends Controller
     public function organisasi()
     {
         $title = "Struktur Organisasi";
-        $content = "Halaman Struktur Organisasi";
         return view('view-umum/profil/organisasi', compact('title', 'content'));
     }
 }

@@ -5,6 +5,14 @@
 @endsection
 
 @section('content')
+{{-- <style>
+    p {
+        color :black
+        font-family: "Patrick Hand", cursive;
+  font-weight: 400;
+  font-style: normal;
+    }
+</style> --}}
     <div class="container-fluid p-0 mt-5 mb-5">
         <h4 class="border-top border-bottom border-2 border-dark py-1 m-0 mb-3 text-center">
             {{ $title }}

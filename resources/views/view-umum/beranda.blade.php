@@ -9,6 +9,21 @@
 @endsection
 
 @section('content')
+{{-- <style>
+    h5 {
+        color: rgb(255, 255, 255);
+        font-family: "Changa One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.changa-one-regular-italic {
+  font-family: "Changa One", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+    }
+</style> --}}
+
     <div class="container-fluid p-0 mb-5">
 
         {{-- ========== CAROUSEL START ========== --}}

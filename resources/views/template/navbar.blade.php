@@ -1,5 +1,32 @@
-<nav class="navbar navbar-expand-lg bg-secondary d-flex flex-column flex-md-column">
-    <div class="container-fluid border-bottom border-2 border-dark d-flex flex-column flex-md-row align-items-center justify-content-center p-3 px-4"
+{{-- <style>
+    nav {
+        background-color: rgb(2, 33, 46);
+    }
+
+    h1 {
+        color: blanchedalmond;
+         font-family: "Titan One", monospace;
+  font-weight: 100;
+  font-style: normal;
+    }
+
+    .nav-link {
+        color:aliceblue;
+        font-family: "Cormorant", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+
+    }
+
+    #login {
+        background-color:rgb(0, 109, 160);
+        color: wheat;
+    }
+</style> --}}
+
+<nav class="navbar navbar-expand-lg d-flex flex-column flex-md-column">
+    <div class="container-fluid border-bottom border-2 border-white d-flex flex-column flex-md-row align-items-center justify-content-center p-3 px-4"
         style="min-height: 80px;">
         <img src="{{ asset('storage/img/logo.png') }}" alt="logo-sanbello" width="60" height="60"
             class="border border-white rounded-circle mb-2 mb-md-0 me-md-5">
@@ -37,7 +64,7 @@
                     <a class="nav-link text-center py-1" href="/berita">Berita</a>
                 </li>
                 <li class="nav-item mx-1 w-100">
-                    <a class="btn btn-dark text-center py-1 w-100" href="/login">LOGIN</a>
+                    <a id="login" class="btn text-center py-1 w-100" href="/login">LOGIN</a>
                 </li>
             </ul>
         </div>
