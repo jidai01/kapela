@@ -35,7 +35,7 @@
                 <div class="mb-3">
                     <label for="ketua_wilayah" class="form-label">Ketua Wilayah</label>
                     <input type="text" class="form-control" id="ketua_wilayah" name="ketua_wilayah"
-                        placeholder="ketua wilayah">
+                        placeholder="nama ketua wilayah">
                 </div>
 
                 <div class="mb-3">

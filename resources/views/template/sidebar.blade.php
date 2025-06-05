@@ -19,14 +19,14 @@
     .bar2,
     .bar3 {
         width: 1.5rem;
-        height: 5px;
+        height: 0.3rem;
         background-color: black;
-        margin: 6px 0;
+        margin: 0.3rem 0;
         transition: 0.4s;
     }
 
     .change .bar1 {
-        transform: translate(0, 11px) rotate(-45deg);
+        transform: translate(0, 0.6rem) rotate(-45deg);
     }
 
     .change .bar2 {
@@ -34,11 +34,11 @@
     }
 
     .change .bar3 {
-        transform: translate(0, -11px) rotate(45deg);
+        transform: translate(0, -0.6rem) rotate(45deg);
     }
 </style>
 
-<button class="navbar-toggler d-block border-0 rounded" type="button" id="sidebarToggle" aria-label="Toggle navigation"
+<button class="navbar-toggler d-block border-0" type="button" id="sidebarToggle" aria-label="Toggle navigation"
     onclick="myFunction(this)">
     <div class="bar1"></div>
     <div class="bar2"></div>
@@ -54,7 +54,7 @@
             <h6 class="text-center m-0 responsive-heading"><strong>Kapela St. Agustinus Bello</strong></h6>
         </div>
 
-        <div class="container-fluid my-2">
+        <div class="container-fluid my-2 pe-2">
             <ul class="navbar-nav d-flex flex-column w-100">
                 @if (Auth::check())
                     @php $role = Auth::user()->role; @endphp

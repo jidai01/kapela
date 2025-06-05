@@ -34,7 +34,7 @@
 
                 <div class="mb-3">
                     <label for="ketua_kub" class="form-label">Ketua KUB</label>
-                    <input type="text" class="form-control" id="ketua_kub" name="ketua_kub" placeholder="ketua kub">
+                    <input type="text" class="form-control" id="ketua_kub" name="ketua_kub" placeholder="nama ketua kub">
                 </div>
 
                 <div class="mb-3">
