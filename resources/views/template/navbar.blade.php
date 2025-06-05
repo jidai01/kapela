@@ -25,7 +25,7 @@
     }
 </style> --}}
 
-<nav class="navbar navbar-expand-lg d-flex flex-column flex-md-column">
+<nav class="navbar bg-secondary navbar-expand-lg d-flex flex-column flex-md-column">
     <div class="container-fluid border-bottom border-2 border-white d-flex flex-column flex-md-row align-items-center justify-content-center p-3 px-4"
         style="min-height: 80px;">
         <img src="{{ asset('storage/img/logo.png') }}" alt="logo-sanbello" width="60" height="60"
@@ -64,7 +64,7 @@
                     <a class="nav-link text-center py-1" href="/berita">Berita</a>
                 </li>
                 <li class="nav-item mx-1 w-100">
-                    <a id="login" class="btn text-center py-1 w-100" href="/login">LOGIN</a>
+                    <a id="login" class="btn btn-outline-dark text-center py-1 w-100" href="/login">LOGIN</a>
                 </li>
             </ul>
         </div>
