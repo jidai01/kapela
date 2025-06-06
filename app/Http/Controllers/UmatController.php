@@ -39,7 +39,7 @@ class UmatController extends Controller
     public function kirim(Request $request): RedirectResponse
     {
         $validasi = $request->validate([
-            'nik' => 'required|unique:umat,nik',
+            'nik' => 'required|digits:16|unique:umat,nik',
             'nama_lengkap' => 'required',
             'tanggal_lahir' => 'nullable|date',
             'jenis_kelamin' => 'required',
@@ -87,7 +87,7 @@ class UmatController extends Controller
         $nik = $request->nik;
 
         $validasi = $request->validate([
-            'nik' => 'required',
+            'nik' => 'required|digits:16',
             'nama_lengkap' => 'required',
             'tanggal_lahir' => 'nullable|date',
             'jenis_kelamin' => 'required',
