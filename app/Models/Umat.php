@@ -9,7 +9,6 @@ class Umat extends Model
     protected $table = 'umat';
     protected $primaryKey = 'nik';
     public $incrementing = false;
-    protected $keytype = 'string';
     protected $fillable = [
         'nik',
         'id_kub',
