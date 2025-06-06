@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Pengumuman extends Model
+class Berita extends Model
 {
-    protected $table = 'pengumuman';
+    protected $table = 'berita';
 
-    protected $primaryKey = 'id_pengumuman';
+    protected $primaryKey = 'id_berita';
 
     protected $fillable = [
-        'judul_pengumuman',
-        'isi_pengumuman',
+        'judul_berita',
+        'isi_berita',
         'slug',
+        'foto',
         'tanggal_terbit',
     ];
     public $timestamps = false;
@@ -26,22 +27,22 @@ class Pengumuman extends Model
     {
         parent::boot();
 
-        static::creating(function ($pengumuman) {
-            $pengumuman->slug = static::generateUniqueSlug($pengumuman->judul_pengumuman);
+        static::creating(function ($berita) {
+            $berita->slug = static::generateUniqueSlug($berita->judul_berita);
         });
 
-        static::updating(function ($pengumuman) {
-            if ($pengumuman->isDirty('judul_pengumuman')) {
-                $pengumuman->slug = static::generateUniqueSlug(
-                    $pengumuman->judul_pengumuman,
-                    $pengumuman->id_pengumuman
+        static::updating(function ($berita) {
+            if ($berita->isDirty('judul_berita')) {
+                $berita->slug = static::generateUniqueSlug(
+                    $berita->judul_berita,
+                    $berita->id_berita
                 );
             }
         });
     }
 
     /**
-     * Generate unique slug berdasarkan judul pengumuman.
+     * Generate unique slug berdasarkan judul berita.
      */
     protected static function generateUniqueSlug($judul, $excludeId = null)
     {
@@ -50,7 +51,7 @@ class Pengumuman extends Model
         $count = 1;
 
         while (static::where('slug', $slug)
-            ->when($excludeId, fn($query) => $query->where('id_pengumuman', '!=', $excludeId))
+            ->when($excludeId, fn($query) => $query->where('id_berita', '!=', $excludeId))
             ->exists()
         ) {
             $slug = $originalSlug . '-' . $count++;

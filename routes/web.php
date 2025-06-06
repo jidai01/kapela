@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KubController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PengumumanController;
@@ -74,6 +75,14 @@ Route::post('/kelola/kirim-pengumuman', [PengumumanController::class, 'kirim'])-
 Route::get('/kelola/edit-pengumuman/{id}', [PengumumanController::class, 'edit'])->middleware(CekLogin::class);
 Route::post('/kelola/update-pengumuman', [PengumumanController::class, 'update'])->middleware(CekLogin::class);
 Route::get('/kelola/delete-pengumuman/{id}', [PengumumanController::class, 'delete'])->middleware(CekLogin::class);
+
+Route::get('/kelola/data-berita', [BeritaController::class, 'berita'])->middleware(CekLogin::class);
+Route::get('/kelola/detail-berita/{id}', [BeritaController::class, 'detail'])->middleware(CekLogin::class);
+Route::get('/kelola/tambah-berita', [BeritaController::class, 'tambah'])->middleware(CekLogin::class);
+Route::post('/kelola/kirim-berita', [BeritaController::class, 'kirim'])->middleware(CekLogin::class);
+Route::get('/kelola/edit-berita/{id}', [BeritaController::class, 'edit'])->middleware(CekLogin::class);
+Route::post('/kelola/update-berita', [BeritaController::class, 'update'])->middleware(CekLogin::class);
+Route::get('/kelola/delete-berita/{id}', [BeritaController::class, 'delete'])->middleware(CekLogin::class);
 
 // Route::get('/tambahPengarang', [PengarangController::class, 'tambah']);
 // Route::post('/kirimPengarang', [PengarangController::class, 'kirim']);

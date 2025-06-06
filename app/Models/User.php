@@ -22,6 +22,7 @@ class User extends Authenticatable
         'password',
         'role',
     ];
+    public $timestamps = false;
 
     protected $hidden = [
         'password',

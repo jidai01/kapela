@@ -23,21 +23,26 @@
                 </div>
             @endif
 
-            <form action="/kelola/kirim-pengumuman" method="post">
+            <form action="/kelola/kirim-berita" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-3">
-                    <label for="judul_pengumuman" class="form-label">Judul Pengumuman</label>
-                    <input type="text" class="form-control" id="judul_pengumuman" name="judul_pengumuman"
-                        placeholder="judul pengumuman" required>
+                    <label for="judul_berita" class="form-label">Judul Berita</label>
+                    <input type="text" class="form-control" id="judul_berita" name="judul_berita"
+                        placeholder="judul berita" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="isi_pengumuman" class="form-label">Isi Pengumuman</label>
-                    <textarea type="text" class="form-control" cols="50" rows="3" id="isi_pengumuman" name="isi_pengumuman"
-                        placeholder="isi pengumuman"></textarea>
+                    <label for="isi_berita" class="form-label">Isi Berita</label>
+                    <textarea type="text" class="form-control" cols="50" rows="3" id="isi_berita" name="isi_berita"
+                        placeholder="isi berita"></textarea>
                 </div>
 
+                <div class="mb-3">
+                    <label for="isi_berita" class="form-label">Foto</label>
+                    <input type="file" class="form-control mb-4" name="foto" placeholder="foto">
+                </div>
+                
                 <div class="mb-3">
                     <label for="tanggal_terbit" class="form-label">Tanggal Terbit</label>
                     <input type="date" class="form-control" id="tanggal_terbit" name="tanggal_terbit"
@@ -46,7 +51,7 @@
 
                 <button type="submit" class="btn btn-dark w-100 mb-2"><i class="bi bi-save"></i>
                     {{ $title }}</button>
-                <a href="/kelola/data-pengumuman" class="btn btn-outline-secondary w-100"><i
+                <a href="/kelola/data-berita" class="btn btn-outline-secondary w-100"><i
                         class="bi bi-arrow-return-left"></i> Kembali</a>
             </form>
         </div>
