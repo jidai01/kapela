@@ -29,15 +29,8 @@
                                 <th class="text-center align-middle">Nama Lengkap</th>
                                 <th class="text-center align-middle">Tanggal Lahir</th>
                                 <th class="text-center align-middle">Jenis Kelamin</th>
-                                <th class="text-center align-middle">Alamat</th>
-                                <th class="text-center align-middle">Nomor Telepon</th>
-                                <th class="text-center align-middle">Pekerjaan</th>
                                 <th class="text-center align-middle">Nama KUB</th>
                                 <th class="text-center align-middle">Nama Wilayah</th>
-                                <th class="text-center align-middle">Status Baptis</th>
-                                <th class="text-center align-middle">Status Komuni</th>
-                                <th class="text-center align-middle">Status Krisma</th>
-                                <th class="text-center align-middle">Status Perkawinan</th>
                                 <th class="text-center align-middle">Aksi</th>
                             </tr>
                         </thead>
@@ -49,16 +42,13 @@
                                     <td class="text-center align-middle">{{ $row->nama_lengkap }}</td>
                                     <td class="text-center align-middle">{{ $row->tanggal_lahir }}</td>
                                     <td class="text-center align-middle">{{ $row->jenis_kelamin }}</td>
-                                    <td class="text-center align-middle">{{ $row->alamat }}</td>
-                                    <td class="text-center align-middle">{{ $row->nomor_telepon }}</td>
-                                    <td class="text-center align-middle">{{ $row->pekerjaan }}</td>
                                     <td class="text-center align-middle">{{ $row->kub->nama_kub }}</td>
                                     <td class="text-center align-middle">{{ $row->kub->wilayah->nama_wilayah }}</td>
-                                    <td class="text-center align-middle">{{ $row->status_baptis }}</td>
-                                    <td class="text-center align-middle">{{ $row->status_komuni }}</td>
-                                    <td class="text-center align-middle">{{ $row->status_krisma }}</td>
-                                    <td class="text-center align-middle">{{ $row->status_nikah }}</td>
                                     <td class="d-flex justify-content-center align-items-center">
+                                        <a href="/kelola/detail-umat/{{ $row->nik }}"
+                                            class="btn btn-sm btn-info text-dark m-1">
+                                            <i class="bi bi-arrow-right-circle"></i> Detail
+                                        </a>
                                         <a href="/kelola/edit-umat/{{ $row->nik }}"
                                             class="btn btn-sm btn-warning text-dark m-1">
                                             <i class="bi bi-pencil"></i> Edit

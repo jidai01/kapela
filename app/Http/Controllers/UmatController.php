@@ -17,6 +17,17 @@ class UmatController extends Controller
         return view('data-display/umat', compact('title',  'umat'));
     }
 
+    public function detail($id)
+    {
+        $title = "Detail Data Umat";
+        $umat = Umat::find($id);
+
+        $kublist = Kub::all();
+        $wilayahlist = Wilayah::all();
+
+        return view('data-display/detail-umat', compact('title',  'umat', 'kublist', 'wilayahlist'));
+    }
+
     public function tambah()
     {
         $title = "Tambah Data Umat";
@@ -60,39 +71,59 @@ class UmatController extends Controller
         return redirect('kelola/data-umat');
     }
 
-    // public function edit($id)
-    // {
-    //     $title = "Edit Data KUB";
-    //     $kub = Kub::find($id);
+    public function edit($id)
+    {
+        $title = "Edit Data Umat";
+        $umat = Umat::find($id);
 
-    //     $wilayahlist = Wilayah::all();
+        $kublist = Kub::all();
+        $wilayahlist = Wilayah::all();
 
-    //     return view('data-edit/edit-kub', compact('title', 'kub', 'wilayahlist'));
-    // }
+        return view('data-edit/edit-umat', compact('title', 'umat', 'kublist', 'wilayahlist'));
+    }
 
-    // public function update(Request $request): RedirectResponse
-    // {
-    //     $id_kub = $request->id_kub;
+    public function update(Request $request): RedirectResponse
+    {
+        $nik = $request->nik;
 
-    //     $validasi = $request->validate([
-    //         'nama_kub' => 'required|unique:kub,nama_kub,' . $id_kub . ',id_kub',
-    //         'ketua_kub' => 'nullable|string',
-    //         'id_wilayah' => 'required',
-    //         'jumlah_anggota' => 'nullable|integer|min:0',
-    //     ], [
-    //         'id_wilayah.required' => 'The nama wilayah field is required',
-    //     ]);
+        $validasi = $request->validate([
+            'nik' => 'required',
+            'nama_lengkap' => 'required',
+            'tanggal_lahir' => 'nullable|date',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'nullable|string',
+            'nomor_telepon' => 'nullable|string',
+            'pekerjaan' => 'nullable|string',
+            'id_kub' => 'required|exists:kub,id_kub',
+            'status_baptis' => 'nullable|string',
+            'status_komuni' => 'nullable|string',
+            'status_krisma' => 'nullable|string',
+            'status_nikah' => 'nullable|string',
+        ], [
+            'id_kub.required' => 'The field nama KUB is required',
+        ]);
 
-    //     $kub = Kub::where('id_kub', $id_kub)->firstOrFail();
+        $kub = Kub::findOrFail($request->id_kub);
+        $validasi['id_wilayah'] = $kub->id_wilayah;
 
-    //     $kub->update($validasi);
+        $validasi['alamat'] = $validasi['alamat'] ?? '-';
+        $validasi['nomor_telepon'] = $validasi['nomor_telepon'] ?? '-';
+        $validasi['pekerjaan'] = $validasi['pekerjaan'] ?? '-';
+        $validasi['status_baptis'] = $validasi['status_baptis'] ?? '-';
+        $validasi['status_komuni'] = $validasi['status_komuni'] ?? '-';
+        $validasi['status_krisma'] = $validasi['status_krisma'] ?? '-';
+        $validasi['status_nikah'] = $validasi['status_nikah'] ?? '-';
 
-    //     return redirect('kelola/data-kub');
-    // }
+        $umat = Umat::where('nik', $nik)->firstOrFail();
 
-    // public function delete($id): RedirectResponse
-    // {
-    //     Kub::where('id_kub', $id)->delete();
-    //     return redirect('kelola/data-kub');
-    // }
+        $umat->update($validasi);
+
+        return redirect('kelola/data-umat');
+    }
+
+    public function delete($id): RedirectResponse
+    {
+        Umat::where('nik', $id)->delete();
+        return redirect('kelola/data-umat');
+    }
 }
