@@ -34,8 +34,7 @@
 
                 <div class="mb-3">
                     <label for="isi_pengumuman" class="form-label">Isi Pengumuman</label>
-                    <textarea type="text" class="form-control" cols="50" rows="3" id="isi_pengumuman" name="isi_pengumuman"
-                        placeholder="isi pengumuman"></textarea>
+                    <textarea class="form-control" cols="50" rows="10" id="isi_pengumuman" name="isi_pengumuman" placeholder="isi pengumuman"></textarea>
                 </div>
 
                 <div class="mb-3">

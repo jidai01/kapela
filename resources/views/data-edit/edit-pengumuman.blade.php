@@ -35,14 +35,8 @@
 
                 <div class="mb-3">
                     <label for="isi_pengumuman" class="form-label">Isi Pengumuman</label>
-                    <input type="text" class="form-control" id="isi_pengumuman" name="isi_pengumuman"
-                        value="{{ old('isi_pengumuman', $pengumuman->isi_pengumuman) }}" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="slug" class="form-label">Slug</label>
-                    <input type="text" class="form-control" id="slug" name="slug"
-                        value="{{ old('slug', $pengumuman->slug) }}" required>
+                    <textarea class="form-control" cols="50" rows="3" id="isi_pengumuman" name="isi_pengumuman"
+                        placeholder="isi pengumuman">{{ old('isi_pengumuman', $pengumuman->isi_pengumuman ?? '') }}</textarea>
                 </div>
 
                 <div class="mb-3">
