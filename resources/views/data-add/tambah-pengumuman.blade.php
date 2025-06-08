@@ -23,7 +23,7 @@
                 </div>
             @endif
 
-            <form action="/kelola/kirim-pengumuman" method="post" enctype="multipart/form-data">
+            <form action="/kelola/kirim-pengumuman" method="post">
                 @csrf
 
                 <div class="mb-3">

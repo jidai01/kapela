@@ -35,13 +35,9 @@
 
                 <div class="mb-3">
                     <label for="isi_pengumuman" class="form-label">Isi Pengumuman</label>
-
-                    <!-- Quill Editor Container -->
                     <div id="editor" style="height: 200px;">
                         {!! old('isi_pengumuman', $pengumuman->isi_pengumuman ?? '') !!}
                     </div>
-
-                    <!-- Hidden Input to Store HTML Output -->
                     <input type="hidden" name="isi_pengumuman" id="isi_pengumuman">
                 </div>
 

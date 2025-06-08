@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 class BeritaController extends Controller
 {
@@ -27,7 +28,9 @@ class BeritaController extends Controller
             'judul_berita' => 'required|unique:berita,judul_berita',
             'isi_berita' => 'required',
             'tanggal_terbit' => 'required|date',
+            'foto' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
+
         $path = $request->file('foto')->storePublicly('berita', 'public');
         $validasi['foto'] = $path;
 
@@ -36,34 +39,50 @@ class BeritaController extends Controller
         return redirect('kelola/data-berita');
     }
 
-    // public function edit($id)
-    // {
-    //     $title = "Edit Data Pengumuman";
-    //     $pengumuman = Pengumuman::find($id);
+    public function edit($id)
+    {
+        $title = "Edit Data Berita";
+        $berita = Berita::findOrFail($id);
 
-    //     return view('data-edit/edit-pengumuman', compact('title', 'pengumuman'));
-    // }
+        return view('data-edit/edit-berita', compact('title', 'berita'));
+    }
 
-    // public function update(Request $request): RedirectResponse
-    // {
-    //     $id_pengumuman = $request->id_pengumuman;
+    public function update(Request $request): RedirectResponse
+    {
+        $id_berita = $request->id_berita;
 
-    //     $validasi = $request->validate([
-    //         'judul_pengumuman' => 'required|unique:pengumuman,judul_pengumuman,' . $id_pengumuman . ',id_pengumuman',
-    //         'isi_pengumuman' => 'required',
-    //         'tanggal_terbit' => 'required|date',
-    //     ]);
+        $validasi = $request->validate([
+            'judul_berita' => 'required|unique:berita,judul_berita,' . $id_berita . ',id_berita',
+            'isi_berita' => 'required',
+            'tanggal_terbit' => 'required|date',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+        ]);
 
-    //     $pengumuman = Pengumuman::where('id_pengumuman', $id_pengumuman)->firstOrFail();
+        $berita = Berita::where('id_berita', $id_berita)->firstOrFail();
 
-    //     $pengumuman->update($validasi);
+        if ($request->hasFile('foto')) {
+            if ($berita->foto && Storage::disk('public')->exists($berita->foto)) {
+                Storage::disk('public')->delete($berita->foto);
+            }
+            $path = $request->file('foto')->storePublicly('berita', 'public');
+            $validasi['foto'] = $path;
+        }
 
-    //     return redirect('kelola/data-pengumuman');
-    // }
+        $berita->update($validasi);
 
-    // public function delete($id): RedirectResponse
-    // {
-    //     Pengumuman::where('id_pengumuman', $id)->delete();
-    //     return redirect('kelola/data-pengumuman');
-    // }
+        return redirect('kelola/data-berita');
+    }
+
+    public function delete($id): RedirectResponse
+    {
+        $berita = Berita::findOrFail($id);
+
+        if ($berita->foto && Storage::disk('public')->exists($berita->foto)) {
+            Storage::disk('public')->delete($berita->foto);
+        }
+
+        $berita->delete();
+
+        return redirect('kelola/data-berita');
+    }
 }
