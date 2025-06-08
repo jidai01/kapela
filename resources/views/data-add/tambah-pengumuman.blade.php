@@ -23,7 +23,7 @@
                 </div>
             @endif
 
-            <form action="/kelola/kirim-pengumuman" method="post">
+            <form action="/kelola/kirim-pengumuman" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-3">
@@ -34,7 +34,8 @@
 
                 <div class="mb-3">
                     <label for="isi_pengumuman" class="form-label">Isi Pengumuman</label>
-                    <textarea class="form-control" cols="50" rows="10" id="isi_pengumuman" name="isi_pengumuman" placeholder="isi pengumuman"></textarea>
+                    <div id="editor" style="height: 200px;"></div>
+                    <input type="hidden" name="isi_pengumuman" id="isi_pengumuman">
                 </div>
 
                 <div class="mb-3">
@@ -50,4 +51,15 @@
             </form>
         </div>
     </div>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script>
+        var quill = new Quill('#editor', {
+            theme: 'snow'
+        });
+        var form = document.querySelector('form');
+        form.onsubmit = function() {
+            var isi = document.querySelector('input[name=isi_pengumuman]');
+            isi.value = quill.root.innerHTML;
+        };
+    </script>
 @endsection

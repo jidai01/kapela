@@ -35,8 +35,14 @@
 
                 <div class="mb-3">
                     <label for="isi_pengumuman" class="form-label">Isi Pengumuman</label>
-                    <textarea class="form-control" cols="50" rows="3" id="isi_pengumuman" name="isi_pengumuman"
-                        placeholder="isi pengumuman">{{ old('isi_pengumuman', $pengumuman->isi_pengumuman ?? '') }}</textarea>
+
+                    <!-- Quill Editor Container -->
+                    <div id="editor" style="height: 200px;">
+                        {!! old('isi_pengumuman', $pengumuman->isi_pengumuman ?? '') !!}
+                    </div>
+
+                    <!-- Hidden Input to Store HTML Output -->
+                    <input type="hidden" name="isi_pengumuman" id="isi_pengumuman">
                 </div>
 
                 <div class="mb-3">
@@ -51,4 +57,18 @@
             </form>
         </div>
     </div>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var quill = new Quill('#editor', {
+                theme: 'snow'
+            });
+            var form = document.querySelector('form');
+            var hiddenInput = document.querySelector('#isi_pengumuman');
+            hiddenInput.value = quill.root.innerHTML;
+            form.onsubmit = function() {
+                hiddenInput.value = quill.root.innerHTML;
+            };
+        });
+    </script>
 @endsection
