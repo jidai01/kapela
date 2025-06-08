@@ -24,4 +24,9 @@ class Wilayah extends Model
     {
         return $this->hasMany(Umat::class, 'id_wilayah', 'id_wilayah');
     }
+
+    public function kegiatanwilayah(): HasMany
+    {
+        return $this->hasMany(KegiatanWilayah::class, 'id_wilayah', 'id_wilayah');
+    }
 }

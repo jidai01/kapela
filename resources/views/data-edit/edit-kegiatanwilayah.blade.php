@@ -45,10 +45,20 @@
                     </select>
                 </div>
 
-                
+                <div class="mb-3">
+                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                    <textarea class="form-control" cols="50" rows="3" id="deskripsi" name="deskripsi"
+                        placeholder="deskripsi">{{ old('deskripsi', $kegiatanwilayah->deskripsi ?? '') }}</textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="tanggal_kegiatan" class="form-label">Tanggal Kegiatan</label>
+                    <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan"
+                        value="{{ old('tanggal_kegiatan', $kegiatanwilayah->tanggal_kegiatan) }}" required>
+                </div>
 
                 <button type="submit" class="btn btn-dark w-100 mb-2"><i class="bi bi-save"></i> Simpan Perubahan</button>
-                <a href="/kelola/data-wilayah" class="btn btn-outline-secondary w-100"><i
+                <a href="/kelola/data-kegiatan-wilayah" class="btn btn-outline-secondary w-100"><i
                         class="bi bi-arrow-return-left"></i> Kembali</a>
             </form>
         </div>

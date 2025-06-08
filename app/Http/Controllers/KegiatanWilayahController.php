@@ -48,4 +48,30 @@ class KegiatanWilayahController extends Controller
 
         return view('data-edit/edit-kegiatanwilayah', compact('title', 'kegiatanwilayah', 'wilayahlist'));
     }
+
+    public function update(Request $request): RedirectResponse
+    {
+        $id_kegiatan_wilayah = $request->id_kegiatan_wilayah;
+
+        $validasi = $request->validate([
+            'nama_kegiatan_wilayah' => 'required|string',
+            'id_wilayah' => 'required',
+            'deskripsi' => 'required',
+            'tanggal_kegiatan' => 'required|date',
+        ], [
+            'id_wilayah.required' => 'The nama wilayah field is required',
+        ]);
+
+        $kegiatanwilayah = KegiatanWilayah::where('id_kegiatan_wilayah', $id_kegiatan_wilayah)->firstOrFail();
+
+        $kegiatanwilayah->update($validasi);
+
+        return redirect('kelola/data-kegiatan-wilayah');
+    }
+
+    public function delete($id): RedirectResponse
+    {
+        KegiatanWilayah::where('id_kegiatan_wilayah', $id)->delete();
+        return redirect('kelola/data-kegiatan-wilayah');
+    }
 }
