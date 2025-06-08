@@ -6,6 +6,7 @@ use App\Http\Controllers\KegiatanKubController;
 use App\Http\Controllers\KegiatanWilayahController;
 use App\Http\Controllers\KubController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PenerimaanSakramenController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SakramenController;
@@ -93,13 +94,13 @@ Route::get('/kelola/edit-kegiatan-kub/{id}', [KegiatanKubController::class, 'edi
 Route::post('/kelola/update-kegiatan-kub', [KegiatanKubController::class, 'update'])->middleware(CekLogin::class);
 Route::get('/kelola/delete-kegiatan-kub/{id}', [KegiatanKubController::class, 'delete'])->middleware(CekLogin::class);
 
-// Data Kegiatan KUB
-// Route::get('/kelola/data-kegiatan-kub', [KegiatanKubController::class, 'kegiatan-kub'])->middleware(CekLogin::class);
-// Route::get('/kelola/tambah-kegiatan-kub', [KegiatanKubController::class, 'tambah'])->middleware(CekLogin::class);
-// Route::post('/kelola/kirim-kegiatan-kub', [KegiatanKubController::class, 'kirim'])->middleware(CekLogin::class);
-// Route::get('/kelola/edit-kegiatan-kub/{id}', [KegiatanKubController::class, 'edit'])->middleware(CekLogin::class);
-// Route::post('/kelola/update-kegiatan-kub', [KegiatanKubController::class, 'update'])->middleware(CekLogin::class);
-// Route::get('/kelola/delete-kegiatan-kub/{id}', [KegiatanKubController::class, 'delete'])->middleware(CekLogin::class);
+// Data Penerimaan Sakramen
+Route::get('/kelola/data-penerimaan-sakramen', [PenerimaanSakramenController::class, 'penerimaan_sakramen'])->middleware(CekLogin::class);
+Route::get('/kelola/tambah-penerimaan-sakramen', [PenerimaanSakramenController::class, 'tambah'])->middleware(CekLogin::class);
+Route::post('/kelola/kirim-penerimaan-sakramen', [PenerimaanSakramenController::class, 'kirim'])->middleware(CekLogin::class);
+Route::get('/kelola/edit-penerimaan-sakramen/{id}', [PenerimaanSakramenController::class, 'edit'])->middleware(CekLogin::class);
+Route::post('/kelola/update-penerimaan-sakramen', [PenerimaanSakramenController::class, 'update'])->middleware(CekLogin::class);
+Route::get('/kelola/delete-penerimaan-sakramen/{id}', [PenerimaanSakramenController::class, 'delete'])->middleware(CekLogin::class);
 
 // Data Pengumuman
 Route::get('/kelola/data-pengumuman', [PengumumanController::class, 'pengumuman'])->middleware(CekLogin::class);

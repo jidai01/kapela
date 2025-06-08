@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Umat extends Model
 {
@@ -34,5 +35,9 @@ class Umat extends Model
     public function wilayah()
     {
         return $this->belongsTo(Wilayah::class, 'id_wilayah', 'id_wilayah');
+    }
+
+    function penerimaansakramen() : HasMany {
+        return $this->hasMany(PenerimaanSakramen::class, 'id_sakramen', 'id_sakramen');
     }
 }
