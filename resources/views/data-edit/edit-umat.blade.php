@@ -25,7 +25,7 @@
 
             <form action="/kelola/update-umat" method="POST">
                 @csrf
-                <input type="hidden" name="nik" value="{{ $umat->nik }}">
+                <input type="hidden" name="nik_lama" value="{{ $umat->nik }}">
 
                 <div class="mb-3">
                     <label for="nik" class="form-label">NIK</label>

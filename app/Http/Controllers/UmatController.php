@@ -39,7 +39,7 @@ class UmatController extends Controller
     public function kirim(Request $request): RedirectResponse
     {
         $validasi = $request->validate([
-            'nik' => 'required|digits:16|unique:umat,nik',
+            'nik' => 'required|digits:16',
             'nama_lengkap' => 'required',
             'tanggal_lahir' => 'nullable|date',
             'jenis_kelamin' => 'required',
@@ -54,6 +54,22 @@ class UmatController extends Controller
         ], [
             'id_kub.required' => 'The field nama KUB is required',
         ]);
+
+        if ($request->nik === '0000000000000000') {
+            $lastNik = Umat::where('nik', '>=', '1000000000000000')
+                ->orderBy('nik', 'desc')
+                ->first();
+
+            if ($lastNik) {
+                $newNik = strval((int)$lastNik->nik + 1);
+            } else {
+                $newNik = '1000000000000000';
+            }
+
+            $validasi['nik'] = $newNik;
+        } else {
+            $validasi['nik'] = $request->nik;
+        }
 
         $kub = Kub::findOrFail($request->id_kub);
         $validasi['id_wilayah'] = $kub->id_wilayah;
@@ -84,7 +100,7 @@ class UmatController extends Controller
 
     public function update(Request $request): RedirectResponse
     {
-        $nik = $request->nik;
+        $nik_lama = $request->nik_lama;
 
         $validasi = $request->validate([
             'nik' => 'required|digits:16',
@@ -103,6 +119,29 @@ class UmatController extends Controller
             'id_kub.required' => 'The field nama KUB is required',
         ]);
 
+        if ($request->nik === '0000000000000000') {
+            $lastNik = Umat::where('nik', '>=', '1000000000000000')
+                ->orderBy('nik', 'desc')
+                ->first();
+
+            if ($lastNik) {
+                $newNik = strval((int)$lastNik->nik + 1);
+            } else {
+                $newNik = '1000000000000000';
+            }
+
+            $validasi['nik'] = $newNik;
+        } else {
+            if ($request->nik !== $nik_lama) {
+                $exists = Umat::where('nik', $request->nik)->exists();
+                if ($exists) {
+                    return back()->withErrors(['nik' => 'NIK sudah digunakan oleh pengguna lain.'])->withInput();
+                }
+            }
+
+            $validasi['nik'] = $request->nik;
+        }
+
         $kub = Kub::findOrFail($request->id_kub);
         $validasi['id_wilayah'] = $kub->id_wilayah;
 
@@ -114,8 +153,7 @@ class UmatController extends Controller
         $validasi['status_krisma'] = $validasi['status_krisma'] ?? '-';
         $validasi['status_nikah'] = $validasi['status_nikah'] ?? '-';
 
-        $umat = Umat::where('nik', $nik)->firstOrFail();
-
+        $umat = Umat::where('nik', $nik_lama)->firstOrFail();
         $umat->update($validasi);
 
         return redirect('kelola/data-umat');
