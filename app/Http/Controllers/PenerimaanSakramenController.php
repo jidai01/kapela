@@ -11,7 +11,7 @@ use Illuminate\Http\RedirectResponse;
 
 class PenerimaanSakramenController extends Controller
 {
-    public function penerimaan_sakramen()
+    public function index()
     {
         $title = "Data Penerimaan Sakramen";
         $penerimaansakramen = PenerimaanSakramen::all();

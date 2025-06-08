@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 
 class BeritaController extends Controller
 {
-    public function berita()
+    public function index()
     {
         $title = "Data Berita";
         $berita = Berita::all();

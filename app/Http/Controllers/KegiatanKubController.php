@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 
 class KegiatanKubController extends Controller
 {
-    public function kegiatan_kub()
+    public function index()
     {
         $title = "Data Kegiatan Kub";
         $kegiatankub = KegiatanKub::all();

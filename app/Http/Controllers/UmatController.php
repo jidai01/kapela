@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 
 class UmatController extends Controller
 {
-    public function umat()
+    public function index()
     {
         $title = "Data Umat";
         $umat = Umat::all();

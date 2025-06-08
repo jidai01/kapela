@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 
 class KubController extends Controller
 {
-    public function kub()
+    public function index()
     {
         $title = "Data KUB";
         $kub = Kub::all();

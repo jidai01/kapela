@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 
 class PengumumanController extends Controller
 {
-    public function pengumuman()
+    public function index()
     {
         $title = "Data Pengumuman";
         $pengumuman = Pengumuman::all();

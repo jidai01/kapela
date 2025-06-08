@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
-    public function user()
+    public function index()
     {
         $title = "Data User";
         $user = User::select('id_user', 'name', 'email', 'role')->get();

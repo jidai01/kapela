@@ -6,28 +6,28 @@ use Illuminate\Http\Request;
 
 class BerandaController extends Controller
 {
-    public function beranda()
+    public function index()
     {
         $title = "Beranda";
         $content = "Halaman Beranda";
         return view('view-umum/beranda', compact('title', 'content'));
     }
 
-    public function berandaAdmin()
+    public function index_admin()
     {
         $title = "Beranda Admin";
         $content = "Halaman Beranda Admin";
         return view('view-admin/beranda-admin', compact('title', 'content'));
     }
 
-    public function berandaKetua()
+    public function index_ketua()
     {
         $title = "Beranda Ketua";
         $content = "Halaman Beranda Ketua";
         return view('view-ketua/beranda-ketua', compact('title', 'content'));
     }
 
-    public function berandaHumas()
+    public function index_humas()
     {
         $title = "Beranda Humas";
         $content = "Halaman Beranda Humas";

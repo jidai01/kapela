@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 
 class KegiatanWilayahController extends Controller
 {
-    public function kegiatan_wilayah()
+    public function index()
     {
         $title = "Data Kegiatan Wilayah";
         $kegiatanwilayah = KegiatanWilayah::all();

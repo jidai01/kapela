@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 
 class SakramenController extends Controller
 {
-    public function sakramen()
+    public function index()
     {
         $title = "Data Sakramen";
         $sakramen = Sakramen::all();
