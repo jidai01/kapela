@@ -41,7 +41,7 @@ class KegiatanWilayahController extends Controller
 
     public function edit($id)
     {
-        $title = "Edit Data Kegiatan";
+        $title = "Edit Data Kegiatan Wilayah";
         $kegiatanwilayah = KegiatanWilayah::find($id);
 
         $wilayahlist = Wilayah::all();

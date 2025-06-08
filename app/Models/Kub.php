@@ -24,4 +24,9 @@ class Kub extends Model
     {
         return $this->hasMany(Umat::class, 'id_kub', 'id_kub');
     }
+
+    public function kub()
+    {
+        return $this->belongsTo(KegiatanKub::class, 'id_kub', 'id_kub');
+    }
 }
