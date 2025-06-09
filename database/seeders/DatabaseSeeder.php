@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Sakramen;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
@@ -34,6 +35,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'humas@example.com',
             'password' => Hash::make('password'),
             'role' => 'humas',
+        ]);
+
+        $this->call([
+            SakramenSeeder::class,
         ]);
     }
 }

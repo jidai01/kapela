@@ -44,7 +44,7 @@ class UmatController extends Controller
             'tanggal_lahir' => 'nullable|date',
             'jenis_kelamin' => 'required',
             'alamat' => 'nullable|string',
-            'nomor_telepon' => 'nullable|string',
+            'nomor_telepon' => 'nullable|string|digits_between:10,13',
             'pekerjaan' => 'nullable|string',
             'id_kub' => 'required|exists:kub,id_kub',
             'status_baptis' => 'nullable|string',
@@ -77,10 +77,10 @@ class UmatController extends Controller
         $validasi['alamat'] = $validasi['alamat'] ?? '-';
         $validasi['nomor_telepon'] = $validasi['nomor_telepon'] ?? '-';
         $validasi['pekerjaan'] = $validasi['pekerjaan'] ?? '-';
-        $validasi['status_baptis'] = $validasi['status_baptis'] ?? '-';
-        $validasi['status_komuni'] = $validasi['status_komuni'] ?? '-';
-        $validasi['status_krisma'] = $validasi['status_krisma'] ?? '-';
-        $validasi['status_nikah'] = $validasi['status_nikah'] ?? '-';
+        $validasi['status_baptis'] = $validasi['status_baptis'] ?? 'Belum';
+        $validasi['status_komuni'] = $validasi['status_komuni'] ?? 'Belum';
+        $validasi['status_krisma'] = $validasi['status_krisma'] ?? 'Belum';
+        $validasi['status_nikah'] = $validasi['status_nikah'] ?? 'Belum';
 
         Umat::create($validasi);
 
@@ -148,10 +148,10 @@ class UmatController extends Controller
         $validasi['alamat'] = $validasi['alamat'] ?? '-';
         $validasi['nomor_telepon'] = $validasi['nomor_telepon'] ?? '-';
         $validasi['pekerjaan'] = $validasi['pekerjaan'] ?? '-';
-        $validasi['status_baptis'] = $validasi['status_baptis'] ?? '-';
-        $validasi['status_komuni'] = $validasi['status_komuni'] ?? '-';
-        $validasi['status_krisma'] = $validasi['status_krisma'] ?? '-';
-        $validasi['status_nikah'] = $validasi['status_nikah'] ?? '-';
+        $validasi['status_baptis'] = $validasi['status_baptis'] ?? 'Belum';
+        $validasi['status_komuni'] = $validasi['status_komuni'] ?? 'Belum';
+        $validasi['status_krisma'] = $validasi['status_krisma'] ?? 'Belum';
+        $validasi['status_nikah'] = $validasi['status_nikah'] ?? 'Belum';
 
         $umat = Umat::where('nik', $nik_lama)->firstOrFail();
         $umat->update($validasi);

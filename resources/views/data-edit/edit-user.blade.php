@@ -23,20 +23,23 @@
                 </div>
             @endif
 
-            <form action="/kelola/update-user" method="POST">
+            <form action="{{ url('/kelola/update-user') }}" method="POST">
                 @csrf
+
+                <div class="mb-1">
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
+                </div>
+
                 <input type="hidden" name="id_user" value="{{ $user->id_user }}">
 
                 <div class="mb-3">
-                    <label for="name" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="name" name="name"
-                        value="{{ old('name', $user->name) }}" required>
+                    <label for="name" class="form-label">Nama<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $user->name) }}" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email"
-                        value="{{ old('email', $user->email) }}" required>
+                    <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}" required>
                 </div>
 
                 <div class="mb-3">
@@ -46,14 +49,12 @@
                     <div class="form-check mt-2">
                         <input class="form-check-input" type="checkbox" id="showPassword"
                             onclick="document.getElementById('password').type = this.checked ? 'text' : 'password'">
-                        <label class="form-check-label" for="showPassword">
-                            Tampilkan Password
-                        </label>
+                        <label class="form-check-label" for="showPassword">Tampilkan Password</label>
                     </div>
                 </div>
 
                 <div class="mb-4">
-                    <label for="role" class="form-label">Peran</label>
+                    <label for="role" class="form-label">Peran<span class="text-danger">*</span></label>
                     <select class="form-select" id="role" name="role" required>
                         <option value="">-- Pilih Peran --</option>
                         <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
@@ -63,7 +64,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-dark w-100 mb-2"><i class="bi bi-save"></i> Simpan Perubahan</button>
-                <a href="/kelola/data-user" class="btn btn-outline-secondary w-100"><i class="bi bi-arrow-return-left"></i> Kembali</a>
+                <a href="{{ url('/kelola/data-user') }}" class="btn btn-outline-secondary w-100"><i class="bi bi-arrow-return-left"></i> Kembali</a>
             </form>
         </div>
     </div>
