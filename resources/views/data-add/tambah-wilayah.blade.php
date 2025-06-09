@@ -26,8 +26,12 @@
             <form action="/kelola/kirim-wilayah" method="post">
                 @csrf
 
+                <div class="mb-1">
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
+                </div>
+
                 <div class="mb-3">
-                    <label for="nama_wilayah" class="form-label">Nama Wilayah</label>
+                    <label for="nama_wilayah" class="form-label">Nama Wilayah<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="nama_wilayah" name="nama_wilayah"
                         placeholder="nama wilayah" required>
                 </div>

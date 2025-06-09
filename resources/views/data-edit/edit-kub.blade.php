@@ -25,10 +25,15 @@
 
             <form action="/kelola/update-kub" method="POST">
                 @csrf
+
+                <div class="mb-1">
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
+                </div>
+
                 <input type="hidden" name="id_kub" value="{{ $kub->id_kub }}">
 
                 <div class="mb-3">
-                    <label for="nama_kub" class="form-label">Nama KUB</label>
+                    <label for="nama_kub" class="form-label">Nama KUB<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="nama_kub" name="nama_kub"
                         value="{{ old('nama_kub', $kub->nama_kub) }}" required>
                 </div>
@@ -40,7 +45,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="id_wilayah" class="form-label">Nama Wilayah</label>
+                    <label for="id_wilayah" class="form-label">Nama Wilayah<span class="text-danger">*</span></label>
                     <select id="id_wilayah" class="form-control mb-4" name="id_wilayah" placeholder="-- Pilih Wilayah --">
                         <option value="">-- Pilih Wilayah --</option>
                         @foreach ($wilayahlist as $wilayah)
@@ -58,7 +63,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-dark w-100 mb-2"><i class="bi bi-save"></i> Simpan Perubahan</button>
-                <a href="/kelola/data-wilayah" class="btn btn-outline-secondary w-100"><i
+                <a href="/kelola/data-kub" class="btn btn-outline-secondary w-100"><i
                         class="bi bi-arrow-return-left"></i> Kembali</a>
             </form>
         </div>

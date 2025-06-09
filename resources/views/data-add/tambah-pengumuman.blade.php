@@ -26,20 +26,24 @@
             <form action="/kelola/kirim-pengumuman" method="post">
                 @csrf
 
+                <div class="mb-1">
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
+                </div>
+
                 <div class="mb-3">
-                    <label for="judul_pengumuman" class="form-label">Judul Pengumuman</label>
+                    <label for="judul_pengumuman" class="form-label">Judul Pengumuman<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="judul_pengumuman" name="judul_pengumuman"
                         placeholder="judul pengumuman" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="isi_pengumuman" class="form-label">Isi Pengumuman</label>
+                    <label for="isi_pengumuman" class="form-label">Isi Pengumuman<span class="text-danger">*</span></label>
                     <div id="editor" style="height: 200px;"></div>
                     <input type="hidden" name="isi_pengumuman" id="isi_pengumuman">
                 </div>
 
                 <div class="mb-3">
-                    <label for="tanggal_terbit" class="form-label">Tanggal Terbit</label>
+                    <label for="tanggal_terbit" class="form-label">Tanggal Terbit<span class="text-danger">*</span></label>
                     <input type="date" class="form-control" id="tanggal_terbit" name="tanggal_terbit"
                         placeholder="tanggal terbit">
                 </div>

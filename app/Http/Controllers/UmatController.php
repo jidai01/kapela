@@ -74,6 +74,7 @@ class UmatController extends Controller
         $kub = Kub::findOrFail($request->id_kub);
         $validasi['id_wilayah'] = $kub->id_wilayah;
 
+        $validasi['tanggal_lahir'] = $validasi['tanggal_lahir'] ?? null;
         $validasi['alamat'] = $validasi['alamat'] ?? '-';
         $validasi['nomor_telepon'] = $validasi['nomor_telepon'] ?? '-';
         $validasi['pekerjaan'] = $validasi['pekerjaan'] ?? '-';
@@ -145,6 +146,7 @@ class UmatController extends Controller
         $kub = Kub::findOrFail($request->id_kub);
         $validasi['id_wilayah'] = $kub->id_wilayah;
 
+        $validasi['tanggal_lahir'] = $validasi['tanggal_lahir'] ?? null;
         $validasi['alamat'] = $validasi['alamat'] ?? '-';
         $validasi['nomor_telepon'] = $validasi['nomor_telepon'] ?? '-';
         $validasi['pekerjaan'] = $validasi['pekerjaan'] ?? '-';

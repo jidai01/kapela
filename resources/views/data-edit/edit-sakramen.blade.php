@@ -25,10 +25,15 @@
 
             <form action="/kelola/update-sakramen" method="POST">
                 @csrf
+
+                <div class="mb-1">
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
+                </div>
+
                 <input type="hidden" name="id_sakramen" value="{{ $sakramen->id_sakramen }}">
 
                 <div class="mb-3">
-                    <label for="nama_sakramen" class="form-label">Nama Sakramen</label>
+                    <label for="nama_sakramen" class="form-label">Nama Sakramen<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="nama_sakramen" name="nama_sakramen"
                         value="{{ old('nama_sakramen', $sakramen->nama_sakramen) }}" required>
                 </div>

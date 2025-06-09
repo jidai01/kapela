@@ -27,8 +27,7 @@
                 @csrf
 
                 <div class="mb-1">
-                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib
-                            diisi)</em></label>
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
                 </div>
 
                 <div class="mb-3">

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_wilayah');
             $table->foreign('id_wilayah')->references('id_wilayah')->on('wilayah');
             $table->string('nama_lengkap');
-            $table->date('tanggal_lahir');
+            $table->date('tanggal_lahir')->nullable();
             $table->string('jenis_kelamin');
             $table->string('alamat');
             $table->string('nomor_telepon');

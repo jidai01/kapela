@@ -25,16 +25,21 @@
 
             <form action="/kelola/update-kegiatan-wilayah" method="POST">
                 @csrf
+
+                <div class="mb-1">
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
+                </div>
+
                 <input type="hidden" name="id_kegiatan_wilayah" value="{{ $kegiatanwilayah->id_kegiatan_wilayah }}">
 
                 <div class="mb-3">
-                    <label for="nama_kegiatan_wilayah" class="form-label">Nama Kegiatan Wilayah</label>
+                    <label for="nama_kegiatan_wilayah" class="form-label">Nama Kegiatan Wilayah<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="nama_kegiatan_wilayah" name="nama_kegiatan_wilayah"
                         value="{{ old('nama_kegiatan_wilayah', $kegiatanwilayah->nama_kegiatan_wilayah) }}" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="id_wilayah" class="form-label">Nama Wilayah</label>
+                    <label for="id_wilayah" class="form-label">Nama Wilayah<span class="text-danger">*</span></label>
                     <select id="id_wilayah" class="form-control mb-4" name="id_wilayah" placeholder="-- Pilih Wilayah --">
                         <option value="">-- Pilih Wilayah --</option>
                         @foreach ($wilayahlist as $wilayah)
@@ -46,13 +51,13 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                    <label for="deskripsi" class="form-label">Deskripsi<span class="text-danger">*</span></label>
                     <textarea class="form-control" cols="50" rows="3" id="deskripsi" name="deskripsi"
                         placeholder="deskripsi">{{ old('deskripsi', $kegiatanwilayah->deskripsi ?? '') }}</textarea>
                 </div>
 
                 <div class="mb-3">
-                    <label for="tanggal_kegiatan" class="form-label">Tanggal Kegiatan</label>
+                    <label for="tanggal_kegiatan" class="form-label">Tanggal Kegiatan<span class="text-danger">*</span></label>
                     <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan"
                         value="{{ old('tanggal_kegiatan', $kegiatanwilayah->tanggal_kegiatan) }}" required>
                 </div>

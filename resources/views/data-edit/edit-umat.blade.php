@@ -25,16 +25,21 @@
 
             <form action="/kelola/update-umat" method="POST">
                 @csrf
+
+                <div class="mb-1">
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
+                </div>
+
                 <input type="hidden" name="nik_lama" value="{{ $umat->nik }}">
 
                 <div class="mb-3">
-                    <label for="nik" class="form-label">NIK</label>
+                    <label for="nik" class="form-label">NIK<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="nik" name="nik"
                         value="{{ old('nik', $umat->nik) }}" placeholder="NIK" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
+                    <label for="nama_lengkap" class="form-label">Nama Lengkap<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"
                         value="{{ old('nama_lengkap', $umat->nama_lengkap) }}" placeholder="nama lengkap" required>
                 </div>
@@ -46,7 +51,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                    <label for="jenis_kelamin" class="form-label">Jenis Kelamin<span class="text-danger">*</span></label>
                     <select class="form-control mb-4" name="jenis_kelamin" id="jenis_kelamin">
                         <option value="">-- Pilih Jenis Kelamin --</option>
                         <option value="L" @selected(old('jenis_kelamin', $umat->jenis_kelamin ?? '') == 'L')>Laki-laki</option>
@@ -72,7 +77,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="id_kub" class="form-label">Nama KUB</label>
+                    <label for="id_kub" class="form-label">Nama KUB<span class="text-danger">*</span></label>
                     <select id="id_kub" class="form-control mb-4" name="id_kub">
                         <option value="">-- Pilih KUB --</option>
                         @foreach ($kublist as $kub)

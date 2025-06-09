@@ -25,10 +25,15 @@
 
             <form action="/kelola/update-wilayah" method="POST">
                 @csrf
+
+                <div class="mb-1">
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
+                </div>
+
                 <input type="hidden" name="id_wilayah" value="{{ $wilayah->id_wilayah }}">
 
                 <div class="mb-3">
-                    <label for="nama_wilayah" class="form-label">Nama Wilayah</label>
+                    <label for="nama_wilayah" class="form-label">Nama Wilayah<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="nama_wilayah" name="nama_wilayah"
                         value="{{ old('nama_wilayah', $wilayah->nama_wilayah) }}" required>
                 </div>

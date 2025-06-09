@@ -25,16 +25,21 @@
 
             <form action="/kelola/update-pengumuman" method="POST">
                 @csrf
+
+                <div class="mb-1">
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
+                </div>
+
                 <input type="hidden" name="id_pengumuman" value="{{ $pengumuman->id_pengumuman }}">
 
                 <div class="mb-3">
-                    <label for="judul_pengumuman" class="form-label">Judul Pengumuman</label>
+                    <label for="judul_pengumuman" class="form-label">Judul Pengumuman<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="judul_pengumuman" name="judul_pengumuman"
                         value="{{ old('judul_pengumuman', $pengumuman->judul_pengumuman) }}" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="isi_pengumuman" class="form-label">Isi Pengumuman</label>
+                    <label for="isi_pengumuman" class="form-label">Isi Pengumuman<span class="text-danger">*</span></label>
                     <div id="editor" style="height: 200px;">
                         {!! old('isi_pengumuman', $pengumuman->isi_pengumuman ?? '') !!}
                     </div>
@@ -42,7 +47,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="tanggal_terbit" class="form-label">Tanggal Terbit</label>
+                    <label for="tanggal_terbit" class="form-label">Tanggal Terbit<span class="text-danger">*</span></label>
                     <input type="date" class="form-control" id="tanggal_terbit" name="tanggal_terbit"
                         value="{{ old('tanggal_terbit', $pengumuman->tanggal_terbit) }}" required>
                 </div>

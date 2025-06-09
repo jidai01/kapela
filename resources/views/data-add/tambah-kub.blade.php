@@ -26,8 +26,12 @@
             <form action="/kelola/kirim-kub" method="post">
                 @csrf
 
+                <div class="mb-1">
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
+                </div>
+
                 <div class="mb-3">
-                    <label for="nama_kub" class="form-label">Nama KUB</label>
+                    <label for="nama_kub" class="form-label">Nama KUB<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="nama_kub" name="nama_kub" placeholder="nama kub"
                         required>
                 </div>
@@ -38,7 +42,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="id_wilayah" class="form-label">Nama Wilayah</label>
+                    <label for="id_wilayah" class="form-label">Nama Wilayah<span class="text-danger">*</span></label>
                     <select class="form-control" name="id_wilayah" id="id_wilayah" placeholder="-- Pilih Wilayah --">
                         <option value="">-- Pilih Wilayah --</option>
                         @foreach ($wilayahlist as $wilayah)

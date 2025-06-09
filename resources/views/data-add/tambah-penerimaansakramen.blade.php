@@ -26,8 +26,12 @@
             <form action="/kelola/kirim-penerimaan-sakramen" method="post">
                 @csrf
 
+                <div class="mb-1">
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
+                </div>
+
                 <div class="mb-3">
-                    <label for="id_sakramen" class="form-label">Nama Sakramen</label>
+                    <label for="id_sakramen" class="form-label">Nama Sakramen<span class="text-danger">*</span></label>
                     <select id="id_sakramen" class="form-control" name="id_sakramen" placeholder="-- Pilih Sakramen --">
                         <option value="">-- Pilih Sakramen --</option>
                         @foreach ($sakramenlist as $sakramen)
@@ -37,7 +41,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="nik" class="form-label">Nama Umat</label>
+                    <label for="nik" class="form-label">Nama Umat<span class="text-danger">*</span></label>
                     <select id="nik" class="form-control" name="nik" placeholder="-- Pilih Umat --">
                         <option value="">-- Pilih Umat --</option>
                         @foreach ($umatlist as $umat)
@@ -47,7 +51,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="tanggal_penerimaan_sakramen" class="form-label">Tanggal Penerimaan Sakramen</label>
+                    <label for="tanggal_penerimaan_sakramen" class="form-label">Tanggal Penerimaan Sakramen<span class="text-danger">*</span></label>
                     <input type="date" class="form-control" id="tanggal_penerimaan_sakramen"
                         name="tanggal_penerimaan_sakramen" placeholder="tanggal penerimaan sakramen">
                 </div>

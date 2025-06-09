@@ -25,16 +25,21 @@
 
             <form action="/kelola/update-kegiatan-kub" method="POST">
                 @csrf
+
+                <div class="mb-1">
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
+                </div>
+
                 <input type="hidden" name="id_kegiatan_kub" value="{{ $kegiatankub->id_kegiatan_kub }}">
 
                 <div class="mb-3">
-                    <label for="nama_kegiatan_kub" class="form-label">Nama Kegiatan Kub</label>
+                    <label for="nama_kegiatan_kub" class="form-label">Nama Kegiatan Kub<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="nama_kegiatan_kub" name="nama_kegiatan_kub"
                         value="{{ old('nama_kegiatan_kub', $kegiatankub->nama_kegiatan_kub) }}" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="id_kub" class="form-label">Nama Kub</label>
+                    <label for="id_kub" class="form-label">Nama Kub<span class="text-danger">*</span></label>
                     <select id="id_kub" class="form-control" name="id_kub">
                         <option value="">-- Pilih Kub --</option>
                         @foreach ($kublist as $kub)
@@ -46,13 +51,13 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                    <label for="deskripsi" class="form-label">Deskripsi<span class="text-danger">*</span></label>
                     <textarea class="form-control" cols="50" rows="3" id="deskripsi" name="deskripsi"
                         placeholder="deskripsi">{{ old('deskripsi', $kegiatankub->deskripsi ?? '') }}</textarea>
                 </div>
 
                 <div class="mb-3">
-                    <label for="tanggal_kegiatan" class="form-label">Tanggal Kegiatan</label>
+                    <label for="tanggal_kegiatan" class="form-label">Tanggal Kegiatan<span class="text-danger">*</span></label>
                     <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan"
                         value="{{ old('tanggal_kegiatan', $kegiatankub->tanggal_kegiatan) }}" required>
                 </div>

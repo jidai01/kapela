@@ -26,8 +26,12 @@
             <form action="/kelola/kirim-sakramen" method="post">
                 @csrf
 
+                <div class="mb-1">
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
+                </div>
+
                 <div class="mb-3">
-                    <label for="nama_sakramen" class="form-label">Nama Sakramen</label>
+                    <label for="nama_sakramen" class="form-label">Nama Sakramen<span class="text-danger">*</span> </label>
                     <input type="text" class="form-control" id="nama_sakramen" name="nama_sakramen"
                         placeholder="nama sakramen" required>
                 </div>

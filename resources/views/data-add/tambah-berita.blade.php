@@ -26,25 +26,29 @@
             <form action="/kelola/kirim-berita" method="post" enctype="multipart/form-data">
                 @csrf
 
+                <div class="mb-1">
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
+                </div>
+
                 <div class="mb-3">
-                    <label for="judul_berita" class="form-label">Judul Berita</label>
+                    <label for="judul_berita" class="form-label">Judul Berita<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="judul_berita" name="judul_berita"
                         placeholder="judul berita" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="isi_berita" class="form-label">Isi Berita</label>
+                    <label for="isi_berita" class="form-label">Isi Berita<span class="text-danger">*</span></label>
                     <div id="editor" style="height: 200px;"></div>
                     <input type="hidden" name="isi_berita" id="isi_berita">
                 </div>
 
                 <div class="mb-3">
-                    <label for="foto" class="form-label">Foto</label>
+                    <label for="foto" class="form-label">Foto<span class="text-danger">*</span></label>
                     <input type="file" class="form-control mb-4" name="foto" placeholder="foto">
                 </div>
                 
                 <div class="mb-3">
-                    <label for="tanggal_terbit" class="form-label">Tanggal Terbit</label>
+                    <label for="tanggal_terbit" class="form-label">Tanggal Terbit<span class="text-danger">*</span></label>
                     <input type="date" class="form-control" id="tanggal_terbit" name="tanggal_terbit"
                         placeholder="tanggal terbit">
                 </div>

@@ -26,14 +26,18 @@
             <form action="/kelola/kirim-kegiatan-wilayah" method="post">
                 @csrf
 
+                <div class="mb-1">
+                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
+                </div>
+
                 <div class="mb-3">
-                    <label for="nama_kegiatan_wilayah" class="form-label">Nama Kegiatan Wilayah</label>
+                    <label for="nama_kegiatan_wilayah" class="form-label">Nama Kegiatan Wilayah<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="nama_kegiatan_wilayah" name="nama_kegiatan_wilayah"
                         placeholder="nama kegiatan wilayah" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="id_wilayah" class="form-label">Nama Wilayah</label>
+                    <label for="id_wilayah" class="form-label">Nama Wilayah<span class="text-danger">*</span></label>
                     <select id="id_wilayah" class="form-control" name="id_wilayah" placeholder="-- Pilih Wilayah --">
                         <option value="">-- Pilih Wilayah --</option>
                         @foreach ($wilayahlist as $wilayah)
@@ -43,12 +47,12 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                    <label for="deskripsi" class="form-label">Deskripsi<span class="text-danger">*</span></label>
                     <textarea class="form-control" id="deskripsi" name="deskripsi" placeholder="deskripsi"></textarea>
                 </div>
 
                 <div class="mb-3">
-                    <label for="tanggal_kegiatan" class="form-label">Tanggal Kegiatan</label>
+                    <label for="tanggal_kegiatan" class="form-label">Tanggal Kegiatan<span class="text-danger">*</span></label>
                     <input type="date" class="form-control" id="tanggal_kegiatan" name="tanggal_kegiatan"
                         placeholder="tanggal kegiatan">
                 </div>
