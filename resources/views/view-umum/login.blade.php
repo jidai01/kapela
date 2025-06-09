@@ -1,4 +1,10 @@
-@include('template/header')
+@extends('template/main')
+
+@php
+    $hideFooter = true;
+@endphp
+
+@section('content')
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
         <h4 class="bg-dark text-light text-center mb-4 p-2 rounded">Selamat Datang</h4>
@@ -45,3 +51,4 @@
         </a>
     </div>
 </div>
+@endsection
