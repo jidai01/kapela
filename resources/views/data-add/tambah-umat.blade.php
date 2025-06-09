@@ -44,7 +44,7 @@
 
                 <div class="mb-3">
                     <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                    <select class="form-control mb-4" name="jenis_kelamin">
+                    <select class="form-control mb-4" name="jenis_kelamin" id="jenis_kelamin">
                         <option value="">-- Pilih Jenis Kelamin --</option>
                         <option value="L">Laki-laki</option>
                         <option value="P">Perempuan</option>
@@ -95,6 +95,12 @@
                 direction: "asc"
             },
             placeholder: "-- Pilih KUB --"
+        });
+
+        new TomSelect("#jenis_kelamin", {
+            create: false,
+            placeholder: "-- Pilih Jenis Kelamin --",
+            allowEmptyOption: true
         });
     </script>
 @endsection

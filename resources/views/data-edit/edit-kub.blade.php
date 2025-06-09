@@ -41,7 +41,7 @@
 
                 <div class="mb-3">
                     <label for="id_wilayah" class="form-label">Nama Wilayah</label>
-                    <select class="form-control mb-4" name="id_wilayah">
+                    <select id="id_wilayah" class="form-control mb-4" name="id_wilayah" placeholder="-- Pilih Wilayah --">
                         <option value="">-- Pilih Wilayah --</option>
                         @foreach ($wilayahlist as $wilayah)
                             <option value="{{ $wilayah->id_wilayah }}" @selected($wilayah->id_wilayah == $kub->id_wilayah)>
@@ -63,4 +63,16 @@
             </form>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+    <script>
+        new TomSelect("#id_wilayah", {
+            create: false,
+            sortField: {
+                field: "text",
+                direction: "asc"
+            },
+            placeholder: "-- Pilih Wilayah --"
+        });
+    </script>
 @endsection

@@ -35,7 +35,7 @@
 
                 <div class="mb-3">
                     <label for="id_wilayah" class="form-label">Nama Wilayah</label>
-                    <select class="form-control mb-4" name="id_wilayah">
+                    <select id="id_wilayah" class="form-control mb-4" name="id_wilayah" placeholder="-- Pilih Wilayah --">
                         <option value="">-- Pilih Wilayah --</option>
                         @foreach ($wilayahlist as $wilayah)
                             <option value="{{ $wilayah->id_wilayah }}" @selected($wilayah->id_wilayah == $kegiatanwilayah->id_wilayah)>
@@ -58,9 +58,17 @@
                 </div>
 
                 <button type="submit" class="btn btn-dark w-100 mb-2"><i class="bi bi-save"></i> Simpan Perubahan</button>
-                <a href="/kelola/data-kegiatan-wilayah" class="btn btn-outline-secondary w-100"><i
-                        class="bi bi-arrow-return-left"></i> Kembali</a>
+                <a href="/kelola/data-kegiatan-wilayah" class="btn btn-outline-secondary w-100"><i class="bi bi-arrow-return-left"></i> Kembali</a>
             </form>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+    <script>
+        new TomSelect("#id_wilayah", {
+            create: false,
+            sortField: { field: "text", direction: "asc" },
+            placeholder: "-- Pilih Wilayah --"
+        });
+    </script>
 @endsection

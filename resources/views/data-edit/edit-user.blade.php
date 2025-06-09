@@ -68,4 +68,13 @@
             </form>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+    <script>
+        new TomSelect("#role", {
+            create: false,
+            placeholder: "-- Pilih Peran --",
+            allowEmptyOption: false
+        });
+    </script>
 @endsection
