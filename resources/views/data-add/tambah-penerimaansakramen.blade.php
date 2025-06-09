@@ -28,7 +28,7 @@
 
                 <div class="mb-3">
                     <label for="id_sakramen" class="form-label">Nama Sakramen</label>
-                    <select class="form-control mb-4" name="id_sakramen">
+                    <select id="id_sakramen" class="form-control" name="id_sakramen" placeholder="-- Pilih Sakramen --">
                         <option value="">-- Pilih Sakramen --</option>
                         @foreach ($sakramenlist as $sakramen)
                             <option value="{{ $sakramen->id_sakramen }}">{{ $sakramen->nama_sakramen }}</option>
@@ -38,7 +38,7 @@
 
                 <div class="mb-3">
                     <label for="nik" class="form-label">Nama Umat</label>
-                    <select class="form-control mb-4" name="nik">
+                    <select id="nik" class="form-control" name="nik" placeholder="-- Pilih Umat --">
                         <option value="">-- Pilih Umat --</option>
                         @foreach ($umatlist as $umat)
                             <option value="{{ $umat->nik }}">{{ $umat->nama_lengkap }}</option>
@@ -47,16 +47,37 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="tanggal_penerimaan_sakramen" class="form-label">Tanggal Penerimaan_sakramen</label>
-                    <input type="date" class="form-control" id="tanggal_penerimaan_sakramen" name="tanggal_penerimaan_sakramen"
-                        placeholder="tanggal penerimaan sakramen">
+                    <label for="tanggal_penerimaan_sakramen" class="form-label">Tanggal Penerimaan Sakramen</label>
+                    <input type="date" class="form-control" id="tanggal_penerimaan_sakramen"
+                        name="tanggal_penerimaan_sakramen" placeholder="tanggal penerimaan sakramen">
                 </div>
 
                 <button type="submit" class="btn btn-dark w-100 mb-2"><i class="bi bi-save"></i>
                     {{ $title }}</button>
-                <a href="/kelola/data-penerimaan-sakramen" class="btn btn-outline-secondary w-100"><i class="bi bi-arrow-return-left"></i>
-                    Kembali</a>
+                <a href="/kelola/data-penerimaan-sakramen" class="btn btn-outline-secondary w-100"><i
+                        class="bi bi-arrow-return-left"></i> Kembali</a>
             </form>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+    <script>
+        new TomSelect("#id_sakramen", {
+            create: false,
+            sortField: {
+                field: "text",
+                direction: "asc"
+            },
+            placeholder: "-- Pilih Sakramen --"
+        });
+
+        new TomSelect("#nik", {
+            create: false,
+            sortField: {
+                field: "text",
+                direction: "asc"
+            },
+            placeholder: "-- Pilih Umat --"
+        });
+    </script>
 @endsection

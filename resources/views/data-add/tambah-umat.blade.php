@@ -70,7 +70,7 @@
 
                 <div class="mb-3">
                     <label for="id_kub" class="form-label">Nama KUB</label>
-                    <select class="form-control mb-4" name="id_kub">
+                    <select class="form-control mb-4" name="id_kub" id="id_kub">
                         <option value="">-- Pilih KUB --</option>
                         @foreach ($kublist as $kub)
                             <option value="{{ $kub->id_kub }}">{{ $kub->nama_kub }}</option>
@@ -85,4 +85,16 @@
             </form>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+    <script>
+        new TomSelect("#id_kub", {
+            create: false,
+            sortField: {
+                field: "text",
+                direction: "asc"
+            },
+            placeholder: "-- Pilih KUB --"
+        });
+    </script>
 @endsection
