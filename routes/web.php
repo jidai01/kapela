@@ -5,6 +5,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KegiatanKubController;
 use App\Http\Controllers\KegiatanWilayahController;
 use App\Http\Controllers\KubController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PenerimaanSakramenController;
 use App\Http\Controllers\PengumumanController;
@@ -117,3 +118,15 @@ Route::post('/kelola/kirim-berita', [BeritaController::class, 'kirim'])->middlew
 Route::get('/kelola/edit-berita/{id}', [BeritaController::class, 'edit'])->middleware(CekLogin::class);
 Route::post('/kelola/update-berita', [BeritaController::class, 'update'])->middleware(CekLogin::class);
 Route::get('/kelola/delete-berita/{id}', [BeritaController::class, 'delete'])->middleware(CekLogin::class);
+
+// Laporan Kegiatan Wilayah
+Route::get('/laporan/kegiatan-wilayah', [LaporanController::class, 'kegiatanwilayah'])->middleware(CekLogin::class);
+Route::post('/laporan/cetak-kegiatan-wilayah', [LaporanController::class, 'cetakkegiatanwilayah'])->middleware(CekLogin::class);
+
+// Laporan Kegiatan Kub
+Route::get('/laporan/kegiatan-kub', [LaporanController::class, 'kegiatankub'])->middleware(CekLogin::class);
+Route::post('/laporan/cetak-kegiatan-kub', [LaporanController::class, 'cetakkegiatankub'])->middleware(CekLogin::class);
+
+// Laporan Penerimaan Sakramen
+Route::get('/laporan/penerimaan-sakramen', [LaporanController::class, 'penerimaansakramen'])->middleware(CekLogin::class);
+Route::post('/laporan/cetak-penerimaan-sakramen', [LaporanController::class, 'cetakpenerimaansakramen'])->middleware(CekLogin::class);
