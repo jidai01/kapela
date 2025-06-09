@@ -40,7 +40,7 @@
                                     <td class="text-center align-middle">{{ $loop->iteration }}</td>
                                     <td class="text-center align-middle">{{ $row->nik }}</td>
                                     <td class="text-center align-middle">{{ $row->nama_lengkap }}</td>
-                                    <td class="text-center align-middle">{{ $row->tanggal_lahir }}</td>
+                                    <td class="text-center align-middle">{{ \Carbon\Carbon::parse($row->tanggal_lahir)->format('d-m-Y') }}</td>
                                     <td class="text-center align-middle">{{ $row->jenis_kelamin }}</td>
                                     <td class="text-center align-middle">{{ $row->kub->nama_kub }}</td>
                                     <td class="text-center align-middle">{{ $row->kub->wilayah->nama_wilayah }}</td>

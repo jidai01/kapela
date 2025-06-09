@@ -39,7 +39,7 @@
                                     <td class="text-center align-middle">{{ $row->nama_kegiatan_wilayah }}</td>
                                     <td class="text-center align-middle">{{ $row->wilayah->nama_wilayah }}</td>
                                     <td class="text-center align-middle">{{ $row->deskripsi }}</td>
-                                    <td class="text-center align-middle">{{ $row->tanggal_kegiatan }}</td>
+                                    <td class="text-center align-middle">{{ \Carbon\Carbon::parse($row->tanggal_kegiatan)->format('d-m-Y') }}</td>
                                     <td class="d-flex justify-content-center align-items-center">
                                         <a href="/kelola/edit-kegiatan-wilayah/{{ $row->id_kegiatan_wilayah }}"
                                             class="btn btn-sm btn-warning text-dark m-1">

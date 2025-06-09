@@ -30,7 +30,7 @@
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label class="form-label fw-bold">Tanggal Lahir</label>
-                        <div class="form-control">{{ $umat->tanggal_lahir }}</div>
+                        <div class="form-control">{{ \Carbon\Carbon::parse($umat->tanggal_lahir)->format('d-m-Y') }}</div>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label fw-bold">Jenis Kelamin</label>

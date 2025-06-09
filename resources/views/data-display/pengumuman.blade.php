@@ -39,7 +39,7 @@
                                     <td class="text-center align-middle">{{ $row->judul_pengumuman }}</td>
                                     <td class="text-center align-middle">{{ $row->isi_pengumuman }}</td>
                                     <td class="text-center align-middle">{{ $row->slug }}</td>
-                                    <td class="text-center align-middle">{{ $row->tanggal_terbit }}</td>
+                                    <td class="text-center align-middle">{{ \Carbon\Carbon::parse($row->tanggal_terbit)->format('d-m-Y') }}</td>
                                     <td class="d-flex justify-content-center align-items-center">
                                         <a href="/kelola/edit-pengumuman/{{ $row->id_pengumuman}}" class="btn btn-sm btn-warning text-dark m-1">
                                             <i class="bi bi-pencil"></i> Edit

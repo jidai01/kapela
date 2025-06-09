@@ -40,7 +40,7 @@
                                     <td class="text-center align-middle">{{ $row->judul_berita }}</td>
                                     <td class="text-center align-middle">{{ $row->isi_berita }}</td>
                                     <td class="text-center align-middle">{{ $row->slug }}</td>
-                                    <td class="text-center align-middle">{{ $row->tanggal_terbit }}</td>
+                                    <td class="text-center align-middle">{{ \Carbon\Carbon::parse($row->tanggal_terbit)->format('d-m-Y') }}</td>
                                     <td class="text-center align-middle">
                                         <img class="img-thumbnail" width="50" src="{{ asset('storage/' . $row->foto) }}"
                                             alt="foto berita">

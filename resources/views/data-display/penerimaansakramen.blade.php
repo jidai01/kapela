@@ -37,7 +37,7 @@
                                     <td class="text-center align-middle">{{ $loop->iteration }}</td>
                                     <td class="text-center align-middle">{{ $row->sakramen->nama_sakramen }}</td>
                                     <td class="text-center align-middle">{{ $row->umat->nama_lengkap }}</td>
-                                    <td class="text-center align-middle">{{ $row->tanggal_penerimaan_sakramen }}</td>
+                                    <td class="text-center align-middle">{{ \Carbon\Carbon::parse($row->tanggal_penerimaan_sakramen)->format('d-m-Y') }}</td>
                                     <td class="d-flex justify-content-center align-items-center">
                                         <a href="/kelola/edit-penerimaan-sakramen/{{ $row->id }}"
                                             class="btn btn-sm btn-warning text-dark m-1">
