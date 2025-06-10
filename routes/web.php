@@ -121,7 +121,7 @@ Route::get('/kelola/delete-berita/{id}', [BeritaController::class, 'delete'])->m
 
 // Laporan Kegiatan Wilayah
 Route::get('/laporan/kegiatan-wilayah', [LaporanController::class, 'kegiatanwilayah'])->middleware(CekLogin::class);
-Route::post('/laporan/cetak-kegiatan-wilayah', [LaporanController::class, 'cetakkegiatanwilayah'])->middleware(CekLogin::class);
+Route::get('/laporan/cetak-kegiatan-wilayah', [LaporanController::class, 'cetakkegiatanwilayah'])->middleware(CekLogin::class);
 
 // Laporan Kegiatan Kub
 Route::get('/laporan/kegiatan-kub', [LaporanController::class, 'kegiatankub'])->middleware(CekLogin::class);

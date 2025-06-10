@@ -8,6 +8,7 @@ use App\Models\KegiatanWilayah;
 use App\Models\PenerimaanSakramen;
 use App\Models\Wilayah;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 
 class LaporanController extends Controller
 {
@@ -38,6 +39,34 @@ class LaporanController extends Controller
         return view('report-display/laporankegiatanwilayah', compact('kegiatanwilayah', 'title', 'wilayah'));
     }
 
+    public function cetakkegiatanwilayah(Request $request)
+    {
+        $title = 'Laporan Kegiatan Wilayah';
+
+        $id_wilayah = $request->input('id_wilayah');
+        $tanggal_mulai = $request->input('tanggal_mulai');
+        $tanggal_selesai = $request->input('tanggal_selesai');
+
+        $kegiatanwilayah = KegiatanWilayah::with('wilayah')
+            ->when($id_wilayah, function ($query) use ($id_wilayah) {
+                return $query->where('id_wilayah', $id_wilayah);
+            })
+            ->when($tanggal_mulai, function ($query) use ($tanggal_mulai, $tanggal_selesai) {
+                if ($tanggal_selesai) {
+                    return $query->whereBetween('tanggal_kegiatan', [$tanggal_mulai, $tanggal_selesai]);
+                } else {
+                    return $query->where('tanggal_kegiatan', '>=', $tanggal_mulai);
+                }
+            })
+            ->orderBy('tanggal_kegiatan', 'desc')
+            ->get();
+
+        $pdf = Pdf::loadView('report-pdf/laporankegiatanwilayahpdf', compact('kegiatanwilayah', 'title'))
+            ->setPaper('a4', 'landscape');
+
+        return $pdf->download('laporan_kegiatan_wilayah.pdf');
+    }
+
     public function kegiatankub()
     {
         $title = "Laporan Kegiatan Kub";
@@ -49,14 +78,6 @@ class LaporanController extends Controller
         $title = "Laporan Penerimaan Sakramen";
         return view('report-display/laporanpenerimaansakramen', compact('title'));
     }
-
-    // public function byPenerbit($id) {
-    //     $title = "Buku Penerbit";
-    //     $content = "Ini halaman Buku Penerbit dari controller";
-    //     $penerbit = Penerbit::find($id);
-
-    //     return view('bukuPenerbit', compact('title', 'content', 'penerbit'));
-    // }
 
     // public function cetakkegiatanwilayah(Request $request)
     // {
