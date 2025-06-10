@@ -39,9 +39,11 @@ class DatabaseSeeder extends Seeder
             'role' => 'humas',
         ]);
 
-        // Jalankan seeder Sakramen (isi data manual di SakramenSeeder)
+        // Jalankan seeder Sakramen (isi data manual di SakramenSeeder) dan seeder Pengumuman dan Berita
         $this->call([
             SakramenSeeder::class,
+            PengumumanSeeder::class,
+            BeritaSeeder::class,
         ]);
 
         // Ambil data sakramen dari database
