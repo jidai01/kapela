@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class KegiatanWilayah extends Model
 {
+    use HasFactory;
     protected $table = 'kegiatan_wilayah';
 
     protected $primaryKey = 'id_kegiatan_wilayah';

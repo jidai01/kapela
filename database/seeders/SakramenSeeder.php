@@ -10,19 +10,19 @@ class SakramenSeeder extends Seeder
     public function run(): void
     {
         $sakramenList = [
-            'Baptis',
-            'Tobat',
-            'Ekaristi',
-            'Krisma',
-            'Perkawinan',
-            'Imamat',
-            'Pengurapan Orang Sakit'
+            ['nama_sakramen' => 'Baptis'],
+            ['nama_sakramen' => 'Tobat'],
+            ['nama_sakramen' => 'Ekaristi'],
+            ['nama_sakramen' => 'Krisma'],
+            ['nama_sakramen' => 'Perkawinan'],
+            ['nama_sakramen' => 'Imamat'],
+            ['nama_sakramen' => 'Pengurapan Orang Sakit'],
         ];
 
-        foreach ($sakramenList as $nama) {
+        foreach ($sakramenList as $data) {
             Sakramen::updateOrCreate(
-                ['nama_sakramen' => $nama],
-                []
+                ['nama_sakramen' => $data['nama_sakramen']],
+                $data
             );
         }
     }

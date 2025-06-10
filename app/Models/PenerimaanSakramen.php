@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PenerimaanSakramen extends Model
 {
+    use HasFactory;
     protected $table = 'penerimaan_sakramen';
 
     protected $primaryKey = 'id';
