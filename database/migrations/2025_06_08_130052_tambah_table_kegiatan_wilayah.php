@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('nama_kegiatan_wilayah');
             $table->text('deskripsi');
             $table->date('tanggal_kegiatan');
-            $table->timestamps();
         });
     }
 

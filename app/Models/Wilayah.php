@@ -17,7 +17,6 @@ class Wilayah extends Model
         'jumlah_anggota',
     ];
     public $timestamps = false;
-
     function kub() : HasMany {
         return $this->hasMany(Kub::class, 'id_wilayah', 'id_wilayah');
     }

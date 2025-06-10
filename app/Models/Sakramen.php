@@ -13,7 +13,6 @@ class Sakramen extends Model
         'nama_sakramen',
     ];
     public $timestamps = false;
-
     function penerimaansakramen() : HasMany {
         return $this->hasMany(PenerimaanSakramen::class, 'id_sakramen', 'id_sakramen');
     }

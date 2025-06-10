@@ -19,7 +19,6 @@ class Berita extends Model
         'tanggal_terbit',
     ];
     public $timestamps = false;
-
     /**
      * Boot method untuk membuat slug secara otomatis.
      */

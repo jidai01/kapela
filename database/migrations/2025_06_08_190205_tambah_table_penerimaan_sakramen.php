@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('nik');
             $table->foreign('nik')->references('nik')->on('umat');
             $table->date('tanggal_penerimaan_sakramen');
-            $table->timestamps();
         });
     }
 

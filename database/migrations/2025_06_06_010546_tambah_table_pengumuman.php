@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('isi_pengumuman');
             $table->string('slug')->unique();
             $table->date('tanggal_terbit');
-            $table->timestamps();
         });
     }
 

@@ -28,7 +28,6 @@ class Umat extends Model
         'status_nikah',
     ];
     public $timestamps = false;
-
     public function kub()
     {
         return $this->belongsTo(Kub::class, 'id_kub', 'id_kub');
