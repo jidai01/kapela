@@ -123,33 +123,56 @@ class LaporanController extends Controller
         return $pdf->download('laporan_kegiatan_kub.pdf');
     }
 
-    public function penerimaansakramen()
+    public function penerimaansakramen(Request $request)
     {
-        $title = "Laporan Penerimaan Sakramen";
-        return view('report-display/laporanpenerimaansakramen', compact('title'));
+        $title = 'Penerimaan Sakramen';
+
+        $id = $request->input('id');
+        $tanggal_mulai = $request->input('tanggal_mulai');
+        $tanggal_selesai = $request->input('tanggal_selesai');
+
+        $penerimaansakramen = PenerimaanSakramen::with(['umat', 'sakramen'])
+            ->when($id, function ($query) use ($id) {
+                return $query->where('id', $id);
+            })
+            ->when($tanggal_mulai, function ($query) use ($tanggal_mulai, $tanggal_selesai) {
+                if ($tanggal_selesai) {
+                    return $query->whereBetween('tanggal_penerimaan_sakramen', [$tanggal_mulai, $tanggal_selesai]);
+                } else {
+                    return $query->where('tanggal_penerimaan_sakramen', '>=', $tanggal_mulai);
+                }
+            })
+            ->latest('tanggal_penerimaan_sakramen')
+            ->get();
+
+        return view('report-display/laporanpenerimaansakramen', compact('penerimaansakramen', 'title'));
     }
 
-    // public function cetakkegiatanwilayah(Request $request)
-    // {
-    //     $id_wilayah = $request->id_wilayah;
-    //     $kegiatanwilayah = KegiatanWilayah::where('id_wilayah', $id_wilayah)->get();
-    //     $pdf = Pdf::loadview('laporankegiatanwilayahpdf', compact('kegiatanwilayah'));
-    //     return $pdf->download();
-    // }
+    public function cetakpenerimaansakramen(Request $request)
+    {
+        $title = 'Laporan Penerimaan Sakramen';
 
-    // public function cetakkegiatankub(Request $request)
-    // {
-    //     $id_kub = $request->id_kub;
-    //     $kegiatankub = KegiatanKub::where('id_kub', $id_kub)->get();
-    //     $pdf = Pdf::loadview('laporankegiatankubpdf', compact('kegiatankub'));
-    //     return $pdf->download();
-    // }
+        $id_sakramen = $request->input('id_sakramen');
+        $tanggal_mulai = $request->input('tanggal_mulai');
+        $tanggal_selesai = $request->input('tanggal_selesai');
 
-    // public function cetakpenerimaansakramen(Request $request)
-    // {
-    //     $id = $request->id;
-    //     $penerimaansakramen = PenerimaanSakramen::where('id', $id)->get();
-    //     $pdf = Pdf::loadview('laporanpenerimaansakramenpdf', compact('penerimaansakramen'));
-    //     return $pdf->download();
-    // }
+        $penerimaansakramen = PenerimaanSakramen::with(['umat', 'sakramen'])
+            ->when($id_sakramen, function ($query) use ($id_sakramen) {
+                return $query->where('id_sakramen', $id_sakramen);
+            })
+            ->when($tanggal_mulai, function ($query) use ($tanggal_mulai, $tanggal_selesai) {
+                if ($tanggal_selesai) {
+                    return $query->whereBetween('tanggal_penerimaan_sakramen', [$tanggal_mulai, $tanggal_selesai]);
+                } else {
+                    return $query->where('tanggal_penerimaan_sakramen', '>=', $tanggal_mulai);
+                }
+            })
+            ->orderBy('tanggal_penerimaan_sakramen', 'desc')
+            ->get();
+
+        $pdf = Pdf::loadView('report-pdf/laporanpenerimaansakramenpdf', compact('penerimaansakramen', 'title'))
+            ->setPaper('a4', 'landscape');
+
+        return $pdf->download('laporan_penerimaan_sakramen.pdf');
+    }
 }
