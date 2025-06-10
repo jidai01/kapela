@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\BeritaUmumController;
 use App\Http\Controllers\KegiatanKubController;
 use App\Http\Controllers\KegiatanWilayahController;
 use App\Http\Controllers\KubController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PenerimaanSakramenController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\PengumumanUmumController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SakramenController;
 use App\Http\Controllers\UmatController;
@@ -130,3 +132,11 @@ Route::get('/laporan/cetak-kegiatan-kub', [LaporanController::class, 'cetakkegia
 // Laporan Penerimaan Sakramen
 Route::get('/laporan/penerimaan-sakramen', [LaporanController::class, 'penerimaansakramen'])->middleware(CekLogin::class);
 Route::get('/laporan/cetak-penerimaan-sakramen', [LaporanController::class, 'cetakpenerimaansakramen'])->middleware(CekLogin::class);
+
+// Pengumuman
+Route::get('/pengumuman', [PengumumanUmumController::class, 'index'])->name('pengumuman.index');
+Route::get('/pengumuman/{slug}', [PengumumanUmumController::class, 'detail'])->name('pengumuman.detail');
+
+// Berita
+Route::get('/berita', [BeritaUmumController::class, 'index']);
+Route::get('/berita/{slug}', [BeritaUmumController::class, 'detail']);
