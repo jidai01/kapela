@@ -125,8 +125,8 @@ Route::get('/laporan/cetak-kegiatan-wilayah', [LaporanController::class, 'cetakk
 
 // Laporan Kegiatan Kub
 Route::get('/laporan/kegiatan-kub', [LaporanController::class, 'kegiatankub'])->middleware(CekLogin::class);
-Route::post('/laporan/cetak-kegiatan-kub', [LaporanController::class, 'cetakkegiatankub'])->middleware(CekLogin::class);
+Route::get('/laporan/cetak-kegiatan-kub', [LaporanController::class, 'cetakkegiatankub'])->middleware(CekLogin::class);
 
 // Laporan Penerimaan Sakramen
 Route::get('/laporan/penerimaan-sakramen', [LaporanController::class, 'penerimaansakramen'])->middleware(CekLogin::class);
-Route::post('/laporan/cetak-penerimaan-sakramen', [LaporanController::class, 'cetakpenerimaansakramen'])->middleware(CekLogin::class);
+Route::get('/laporan/cetak-penerimaan-sakramen', [LaporanController::class, 'cetakpenerimaansakramen'])->middleware(CekLogin::class);
