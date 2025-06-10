@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Kub extends Model
 {
+    use HasFactory;
     protected $table = 'kub';
     protected $primaryKey = 'id_kub';
     protected $fillable = [

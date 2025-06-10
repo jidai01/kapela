@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kub;
 use App\Models\Sakramen;
+use App\Models\Umat;
 use App\Models\User;
+use App\Models\Wilayah;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
 
@@ -14,8 +17,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@example.com',
@@ -40,5 +41,18 @@ class DatabaseSeeder extends Seeder
         $this->call([
             SakramenSeeder::class,
         ]);
+
+        Wilayah::factory()->count(5)->create()->each(function ($wilayah) {
+            $kubs = Kub::factory()->count(3)->create([
+                'id_wilayah' => $wilayah->id_wilayah,
+            ]);
+
+            $kubs->each(function ($kub) use ($wilayah) {
+                Umat::factory()->count(10)->create([
+                    'id_kub' => $kub->id_kub,
+                    'id_wilayah' => $wilayah->id_wilayah,
+                ]);
+            });
+        });
     }
 }
