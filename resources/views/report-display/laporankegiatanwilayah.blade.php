@@ -44,7 +44,7 @@
                         </button>
                         <a href="/laporan/cetak-kegiatan-wilayah?{{ http_build_query(request()->all()) }}"
                             class="btn btn-success shadow-sm">
-                            <i class="bi bi-paper"></i> Cetak {{ $title }}
+                            <i class="bi bi-printer"></i> Cetak {{ $title }}
                         </a>
                     </div>
                 </form>
