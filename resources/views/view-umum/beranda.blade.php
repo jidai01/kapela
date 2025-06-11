@@ -9,21 +9,6 @@
 @endsection
 
 @section('content')
-{{-- <style>
-    h5 {
-        color: rgb(255, 255, 255);
-        font-family: "Changa One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.changa-one-regular-italic {
-  font-family: "Changa One", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-    }
-</style> --}}
-
     <div class="container-fluid p-0 mb-5">
 
         {{-- ========== CAROUSEL START ========== --}}
@@ -48,7 +33,7 @@
                         <img src="{{ asset('storage/img/c1.jpg') }}" alt="logo-sanbello" class="d-block w-100">
                     </div>
                     <div class="carousel-caption d-none d-md-block">
-                        <h5><em>"Bersama Membangun Iman Umat Bello yang Beriman dan Bermartabat."</em></h5>
+                        <h2><em>"Bersama Membangun Iman Umat Bello yang Beriman dan Bermartabat."</em></h2>
                     </div>
                 </div>
 
@@ -58,7 +43,7 @@
                         <img src="{{ asset('storage/img/c2.jpg') }}" alt="logo-sanbello" class="d-block w-100">
                     </div>
                     <div class="carousel-caption d-none d-md-block">
-                        <h5><em>"Bersama Membangun Iman Umat Bello yang Beriman dan Bermartabat."</em></h5>
+                        <h2><em>"Bersama Membangun Iman Umat Bello yang Beriman dan Bermartabat."</em></h2>
                     </div>
                 </div>
 
@@ -68,7 +53,7 @@
                         <img src="{{ asset('storage/img/c3.jpg') }}" alt="logo-sanbello" class="d-block w-100">
                     </div>
                     <div class="carousel-caption d-none d-md-block">
-                        <h5><em>"Bersama Membangun Iman Umat Bello yang Beriman dan Bermartabat."</em></h5>
+                        <h2><em>"Bersama Membangun Iman Umat Bello yang Beriman dan Bermartabat."</em></h2>
                     </div>
                 </div>
 
@@ -89,6 +74,56 @@
 
         </div>
         {{-- ========== CAROUSEL END ========== --}}
+
+        {{-- ===== PENGUMUMAN DAN JADWAL ===== --}}
+        <div class="container my-5">
+            <div class="row">
+                {{-- Pengumuman --}}
+                <div class="col-md-6">
+                    <h5 class="fw-bold text-center">PENGUMUMAN</h5>
+                    <ul class="list-group mt-3">
+                        @foreach ($pengumuman as $item)
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <a href="/pengumuman/{{ $item->slug }}" class="text-decoration-none">{{ $item->judul_pengumuman }}</a>
+                                    <div class="small text-muted">
+                                        {{ \Carbon\Carbon::parse($item->tanggal_terbit)->format('d F Y') }}</div>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+
+                {{-- Jadwal --}}
+                <div class="col-md-6">
+                    <h5 class="fw-bold text-center">JADWAL</h5>
+                    <div class="card mt-3">
+                        <div class="card-body text-center">
+                            <p class="mb-1"><strong>Misa Mingguan</strong></p>
+                            <p class="mb-1">Misa Pertama : 06.00 WITA</p>
+                            <p class="mb-0">Misa Kedua : 08.00 WITA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- ===== BERITA ===== --}}
+        <div class="container my-5">
+            <h5 class="fw-bold text-center mb-4">BERITA</h5>
+            @foreach ($berita as $item)
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <img src="{{ asset('storage/' . $item->foto) }}" class="img-fluid rounded" alt="Foto Berita">
+                    </div>
+                    <div class="col-md-9">
+                        <h6><strong>{{ $item->judul_berita }}</strong></h6>
+                        <p>{{ Str::limit(strip_tags($item->isi_berita), 250, '...') }}</p>
+                        <a href="berita/{{ $item->slug }}" class="btn btn-outline-primary btn-sm">Baca Selengkapnya</a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
 
     </div>
 @endsection

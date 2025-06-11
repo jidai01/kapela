@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
+use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 
 class BerandaController extends Controller
@@ -10,7 +12,9 @@ class BerandaController extends Controller
     {
         $title = "Beranda";
         $content = "Halaman Beranda";
-        return view('view-umum/beranda', compact('title', 'content'));
+        $pengumuman = Pengumuman::orderBy('tanggal_terbit', 'desc')->limit(3)->get();
+        $berita = Berita::orderBy('id_berita', 'desc')->limit(3)->get();
+        return view('view-umum/beranda', compact('title', 'content', 'pengumuman', 'berita'));
     }
 
     public function index_admin()
