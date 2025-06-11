@@ -19,12 +19,12 @@
                 <form action="" method="GET" class="row g-3">
                     <div class="col-md-6">
                         <label for="tanggal_mulai" class="form-label text-white">Tanggal Mulai</label>
-                        <input type="date" class="form-control bg-dark text-white" id="tanggal_mulai"
+                        <input type="date" class="form-control bg-ligth text-dark" id="tanggal_mulai"
                             name="tanggal_mulai" value="{{ request('tanggal_mulai') }}">
                     </div>
                     <div class="col-md-6">
                         <label for="tanggal_selesai" class="form-label text-white">Tanggal Selesai</label>
-                        <input type="date" class="form-control bg-dark text-white" id="tanggal_selesai"
+                        <input type="date" class="form-control bg-ligth text-dark" id="tanggal_selesai"
                             name="tanggal_selesai" value="{{ request('tanggal_selesai') }}">
                     </div>
                     <div class="col-12">

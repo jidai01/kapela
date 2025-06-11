@@ -18,7 +18,7 @@
                 <form action="" method="GET" class="row g-3">
                     <div class="col-md-4">
                         <label for="id_wilayah" class="form-label text-white">Wilayah</label>
-                        <select id="id_wilayah" class="form-select bg-dark text-white" name="id_wilayah">
+                        <select id="id_wilayah" class="form-select bg-light text-dark" name="id_wilayah">
                             <option value="">Semua Wilayah</option>
                             @foreach ($wilayah as $w)
                                 <option value="{{ $w->id_wilayah }}"
@@ -30,12 +30,12 @@
                     </div>
                     <div class="col-md-4">
                         <label for="tanggal_mulai" class="form-label text-white">Tanggal Mulai</label>
-                        <input type="date" class="form-control bg-dark text-white" id="tanggal_mulai"
+                        <input type="date" class="form-control bg-light text-dark" id="tanggal_mulai"
                             name="tanggal_mulai" value="{{ request('tanggal_mulai') }}">
                     </div>
                     <div class="col-md-4">
                         <label for="tanggal_selesai" class="form-label text-white">Tanggal Selesai</label>
-                        <input type="date" class="form-control bg-dark text-white" id="tanggal_selesai"
+                        <input type="date" class="form-control bg-light text-dark" id="tanggal_selesai"
                             name="tanggal_selesai" value="{{ request('tanggal_selesai') }}">
                     </div>
                     <div class="col-12">
@@ -83,4 +83,16 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+    <script>
+        new TomSelect("#id_wilayah", {
+            create: false,
+            sortField: {
+                field: "text",
+                direction: "asc"
+            },
+            placeholder: "Semua Wilayah"
+        });
+    </script>
 @endsection
