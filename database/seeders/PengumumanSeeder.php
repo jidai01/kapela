@@ -9,6 +9,6 @@ class PengumumanSeeder extends Seeder
 {
     public function run(): void
     {
-        Pengumuman::factory()->count(10)->create();
+        Pengumuman::factory()->count(25)->create();
     }
 }
