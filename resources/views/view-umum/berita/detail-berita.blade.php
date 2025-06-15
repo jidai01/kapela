@@ -21,7 +21,7 @@
 
         <div class="d-flex justify-content-center">
             <div class="px-3 px-md-5" style="max-width: 800px; text-align: justify; text-indent: 2em;">
-                {!! nl2br(e($berita->isi_berita)) !!}
+                {!! $berita->isi_berita !!}
             </div>
         </div>
 
