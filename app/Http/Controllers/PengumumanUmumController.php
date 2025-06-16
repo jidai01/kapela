@@ -10,7 +10,9 @@ class PengumumanUmumController extends Controller
     public function index()
     {
         $title = "Pengumuman";
-        $pengumuman = Pengumuman::orderBy('tanggal_terbit', 'desc')->paginate(5);
+        $pengumuman = Pengumuman::orderBy('id_pengumuman', 'desc')
+            ->orderBy('tanggal_terbit', 'desc')
+            ->paginate(5);
         return view('view-umum/pengumuman/pengumuman', compact('title', 'pengumuman'));
     }
 
