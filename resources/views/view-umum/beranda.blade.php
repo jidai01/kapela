@@ -9,12 +9,53 @@
 @endsection
 
 @section('content')
+    <style>
+        /* Font Import */
+        @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive&family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f6ff;
+            color: #212529;
+        }
+
+        .berandacarouselh3style {
+            background-color: rgba(33, 45, 90, 0.8);
+            color: #fff;
+            font-family: "Edu NSW ACT Cursive", cursive;
+            font-size: 1.5rem;
+            padding: 1rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .list-group-item {
+            transition: background-color 0.3s ease;
+        }
+
+        .list-group-item:hover {
+            background-color: #eef1ff;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline-primary {
+            border-radius: 20px;
+        }
+
+        h5,
+        h6 {
+            font-weight: 600;
+        }
+    </style>
+
     <div class="container-fluid p-0 mb-5">
 
         {{-- ========== CAROUSEL START ========== --}}
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
-
-            {{-- Carousel Indicators --}}
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
@@ -24,70 +65,53 @@
                     aria-label="Slide 3"></button>
             </div>
 
-            {{-- Carousel Items --}}
             <div class="carousel-inner">
-
-                {{-- Slide 1 --}}
-                <div class="carousel-item active">
-                    <div class="ratio ratio-21x9">
-                        <img src="{{ asset('storage/img/c1.jpg') }}" alt="logo-sanbello" class="d-block w-100">
+                @for ($i = 1; $i <= 3; $i++)
+                    <div class="carousel-item @if ($i == 1) active @endif">
+                        <div class="ratio ratio-21x9">
+                            <img src="{{ asset("storage/img/c$i.jpg") }}" alt="carousel-image-{{ $i }}"
+                                class="d-block w-100">
+                        </div>
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3 class="berandacarouselh3style">
+                                <em>"Bersama Membangun Iman Umat Bello yang Beriman dan Bermartabat."</em>
+                            </h3>
+                        </div>
                     </div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h2><em>"Bersama Membangun Iman Umat Bello yang Beriman dan Bermartabat."</em></h2>
-                    </div>
-                </div>
-
-                {{-- Slide 2 --}}
-                <div class="carousel-item">
-                    <div class="ratio ratio-21x9">
-                        <img src="{{ asset('storage/img/c2.jpg') }}" alt="logo-sanbello" class="d-block w-100">
-                    </div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h2><em>"Bersama Membangun Iman Umat Bello yang Beriman dan Bermartabat."</em></h2>
-                    </div>
-                </div>
-
-                {{-- Slide 3 --}}
-                <div class="carousel-item">
-                    <div class="ratio ratio-21x9">
-                        <img src="{{ asset('storage/img/c3.jpg') }}" alt="logo-sanbello" class="d-block w-100">
-                    </div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h2><em>"Bersama Membangun Iman Umat Bello yang Beriman dan Bermartabat."</em></h2>
-                    </div>
-                </div>
-
+                @endfor
             </div>
 
-            {{-- Carousel Controls --}}
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+                <span class="visually-hidden">Sebelumnya</span>
             </button>
 
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
                 data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+                <span class="visually-hidden">Berikutnya</span>
             </button>
-
         </div>
         {{-- ========== CAROUSEL END ========== --}}
 
         {{-- ===== PENGUMUMAN DAN JADWAL ===== --}}
         <div class="container my-5">
-            <div class="row">
+            <div class="row g-4">
                 {{-- Pengumuman --}}
                 <div class="col-md-6">
-                    <h5 class="fw-bold text-center">PENGUMUMAN</h5>
+                    <h5 class="text-center">📢 PENGUMUMAN</h5>
                     <ul class="list-group mt-3">
                         @foreach ($pengumuman as $item)
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div>
-                                    <a href="/pengumuman/{{ $item->slug }}" class="text-decoration-none">{{ $item->judul_pengumuman }}</a>
+                                    <a href="/pengumuman/{{ $item->slug }}"
+                                        class="text-decoration-none text-primary fw-semibold">
+                                        {{ $item->judul_pengumuman }}
+                                    </a>
                                     <div class="small text-muted">
-                                        {{ \Carbon\Carbon::parse($item->tanggal_terbit)->format('d F Y') }}</div>
+                                        {{ \Carbon\Carbon::parse($item->tanggal_terbit)->format('d F Y') }}
+                                    </div>
                                 </div>
                             </li>
                         @endforeach
@@ -96,12 +120,12 @@
 
                 {{-- Jadwal --}}
                 <div class="col-md-6">
-                    <h5 class="fw-bold text-center">JADWAL</h5>
-                    <div class="card mt-3">
+                    <h5 class="text-center">⛪ JADWAL</h5>
+                    <div class="card mt-3 bg-light">
                         <div class="card-body text-center">
                             <p class="mb-1"><strong>Misa Mingguan</strong></p>
-                            <p class="mb-1">Misa Pertama : 06.00 WITA</p>
-                            <p class="mb-0">Misa Kedua : 08.00 WITA</p>
+                            <p class="mb-1">Misa Pertama: <span class="text-primary">06.00 WITA</span></p>
+                            <p class="mb-0">Misa Kedua: <span class="text-primary">08.00 WITA</span></p>
                         </div>
                     </div>
                 </div>
@@ -110,16 +134,17 @@
 
         {{-- ===== BERITA ===== --}}
         <div class="container my-5">
-            <h5 class="fw-bold text-center mb-4">BERITA</h5>
+            <h5 class="text-center mb-4">📰 BERITA</h5>
             @foreach ($berita as $item)
-                <div class="row mb-4">
+                <div class="row mb-4 shadow-sm bg-white rounded p-3">
                     <div class="col-md-3">
                         <img src="{{ asset('storage/' . $item->foto) }}" class="img-fluid rounded" alt="Foto Berita">
                     </div>
                     <div class="col-md-9">
-                        <h6><strong>{{ $item->judul_berita }}</strong></h6>
-                        <p>{{ Str::limit(strip_tags($item->isi_berita), 250, '...') }}</p>
-                        <a href="berita/{{ $item->slug }}" class="btn btn-outline-primary btn-sm">Baca Selengkapnya</a>
+                        <h6 class="text-dark">{{ $item->judul_berita }}</h6>
+                        <p class="text-muted">{{ Str::limit(strip_tags($item->isi_berita), 250, '...') }}</p>
+                        <a href="berita/{{ $item->slug }}" class="btn btn-outline-primary btn-sm px-3">Baca
+                            Selengkapnya</a>
                     </div>
                 </div>
             @endforeach
