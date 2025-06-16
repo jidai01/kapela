@@ -1,27 +1,84 @@
-<div class="container my-5">
-    @if (Auth::check())
-        @php $role = Auth::user()->role; @endphp
-        <div class="container-fluid">
+@extends('template.main')
+
+@section('content')
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f6fa;
+        }
+
+        .card-header {
+            background-color: #212d5a;
+            color: #fff;
+        }
+
+        .dashboard-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #212d5a;
+        }
+
+        .btn-dashboard {
+            background-color: #212d5a;
+            color: #fff;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .btn-dashboard:hover {
+            background-color: #1a2348;
+            color: #fff;
+        }
+
+        .btn-logout {
+            background-color: #fff;
+            color: #dc3545;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .btn-logout:hover {
+            background-color: #f8d7da;
+            color: #dc3545;
+        }
+    </style>
+
+    <div class="container my-5">
+        @if (Auth::check())
+            @php $role = Auth::user()->role; @endphp
+
             <div class="card shadow-lg border-0 mt-4">
-                <div class="card-header bg-secondary text-white">
-                    <h1 class="text-center align-middle">Selamat Datang {{ ucfirst(strtolower($role)) }}</h1>
+                <div class="card-header text-white text-center">
+                    <h1 class="dashboard-title mb-0">Selamat Datang {{ ucfirst(strtolower($role)) }}</h1>
                 </div>
 
-                <div class="card-body bg-light p-2">
+                <div class="card-body bg-light p-4">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-
                         @if (in_array($role, ['admin', 'humas']))
                             @if ($role === 'admin')
+                                {{-- Data User --}}
                                 <div class="col">
                                     <div class="card h-100 shadow-sm">
                                         <div class="card-body d-flex flex-column justify-content-between">
                                             <h5 class="card-title">Data User</h5>
-                                            <a class="btn btn-primary mt-3" href="/kelola/data-user"><i
-                                                    class="bi bi-arrow-right"></i> Masuk</a>
+                                            <a class="btn btn-dashboard mt-3" href="/kelola/data-user">
+                                                <i class="bi bi-arrow-right"></i> Masuk
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
 
+                                {{-- Menu Admin --}}
                                 @php
                                     $adminMenus = [
                                         ['title' => 'Data Wilayah', 'url' => '/kelola/data-wilayah'],
@@ -30,10 +87,7 @@
                                         ['title' => 'Data Umat', 'url' => '/kelola/data-umat'],
                                         ['title' => 'Data Kegiatan Wilayah', 'url' => '/kelola/data-kegiatan-wilayah'],
                                         ['title' => 'Data Kegiatan KUB', 'url' => '/kelola/data-kegiatan-kub'],
-                                        [
-                                            'title' => 'Data Penerimaan Sakramen',
-                                            'url' => '/kelola/data-penerimaan-sakramen',
-                                        ],
+                                        ['title' => 'Data Penerimaan Sakramen', 'url' => '/kelola/data-penerimaan-sakramen'],
                                     ];
                                 @endphp
 
@@ -42,29 +96,34 @@
                                         <div class="card h-100 shadow-sm">
                                             <div class="card-body d-flex flex-column justify-content-between">
                                                 <h5 class="card-title">{{ $menu['title'] }}</h5>
-                                                <a class="btn btn-primary mt-3" href="{{ $menu['url'] }}"><i
-                                                        class="bi bi-arrow-right"></i> Masuk</a>
+                                                <a class="btn btn-dashboard mt-3" href="{{ $menu['url'] }}">
+                                                    <i class="bi bi-arrow-right"></i> Masuk
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
                             @endif
 
+                            {{-- Menu Admin & Humas --}}
                             <div class="col">
                                 <div class="card h-100 shadow-sm">
                                     <div class="card-body d-flex flex-column justify-content-between">
                                         <h5 class="card-title">Data Pengumuman</h5>
-                                        <a class="btn btn-primary mt-3" href="/kelola/data-pengumuman"><i
-                                                class="bi bi-arrow-right"></i> Masuk</a>
+                                        <a class="btn btn-dashboard mt-3" href="/kelola/data-pengumuman">
+                                            <i class="bi bi-arrow-right"></i> Masuk
+                                        </a>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col">
                                 <div class="card h-100 shadow-sm">
                                     <div class="card-body d-flex flex-column justify-content-between">
                                         <h5 class="card-title">Data Berita</h5>
-                                        <a class="btn btn-primary mt-3" href="/kelola/data-berita"><i
-                                                class="bi bi-arrow-right"></i> Masuk</a>
+                                        <a class="btn btn-dashboard mt-3" href="/kelola/data-berita">
+                                            <i class="bi bi-arrow-right"></i> Masuk
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -84,27 +143,30 @@
                                     <div class="card h-100 shadow-sm">
                                         <div class="card-body d-flex flex-column justify-content-between">
                                             <h5 class="card-title">{{ $menu['title'] }}</h5>
-                                            <a class="btn btn-primary mt-3" href="{{ $menu['url'] }}"><i
-                                                    class="bi bi-arrow-right"></i> Masuk</a>
+                                            <a class="btn btn-dashboard mt-3" href="{{ $menu['url'] }}">
+                                                <i class="bi bi-arrow-right"></i> Masuk
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         @endif
 
+                        {{-- Logout --}}
                         <div class="col">
                             <div class="card h-100 shadow-sm bg-danger text-white">
                                 <div class="card-body d-flex flex-column justify-content-between">
                                     <h5 class="card-title">Logout</h5>
-                                    <a class="btn btn-light mt-3" onclick="return confirm('Yakin ingin keluar?')"
-                                        href="/logout"><i class="bi bi-box-arrow-right"></i>
-                                        Keluar</a>
+                                    <a class="btn btn-logout mt-3" href="/logout"
+                                        onclick="return confirm('Yakin ingin keluar?')">
+                                        <i class="bi bi-box-arrow-right"></i> Keluar
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    @endif
-</div>
+        @endif
+    </div>
+@endsection
