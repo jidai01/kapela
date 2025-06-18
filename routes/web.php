@@ -79,7 +79,7 @@ Route::middleware([CekLogin::class])->group(function () {
           Route::get('/delete-user/{id}', [UserController::class, 'delete']);
 
           // Data Wilayah
-          Route::resource('data-wilayah', WilayahController::class);
+          Route::get('/data-wilayah', [WilayahController::class, 'index']);
           Route::get('/tambah-wilayah', [WilayahController::class, 'tambah']);
           Route::post('/kirim-wilayah', [WilayahController::class, 'kirim']);
           Route::get('/edit-wilayah/{id}', [WilayahController::class, 'edit']);
@@ -87,7 +87,7 @@ Route::middleware([CekLogin::class])->group(function () {
           Route::get('/delete-wilayah/{id}', [WilayahController::class, 'delete']);
 
           // Data KUB
-          Route::resource('data-kub', KubController::class);
+          Route::get('/data-kub', [KubController::class, 'index']);
           Route::get('/tambah-kub', [KubController::class, 'tambah']);
           Route::post('/kirim-kub', [KubController::class, 'kirim']);
           Route::get('/edit-kub/{id}', [KubController::class, 'edit']);
@@ -95,12 +95,13 @@ Route::middleware([CekLogin::class])->group(function () {
           Route::get('/delete-kub/{id}', [KubController::class, 'delete']);
 
           // Data Sakramen
-          Route::resource('data-sakramen', SakramenController::class);
+          Route::get('/data-sakramen', [SakramenController::class, 'index']);
           Route::get('/tambah-sakramen', [SakramenController::class, 'tambah']);
           Route::post('/kirim-sakramen', [SakramenController::class, 'kirim']);
           Route::get('/edit-sakramen/{id}', [SakramenController::class, 'edit']);
           Route::post('/update-sakramen', [SakramenController::class, 'update']);
           // Route::get('/delete-sakramen/{id}', [SakramenController::class, 'delete']);
+          // Delete sakramen dinonaktifkan untuk menjaga keutuhan data sakramen
 
           // Data Umat
           Route::get('/data-umat', [UmatController::class, 'index']);
@@ -112,7 +113,7 @@ Route::middleware([CekLogin::class])->group(function () {
           Route::get('/delete-umat/{id}', [UmatController::class, 'delete']);
 
           // Kegiatan Wilayah
-          Route::resource('data-kegiatan-wilayah', KegiatanWilayahController::class);
+          Route::get('/data-kegiatan-wilayah', [KegiatanWilayahController::class, 'index']);
           Route::get('/tambah-kegiatan-wilayah', [KegiatanWilayahController::class, 'tambah']);
           Route::post('/kirim-kegiatan-wilayah', [KegiatanWilayahController::class, 'kirim']);
           Route::get('/edit-kegiatan-wilayah/{id}', [KegiatanWilayahController::class, 'edit']);
@@ -120,7 +121,7 @@ Route::middleware([CekLogin::class])->group(function () {
           Route::get('/delete-kegiatan-wilayah/{id}', [KegiatanWilayahController::class, 'delete']);
 
           // Kegiatan KUB
-          Route::resource('data-kegiatan-kub', KegiatanKubController::class);
+          Route::get('/data-kegiatan-kub', [KegiatanKubController::class, 'index']);
           Route::get('/tambah-kegiatan-kub', [KegiatanKubController::class, 'tambah']);
           Route::post('/kirim-kegiatan-kub', [KegiatanKubController::class, 'kirim']);
           Route::get('/edit-kegiatan-kub/{id}', [KegiatanKubController::class, 'edit']);
@@ -128,7 +129,7 @@ Route::middleware([CekLogin::class])->group(function () {
           Route::get('/delete-kegiatan-kub/{id}', [KegiatanKubController::class, 'delete']);
 
           // Penerimaan Sakramen
-          Route::resource('data-penerimaan-sakramen', PenerimaanSakramenController::class);
+          Route::get('/data-penerimaan-sakramen', [PenerimaanSakramenController::class, 'index']);
           Route::get('/tambah-penerimaan-sakramen', [PenerimaanSakramenController::class, 'tambah']);
           Route::post('/kirim-penerimaan-sakramen', [PenerimaanSakramenController::class, 'kirim']);
           Route::get('/edit-penerimaan-sakramen/{id}', [PenerimaanSakramenController::class, 'edit']);
@@ -136,7 +137,7 @@ Route::middleware([CekLogin::class])->group(function () {
           Route::get('/delete-penerimaan-sakramen/{id}', [PenerimaanSakramenController::class, 'delete']);
 
           // Pengumuman
-          Route::resource('data-pengumuman', PengumumanController::class);
+          Route::get('/data-pengumuman', [PengumumanController::class, 'index']);
           Route::get('/tambah-pengumuman', [PengumumanController::class, 'tambah']);
           Route::post('/kirim-pengumuman', [PengumumanController::class, 'kirim']);
           Route::get('/edit-pengumuman/{id}', [PengumumanController::class, 'edit']);
@@ -144,7 +145,7 @@ Route::middleware([CekLogin::class])->group(function () {
           Route::get('/delete-pengumuman/{id}', [PengumumanController::class, 'delete']);
 
           // Berita
-          Route::resource('data-berita', BeritaController::class);
+          Route::get('/data-berita', [BeritaController::class, 'index']);
           Route::get('/tambah-berita', [BeritaController::class, 'tambah']);
           Route::post('/kirim-berita', [BeritaController::class, 'kirim']);
           Route::get('/edit-berita/{id}', [BeritaController::class, 'edit']);
