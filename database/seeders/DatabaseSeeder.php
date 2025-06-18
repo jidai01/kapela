@@ -50,28 +50,28 @@ class DatabaseSeeder extends Seeder
         $sakramens = Sakramen::all();
 
         // Generate data wilayah dan relasi terkait
-        Wilayah::factory()->count(10)->create()->each(function ($wilayah) use ($sakramens) {
+        Wilayah::factory()->count(3)->create()->each(function ($wilayah) use ($sakramens) {
             // Kegiatan Wilayah
-            KegiatanWilayah::factory()->count(10)->create([
+            KegiatanWilayah::factory()->count(5)->create([
                 'id_wilayah' => $wilayah->id_wilayah,
             ]);
 
             // Kub dan turunannya
-            Kub::factory()->count(10)->create([
+            Kub::factory()->count(3)->create([
                 'id_wilayah' => $wilayah->id_wilayah,
             ])->each(function ($kub) use ($wilayah, $sakramens) {
                 // Kegiatan KUB
-                KegiatanKub::factory()->count(10)->create([
+                KegiatanKub::factory()->count(3)->create([
                     'id_kub' => $kub->id_kub,
                 ]);
 
                 // Umat
-                $umats = Umat::factory()->count(10)->create([
+                $umats = Umat::factory()->count(3)->create([
                     'id_kub' => $kub->id_kub,
                     'id_wilayah' => $wilayah->id_wilayah,
                 ]);
 
-                // Penerimaan Sakramen (2 random sakramen per umat)
+                // Penerimaan Sakramen
                 $umats->each(function ($umat) use ($sakramens) {
                     $sakramens->random(7)->each(function ($sakramen) use ($umat) {
                         PenerimaanSakramen::factory()->create([
