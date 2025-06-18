@@ -74,7 +74,17 @@ class KubController extends Controller
 
     public function delete($id): RedirectResponse
     {
-        Kub::where('id_kub', $id)->delete();
+        $kub = Kub::with(['umat', 'kegiatankub'])->findOrFail($id);
+
+        if ($kub->umat->count() > 0) {
+            session()->flash('error', 'Tidak dapat menghapus KUB karena masih digunakan di tabel Umat.');
+            return redirect()->back();
+        }
+
+        $kub->kegiatankub()->delete();
+        $kub->delete();
+
+        session()->flash('success', 'KUB dan kegiatan terkait berhasil dihapus.');
         return redirect('kelola/data-kub');
     }
 }

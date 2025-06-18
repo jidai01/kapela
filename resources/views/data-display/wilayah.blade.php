@@ -14,6 +14,17 @@
             <div class="card-header bg-secondary text-white">
                 <h2 class="text-center mb-0">Daftar {{ $title }}</h2>
             </div>
+            @if (session('error'))
+                <div class="alert alert-danger text-center">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="alert alert-success text-center">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="card-body bg-dark d-flex justify-content-start m-0">
                 <a href="/kelola/tambah-wilayah" class="btn btn-success shadow-sm">
                     <i class="bi bi-plus-circle"></i> Tambah {{ $title }}
@@ -39,10 +50,12 @@
                                     <td class="text-center align-middle">{{ $row->ketua_wilayah }}</td>
                                     <td class="text-center align-middle">{{ $row->jumlah_anggota }}</td>
                                     <td class="d-flex justify-content-center align-items-center">
-                                        <a href="/kelola/edit-wilayah/{{ $row->id_wilayah }}" class="btn btn-sm btn-warning text-dark m-1">
+                                        <a href="/kelola/edit-wilayah/{{ $row->id_wilayah }}"
+                                            class="btn btn-sm btn-warning text-dark m-1">
                                             <i class="bi bi-pencil"></i> Edit
                                         </a>
-                                        <a href="/kelola/delete-wilayah/{{ $row->id_wilayah }}" class="btn btn-sm btn-danger text-dark m-1"
+                                        <a href="/kelola/delete-wilayah/{{ $row->id_wilayah }}"
+                                            class="btn btn-sm btn-danger text-dark m-1"
                                             onclick="return confirm('Yakin ingin menghapus?')">
                                             <i class="bi bi-trash"></i> Hapus
                                         </a>
@@ -50,7 +63,8 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5" class="text-center text-muted py-3">Tidak ada {{ $title }}.</td>
+                                    <td colspan="5" class="text-center text-muted py-3">Tidak ada {{ $title }}.
+                                    </td>
                                 </tr>
                             @endforelse
                         </tbody>

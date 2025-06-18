@@ -65,7 +65,17 @@ class WilayahController extends Controller
 
     public function delete($id): RedirectResponse
     {
-        Wilayah::where('id_wilayah', $id)->delete();
+        $wilayah = Wilayah::with(['kub.umat', 'kegiatanwilayah'])->findOrFail($id);
+
+        if ($wilayah->kub->count() > 0) {
+            session()->flash('error', 'Tidak dapat menghapus wilayah karena masih digunakan di tabel KUB dan Umat.');
+            return redirect()->back();
+        }
+
+        $wilayah->kegiatanwilayah()->delete();
+        $wilayah->delete();
+
+        session()->flash('success', 'Data Wilayah dan kegiatan terkait berhasil dihapus.');
         return redirect('kelola/data-wilayah');
     }
 }

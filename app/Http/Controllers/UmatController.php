@@ -163,7 +163,16 @@ class UmatController extends Controller
 
     public function delete($id): RedirectResponse
     {
-        Umat::where('nik', $id)->delete();
+        $umat = Umat::with('penerimaansakramen')->where('nik', $id)->firstOrFail();
+
+        if ($umat->penerimaansakramen->count() > 0) {
+            session()->flash('error', 'Tidak dapat menghapus Umat karena memiliki data penerimaan sakramen.');
+            return redirect()->back();
+        }
+
+        $umat->delete();
+
+        session()->flash('success', 'Data Umat berhasil dihapus.');
         return redirect('kelola/data-umat');
     }
 }

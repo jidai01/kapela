@@ -39,6 +39,6 @@ class Umat extends Model
     }
 
     function penerimaansakramen() : HasMany {
-        return $this->hasMany(PenerimaanSakramen::class, 'id_sakramen', 'id_sakramen');
+        return $this->hasMany(PenerimaanSakramen::class, 'nik', 'nik');
     }
 }

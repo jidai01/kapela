@@ -14,6 +14,17 @@
             <div class="card-header bg-secondary text-white">
                 <h2 class="text-center mb-0">Daftar {{ $title }}</h2>
             </div>
+            @if (session('error'))
+                <div class="alert alert-danger text-center">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="alert alert-success text-center">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="card-body bg-dark d-flex justify-content-start m-0">
                 <a href="/kelola/tambah-umat" class="btn btn-success shadow-sm">
                     <i class="bi bi-plus-circle"></i> Tambah {{ $title }}
@@ -40,7 +51,8 @@
                                     <td class="text-center align-middle">{{ $loop->iteration }}</td>
                                     <td class="text-center align-middle">{{ $row->nik }}</td>
                                     <td class="text-center align-middle">{{ $row->nama_lengkap }}</td>
-                                    <td class="text-center align-middle">{{ \Carbon\Carbon::parse($row->tanggal_lahir)->format('d-m-Y') }}</td>
+                                    <td class="text-center align-middle">
+                                        {{ \Carbon\Carbon::parse($row->tanggal_lahir)->format('d-m-Y') }}</td>
                                     <td class="text-center align-middle">{{ $row->jenis_kelamin }}</td>
                                     <td class="text-center align-middle">{{ $row->kub->nama_kub }}</td>
                                     <td class="text-center align-middle">{{ $row->kub->wilayah->nama_wilayah }}</td>

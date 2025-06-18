@@ -14,6 +14,17 @@
             <div class="card-header bg-secondary text-white">
                 <h2 class="text-center mb-0">Daftar {{ $title }}</h2>
             </div>
+            @if (session('error'))
+                <div class="alert alert-danger text-center">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="alert alert-success text-center">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="card-body bg-dark d-flex justify-content-start m-0">
                 <a href="/kelola/tambah-kub" class="btn btn-success shadow-sm">
                     <i class="bi bi-plus-circle"></i> Tambah {{ $title }}
