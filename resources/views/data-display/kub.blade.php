@@ -9,55 +9,130 @@
 @endsection
 
 @section('content')
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f6fa;
+        }
+
+        .card-header {
+            background-color: #212d5a !important;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.4rem;
+        }
+
+        .alert {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+            font-weight: 600;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            border: none;
+            font-weight: 500;
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border: none;
+            font-weight: 500;
+        }
+
+        .btn-danger:hover {
+            background-color: #bd2130;
+        }
+
+        .table th {
+            background-color: #e8ebf0;
+            color: #212529;
+            font-weight: 600;
+        }
+
+        .table td,
+        .table th {
+            vertical-align: middle !important;
+            text-align: center;
+        }
+
+        .table-striped>tbody>tr:nth-of-type(odd) {
+            background-color: #f9f9f9;
+        }
+
+        .action-buttons .btn {
+            min-width: 90px;
+        }
+    </style>
+
     <div class="container-fluid py-4">
         <div class="card shadow-lg border-0 mt-5">
-            <div class="card-header bg-secondary text-white">
-                <h2 class="text-center mb-0">Daftar {{ $title }}</h2>
+            <div class="card-header text-center">
+                Daftar {{ $title }}
             </div>
+
             @if (session('error'))
-                <div class="alert alert-danger text-center">
+                <div class="alert alert-danger text-center mt-3">
                     {{ session('error') }}
                 </div>
             @endif
 
             @if (session('success'))
-                <div class="alert alert-success text-center">
+                <div class="alert alert-success text-center mt-3">
                     {{ session('success') }}
                 </div>
             @endif
-            <div class="card-body bg-dark d-flex justify-content-start m-0">
+
+            <div class="card-body bg-white d-flex justify-content-start py-3 px-4">
                 <a href="/kelola/tambah-kub" class="btn btn-success shadow-sm">
                     <i class="bi bi-plus-circle"></i> Tambah {{ $title }}
                 </a>
             </div>
+
             <div class="card-body bg-light p-0">
                 <div class="table-responsive">
-                    <table class="table table-bordered m-0">
-                        <thead class="table-secondary">
+                    <table class="table table-bordered table-striped m-0">
+                        <thead>
                             <tr>
-                                <th class="text-center align-middle">No</th>
-                                <th class="text-center align-middle">Nama KUB</th>
-                                <th class="text-center align-middle">Ketua KUB</th>
-                                <th class="text-center align-middle">Nama Wilayah</th>
-                                <th class="text-center align-middle">Jumlah Anggota</th>
-                                <th class="text-center align-middle">Aksi</th>
+                                <th>No</th>
+                                <th>Nama KUB</th>
+                                <th>Ketua KUB</th>
+                                <th>Nama Wilayah</th>
+                                <th>Jumlah Anggota</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($kub as $index => $row)
                                 <tr>
-                                    <td class="text-center align-middle">{{ $loop->iteration }}</td>
-                                    <td class="text-center align-middle">{{ $row->nama_kub }}</td>
-                                    <td class="text-center align-middle">{{ $row->ketua_kub }}</td>
-                                    <td class="text-center align-middle">{{ $row->wilayah->nama_wilayah }}</td>
-                                    <td class="text-center align-middle">{{ $row->jumlah_anggota }}</td>
-                                    <td class="d-flex justify-content-center align-items-center">
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $row->nama_kub }}</td>
+                                    <td>{{ $row->ketua_kub }}</td>
+                                    <td>{{ $row->wilayah->nama_wilayah }}</td>
+                                    <td>{{ $row->jumlah_anggota }}</td>
+                                    <td class="d-flex justify-content-center align-items-center gap-2 action-buttons">
                                         <a href="/kelola/edit-kub/{{ $row->id_kub }}"
-                                            class="btn btn-sm btn-warning text-dark m-1">
+                                            class="btn btn-sm btn-warning text-dark">
                                             <i class="bi bi-pencil"></i> Edit
                                         </a>
                                         <a href="/kelola/delete-kub/{{ $row->id_kub }}"
-                                            class="btn btn-sm btn-danger text-dark m-1"
+                                            class="btn btn-sm btn-danger text-white"
                                             onclick="return confirm('Yakin ingin menghapus?')">
                                             <i class="bi bi-trash"></i> Hapus
                                         </a>
@@ -65,7 +140,8 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="text-center text-muted py-3">Tidak ada {{ $title }}.
+                                    <td colspan="6" class="text-center text-muted py-3">
+                                        Tidak ada {{ $title }}.
                                     </td>
                                 </tr>
                             @endforelse
