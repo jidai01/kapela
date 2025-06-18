@@ -55,9 +55,9 @@ class SakramenController extends Controller
         return redirect('kelola/data-sakramen');
     }
 
-    public function delete($id): RedirectResponse
-    {
-        Sakramen::where('id_sakramen', $id)->delete();
-        return redirect('kelola/data-sakramen');
-    }
+    // public function delete($id): RedirectResponse
+    // {
+    //     Sakramen::where('id_sakramen', $id)->delete();
+    //     return redirect('kelola/data-sakramen');
+    // }
 }

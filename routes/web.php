@@ -70,7 +70,7 @@ Route::get('/kelola/tambah-sakramen', [SakramenController::class, 'tambah'])->mi
 Route::post('/kelola/kirim-sakramen', [SakramenController::class, 'kirim'])->middleware(CekLogin::class);
 Route::get('/kelola/edit-sakramen/{id}', [SakramenController::class, 'edit'])->middleware(CekLogin::class);
 Route::post('/kelola/update-sakramen', [SakramenController::class, 'update'])->middleware(CekLogin::class);
-Route::get('/kelola/delete-sakramen/{id}', [SakramenController::class, 'delete'])->middleware(CekLogin::class);
+// Route::get('/kelola/delete-sakramen/{id}', [SakramenController::class, 'delete'])->middleware(CekLogin::class);
 
 // Data Umat
 Route::get('/kelola/data-umat', [UmatController::class, 'index'])->middleware(CekLogin::class);

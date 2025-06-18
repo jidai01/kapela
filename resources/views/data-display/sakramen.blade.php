@@ -128,11 +128,11 @@
                                             class="btn btn-sm btn-warning text-dark">
                                             <i class="bi bi-pencil"></i> Edit
                                         </a>
-                                        <a href="/kelola/delete-sakramen/{{ $row->id_sakramen }}"
+                                        {{-- <a href="/kelola/delete-sakramen/{{ $row->id_sakramen }}"
                                             class="btn btn-sm btn-danger text-white"
                                             onclick="return confirm('Yakin ingin menghapus?')">
                                             <i class="bi bi-trash"></i> Hapus
-                                        </a>
+                                        </a> --}}
                                     </td>
                                 </tr>
                             @empty
