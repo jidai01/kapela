@@ -103,7 +103,7 @@
                     <h5 class="text-center">📢 PENGUMUMAN</h5>
                     <ul class="list-group mt-3">
                         @if ($pengumuman->isEmpty())
-                            <li class="list-group-item text-center text-muted">Tidak ada pengumuman.</li>
+                            <li class="list-group-item text-center text-muted">Belum ada pengumuman.</li>
                         @else
                             @foreach ($pengumuman as $item)
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -140,7 +140,7 @@
         <div class="container my-5">
             <h5 class="text-center mb-4">📰 BERITA</h5>
             @if ($berita->isEmpty())
-                <p class="text-center text-muted">Tidak ada berita.</p>
+                <p class="text-center text-muted">Belum ada berita.</p>
             @else
                 @foreach ($berita as $item)
                     <div class="row mb-4 shadow-sm bg-white rounded p-3">
