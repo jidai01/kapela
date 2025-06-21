@@ -102,19 +102,23 @@
                 <div class="col-md-6">
                     <h5 class="text-center">📢 PENGUMUMAN</h5>
                     <ul class="list-group mt-3">
-                        @foreach ($pengumuman as $item)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <a href="/pengumuman/{{ $item->slug }}"
-                                        class="text-decoration-none text-primary fw-semibold">
-                                        {{ $item->judul_pengumuman }}
-                                    </a>
-                                    <div class="small text-muted">
-                                        {{ \Carbon\Carbon::parse($item->tanggal_terbit)->format('d F Y') }}
+                        @if ($pengumuman->isEmpty())
+                            <li class="list-group-item text-center text-muted">Tidak ada pengumuman.</li>
+                        @else
+                            @foreach ($pengumuman as $item)
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <a href="/pengumuman/{{ $item->slug }}"
+                                            class="text-decoration-none text-primary fw-semibold">
+                                            {{ $item->judul_pengumuman }}
+                                        </a>
+                                        <div class="small text-muted">
+                                            {{ \Carbon\Carbon::parse($item->tanggal_terbit)->format('d F Y') }}
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        @endforeach
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
 
@@ -135,19 +139,23 @@
         {{-- ===== BERITA ===== --}}
         <div class="container my-5">
             <h5 class="text-center mb-4">📰 BERITA</h5>
-            @foreach ($berita as $item)
-                <div class="row mb-4 shadow-sm bg-white rounded p-3">
-                    <div class="col-md-3">
-                        <img src="{{ asset('storage/' . $item->foto) }}" class="img-fluid rounded" alt="Foto Berita">
+            @if ($berita->isEmpty())
+                <p class="text-center text-muted">Tidak ada berita.</p>
+            @else
+                @foreach ($berita as $item)
+                    <div class="row mb-4 shadow-sm bg-white rounded p-3">
+                        <div class="col-md-3">
+                            <img src="{{ asset('storage/' . $item->foto) }}" class="img-fluid rounded" alt="Foto Berita">
+                        </div>
+                        <div class="col-md-9">
+                            <h6 class="text-dark">{{ $item->judul_berita }}</h6>
+                            <p class="text-muted">{{ Str::limit(strip_tags($item->isi_berita), 250, '...') }}</p>
+                            <a href="berita/{{ $item->slug }}" class="btn btn-outline-primary btn-sm px-3">Baca
+                                Selengkapnya</a>
+                        </div>
                     </div>
-                    <div class="col-md-9">
-                        <h6 class="text-dark">{{ $item->judul_berita }}</h6>
-                        <p class="text-muted">{{ Str::limit(strip_tags($item->isi_berita), 250, '...') }}</p>
-                        <a href="berita/{{ $item->slug }}" class="btn btn-outline-primary btn-sm px-3">Baca
-                            Selengkapnya</a>
-                    </div>
-                </div>
-            @endforeach
+                @endforeach
+            @endif
         </div>
 
     </div>
