@@ -65,7 +65,7 @@ class LaporanController extends Controller
         $pdf = Pdf::loadView('report-pdf/laporankegiatanwilayahpdf', compact('kegiatanwilayah', 'title'))
             ->setPaper('a4', 'landscape');
 
-        return $pdf->download('laporan_kegiatan_wilayah.pdf');
+        return $pdf->download('laporan_kegiatan_wilayah_' . Carbon::now()->format('d-m-Y') . '.pdf');
     }
 
     public function kegiatankub(Request $request)
@@ -120,7 +120,7 @@ class LaporanController extends Controller
         $pdf = Pdf::loadView('report-pdf/laporankegiatankubpdf', compact('kegiatankub', 'title'))
             ->setPaper('a4', 'landscape');
 
-        return $pdf->download('laporan_kegiatan_kub.pdf');
+        return $pdf->download('laporan_kegiatan_kub_' . Carbon::now()->format('d-m-Y') . '.pdf');
     }
 
     public function penerimaansakramen(Request $request)
@@ -173,6 +173,6 @@ class LaporanController extends Controller
         $pdf = Pdf::loadView('report-pdf/laporanpenerimaansakramenpdf', compact('penerimaansakramen', 'title'))
             ->setPaper('a4', 'landscape');
 
-        return $pdf->download('laporan_penerimaan_sakramen.pdf');
+        return $pdf->download('laporan_penerimaan_sakramen_' . Carbon::now()->format('d-m-Y') . '.pdf');
     }
 }
