@@ -125,13 +125,13 @@ class PenerimaanSakramenController extends Controller
                 case 1:
                     $umat->status_baptis = $status;
                     break;
-                case 3:
+                case 2:
                     $umat->status_komuni = $status;
                     break;
-                case 4:
+                case 3:
                     $umat->status_krisma = $status;
                     break;
-                case 5:
+                case 4:
                     $umat->status_nikah = $status;
                     break;
             }

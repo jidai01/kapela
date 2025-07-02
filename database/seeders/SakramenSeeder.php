@@ -11,12 +11,12 @@ class SakramenSeeder extends Seeder
     {
         $sakramenList = [
             ['nama_sakramen' => 'Baptis'],
-            ['nama_sakramen' => 'Tobat'],
+            // ['nama_sakramen' => 'Tobat'],
             ['nama_sakramen' => 'Ekaristi'],
             ['nama_sakramen' => 'Krisma'],
             ['nama_sakramen' => 'Perkawinan'],
-            ['nama_sakramen' => 'Imamat'],
-            ['nama_sakramen' => 'Pengurapan Orang Sakit'],
+            // ['nama_sakramen' => 'Imamat'],
+            // ['nama_sakramen' => 'Pengurapan Orang Sakit'],
         ];
 
         foreach ($sakramenList as $data) {
