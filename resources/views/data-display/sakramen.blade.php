@@ -102,10 +102,10 @@
                 </div>
             @endif
 
-            <div class="card-body bg-white d-flex justify-content-start py-3 px-4">
-                <a href="/kelola/tambah-sakramen" class="btn btn-success shadow-sm">
+            <div class="card-body bg-white d-flex justify-content-start py-4 px-4">
+                {{-- <a href="/kelola/tambah-sakramen" class="btn btn-success shadow-sm">
                     <i class="bi bi-plus-circle"></i> Tambah {{ $title }}
-                </a>
+                </a> --}}
             </div>
 
             <div class="card-body bg-light p-0">
@@ -115,7 +115,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Sakramen</th>
-                                <th>Aksi</th>
+                                {{-- <th>Aksi</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -123,17 +123,17 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $row->nama_sakramen }}</td>
-                                    <td class="d-flex justify-content-center gap-2 btn-action-group">
+                                    {{-- <td class="d-flex justify-content-center gap-2 btn-action-group">
                                         <a href="/kelola/edit-sakramen/{{ $row->id_sakramen }}"
                                             class="btn btn-sm btn-warning text-dark">
                                             <i class="bi bi-pencil"></i> Edit
                                         </a>
-                                        {{-- <a href="/kelola/delete-sakramen/{{ $row->id_sakramen }}"
+                                        <a href="/kelola/delete-sakramen/{{ $row->id_sakramen }}"
                                             class="btn btn-sm btn-danger text-white"
                                             onclick="return confirm('Yakin ingin menghapus?')">
                                             <i class="bi bi-trash"></i> Hapus
-                                        </a> --}}
-                                    </td>
+                                        </a>
+                                    </td> --}}
                                 </tr>
                             @empty
                                 <tr>

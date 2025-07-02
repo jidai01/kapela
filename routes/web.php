@@ -96,10 +96,10 @@ Route::middleware([CekLogin::class])->group(function () {
 
           // Data Sakramen
           Route::get('/data-sakramen', [SakramenController::class, 'index']);
-          Route::get('/tambah-sakramen', [SakramenController::class, 'tambah']);
-          Route::post('/kirim-sakramen', [SakramenController::class, 'kirim']);
-          Route::get('/edit-sakramen/{id}', [SakramenController::class, 'edit']);
-          Route::post('/update-sakramen', [SakramenController::class, 'update']);
+          // Route::get('/tambah-sakramen', [SakramenController::class, 'tambah']);
+          // Route::post('/kirim-sakramen', [SakramenController::class, 'kirim']);
+          // Route::get('/edit-sakramen/{id}', [SakramenController::class, 'edit']);
+          // Route::post('/update-sakramen', [SakramenController::class, 'update']);
           // Route::get('/delete-sakramen/{id}', [SakramenController::class, 'delete']);
           // Delete sakramen dinonaktifkan untuk menjaga keutuhan data sakramen
 
