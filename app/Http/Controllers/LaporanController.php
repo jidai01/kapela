@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\KegiatanKub;
 use App\Models\KegiatanWilayah;
 use App\Models\PenerimaanSakramen;
@@ -10,6 +11,7 @@ use App\Models\Kub;
 use App\Models\Wilayah;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
+use ZipArchive;
 
 class LaporanController extends Controller
 {
@@ -62,10 +64,36 @@ class LaporanController extends Controller
             ->orderBy('tanggal_kegiatan', 'desc')
             ->get();
 
-        $pdf = Pdf::loadView('report-pdf/laporankegiatanwilayahpdf', compact('kegiatanwilayah', 'title'))
-            ->setPaper('a4', 'landscape');
+        $chunks = $kegiatanwilayah->chunk(100);
 
-        return $pdf->download('laporan_kegiatan_wilayah_' . Carbon::now()->format('d-m-Y') . '.pdf');
+        Storage::makeDirectory('temp');
+
+        $zipFilename = 'laporan_kegiatan_wilayah_' . Carbon::now()->format('d-m-Y_His') . '.zip';
+        $zipPath = storage_path('app/public/' . $zipFilename);
+        $zip = new ZipArchive;
+
+        if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
+            foreach ($chunks as $index => $chunk) {
+                $filename = 'laporan_kegiatan_wilayah_' . ($index + 1) . '.pdf';
+
+                $pdf = Pdf::loadView('report-pdf.laporankegiatanwilayahpdf', [
+                    'kegiatanwilayah' => $chunk,
+                    'title' => $title,
+                ])->setPaper('a4', 'landscape');
+
+                $pdfPath = storage_path('app/temp' . $filename);
+                file_put_contents($pdfPath, $pdf->output());
+
+                $zip->addFile($pdfPath, $filename);
+            }
+
+            $zip->close();
+            Storage::deleteDirectory('temp');
+
+            return response()->download($zipPath)->deleteFileAfterSend(true);
+        } else {
+            return response()->json(['error' => 'Gagal membuat file ZIP.'], 500);
+        }
     }
 
     public function kegiatankub(Request $request)
@@ -117,10 +145,36 @@ class LaporanController extends Controller
             ->orderBy('tanggal_kegiatan', 'desc')
             ->get();
 
-        $pdf = Pdf::loadView('report-pdf/laporankegiatankubpdf', compact('kegiatankub', 'title'))
-            ->setPaper('a4', 'landscape');
+        $chunks = $kegiatankub->chunk(100);
 
-        return $pdf->download('laporan_kegiatan_kub_' . Carbon::now()->format('d-m-Y') . '.pdf');
+        Storage::makeDirectory('temp');
+
+        $zipFilename = 'laporan_kegiatan_kub_' . Carbon::now()->format('d-m-Y_His') . '.zip';
+        $zipPath = storage_path('app/public/' . $zipFilename);
+        $zip = new ZipArchive;
+
+        if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
+            foreach ($chunks as $index => $chunk) {
+                $filename = 'laporan_kegiatan_kub_' . ($index + 1) . '.pdf';
+
+                $pdf = Pdf::loadView('report-pdf.laporankegiatankubpdf', [
+                    'kegiatankub' => $chunk,
+                    'title' => $title,
+                ])->setPaper('a4', 'landscape');
+
+                $pdfPath = storage_path('app/temp' . $filename);
+                file_put_contents($pdfPath, $pdf->output());
+
+                $zip->addFile($pdfPath, $filename);
+            }
+
+            $zip->close();
+            Storage::deleteDirectory('temp');
+
+            return response()->download($zipPath)->deleteFileAfterSend(true);
+        } else {
+            return response()->json(['error' => 'Gagal membuat file ZIP.'], 500);
+        }
     }
 
     public function penerimaansakramen(Request $request)
@@ -170,9 +224,36 @@ class LaporanController extends Controller
             ->orderBy('tanggal_penerimaan_sakramen', 'desc')
             ->get();
 
-        $pdf = Pdf::loadView('report-pdf/laporanpenerimaansakramenpdf', compact('penerimaansakramen', 'title'))
-            ->setPaper('a4', 'landscape');
+        $chunks = $penerimaansakramen->chunk(100);
 
-        return $pdf->download('laporan_penerimaan_sakramen_' . Carbon::now()->format('d-m-Y') . '.pdf');
+        Storage::makeDirectory('temp');
+
+        $zipFilename = 'laporan_penerimaan_sakramen_' . Carbon::now()->format('d-m-Y_His') . '.zip';
+        $zipPath = storage_path('app/public/' . $zipFilename);
+        $zip = new ZipArchive;
+
+        if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
+            foreach ($chunks as $index => $chunk) {
+                $filename = 'laporan_penerimaan_sakramen_' . ($index + 1) . '.pdf';
+
+                $pdf = Pdf::loadView('report-pdf.laporanpenerimaansakramenpdf', [
+                    'penerimaansakramen' => $chunk,
+                    'title' => $title,
+                ])->setPaper('a4', 'landscape');
+
+                $pdfPath = storage_path('app/temp' . $filename);
+                file_put_contents($pdfPath, $pdf->output());
+
+                $zip->addFile($pdfPath, $filename);
+            }
+
+            $zip->close();
+
+            Storage::deleteDirectory('temp');
+
+            return response()->download($zipPath)->deleteFileAfterSend(true);
+        } else {
+            return response()->json(['error' => 'Gagal membuat file ZIP.'], 500);
+        }
     }
 }

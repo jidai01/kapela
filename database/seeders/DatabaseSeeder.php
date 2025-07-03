@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
         // Generate data wilayah dan relasi terkait
         Wilayah::factory()->count(5)->create()->each(function ($wilayah) use ($sakramens) {
             // Kegiatan Wilayah
-            KegiatanWilayah::factory()->count(200)->create([
+            KegiatanWilayah::factory()->count(600)->create([
                 'id_wilayah' => $wilayah->id_wilayah,
             ]);
 
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
                 'id_wilayah' => $wilayah->id_wilayah,
             ])->each(function ($kub) use ($wilayah, $sakramens) {
                 // Kegiatan KUB
-                KegiatanKub::factory()->count(40)->create([
+                KegiatanKub::factory()->count(120)->create([
                     'id_kub' => $kub->id_kub,
                 ]);
 
