@@ -12,7 +12,9 @@ class BeritaController extends Controller
     public function index()
     {
         $title = "Data Berita";
-        $berita = Berita::all();
+        $berita = Berita::orderBy('tanggal_terbit', 'desc')
+            ->orderBy('id_berita', 'desc')
+            ->get();
         return view('data-display/berita', compact('title', 'berita'));
     }
 

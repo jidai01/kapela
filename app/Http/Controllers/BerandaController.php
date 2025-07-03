@@ -12,7 +12,7 @@ class BerandaController extends Controller
         $title = "Beranda";
         $content = "Halaman Beranda";
         $pengumuman = Pengumuman::orderBy('tanggal_terbit', 'desc')->limit(3)->get();
-        $berita = Berita::orderBy('id_berita', 'desc')->limit(3)->get();
+        $berita = Berita::orderBy('tanggal_terbit', 'desc')->limit(3)->get();
         return view('view-umum/beranda', compact('title', 'content', 'pengumuman', 'berita'));
     }
 

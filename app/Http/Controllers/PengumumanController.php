@@ -11,7 +11,9 @@ class PengumumanController extends Controller
     public function index()
     {
         $title = "Data Pengumuman";
-        $pengumuman = Pengumuman::all();
+        $pengumuman = Pengumuman::orderBy('tanggal_terbit', 'desc')
+            ->orderBy('id_pengumuman', 'desc')
+            ->get();
         return view('data-display/pengumuman', compact('title', 'pengumuman'));
     }
 

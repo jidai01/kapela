@@ -9,8 +9,8 @@ class BeritaUmumController extends Controller
     public function index()
     {
         $title = "Berita";
-        $berita = Berita::orderBy('id_berita', 'desc')
-            ->orderBy('tanggal_terbit', 'desc')
+        $berita = Berita::orderBy('tanggal_terbit', 'desc')
+            ->orderBy('id_berita', 'desc')
             ->paginate(5);
         return view('view-umum/berita/berita', compact('title', 'berita'));
     }
