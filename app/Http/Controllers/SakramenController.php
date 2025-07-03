@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sakramen;
-use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
+// use Illuminate\Http\Request;
+// use Illuminate\Http\RedirectResponse;
 
 class SakramenController extends Controller
 {
@@ -26,9 +26,7 @@ class SakramenController extends Controller
     //     $validasi = $request->validate([
     //         'nama_sakramen' => 'required|unique:sakramen,nama_sakramen',
     //     ]);
-
     //     Sakramen::create($validasi);
-
     //     return redirect('kelola/data-sakramen');
     // }
 
@@ -36,22 +34,17 @@ class SakramenController extends Controller
     // {
     //     $title = "Edit Data Sakramen";
     //     $sakramen = Sakramen::find($id);
-
     //     return view('data-edit/edit-sakramen', compact('title', 'sakramen'));
     // }
 
     // public function update(Request $request): RedirectResponse
     // {
     //     $id_sakramen = $request->id_sakramen;
-
     //     $validasi = $request->validate([
     //         'nama_sakramen' => 'required|unique:sakramen,nama_sakramen,' . $id_sakramen . ',id_sakramen',
     //     ]);
-
     //     $sakramen = Sakramen::where('id_sakramen', $id_sakramen)->firstOrFail();
-
     //     $sakramen->update($validasi);
-
     //     return redirect('kelola/data-sakramen');
     // }
 

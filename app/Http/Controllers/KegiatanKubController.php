@@ -33,9 +33,7 @@ class KegiatanKubController extends Controller
         ], [
             'id_kub.required' => 'The nama kub field is required',
         ]);
-
         KegiatanKub::create($validasi);
-
         return redirect('kelola/data-kegiatan-kub');
     }
 
@@ -43,16 +41,13 @@ class KegiatanKubController extends Controller
     {
         $title = "Edit Data Kegiatan KUB";
         $kegiatankub = KegiatanKub::find($id);
-
         $kublist = Kub::all();
-
         return view('data-edit/edit-kegiatankub', compact('title', 'kegiatankub', 'kublist'));
     }
 
     public function update(Request $request): RedirectResponse
     {
         $id_kegiatan_kub = $request->id_kegiatan_kub;
-
         $validasi = $request->validate([
             'nama_kegiatan_kub' => 'required|string',
             'id_kub' => 'required',
@@ -61,11 +56,8 @@ class KegiatanKubController extends Controller
         ], [
             'id_kub.required' => 'The nama kub field is required',
         ]);
-
         $kegiatankub = KegiatanKub::where('id_kegiatan_kub', $id_kegiatan_kub)->firstOrFail();
-
         $kegiatankub->update($validasi);
-
         return redirect('kelola/data-kegiatan-kub');
     }
 

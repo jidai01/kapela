@@ -42,11 +42,8 @@ class PenerimaanSakramenController extends Controller
             'nik.required' => 'The nama umat field is required',
             'nik.unique' => 'The data for this sakramen and umat is already exist',
         ]);
-
         PenerimaanSakramen::create($validasi);
-
         $this->updateStatusUmat($request->nik, $request->id_sakramen);
-
         return redirect('kelola/data-penerimaan-sakramen');
     }
 
@@ -56,14 +53,12 @@ class PenerimaanSakramenController extends Controller
         $penerimaansakramen = PenerimaanSakramen::find($id);
         $sakramenlist = Sakramen::all();
         $umatlist = Umat::all();
-
         return view('data-edit/edit-penerimaansakramen', compact('title', 'penerimaansakramen', 'sakramenlist', 'umatlist'));
     }
 
     public function update(Request $request): RedirectResponse
     {
         $id = $request->id;
-
         $validasi = $request->validate([
             'id_sakramen' => 'required',
             'nik' => [
@@ -78,49 +73,36 @@ class PenerimaanSakramenController extends Controller
             'nik.required' => 'The nama umat field is required',
             'nik.unique' => 'The data for this sakramen and umat is already exist',
         ]);
-
         $penerimaansakramen = PenerimaanSakramen::findOrFail($id);
         $penerimaansakramen->update($validasi);
-
         $this->updateStatusUmat($request->nik, $request->id_sakramen);
-
         return redirect('kelola/data-penerimaan-sakramen');
     }
 
     public function delete($id): RedirectResponse
     {
         $penerimaan = PenerimaanSakramen::find($id);
-
         if ($penerimaan) {
             $nik = $penerimaan->nik;
-
             $penerimaan->delete();
-
             $this->updateStatusUmat($nik);
         }
-
         return redirect('kelola/data-penerimaan-sakramen');
     }
 
     private function updateStatusUmat($nik, $id_sakramen = null)
     {
         $umat = Umat::where('nik', $nik)->first();
-
         if (!$umat) {
             return;
         }
-
         $semuaSakramen = Sakramen::all();
-
         foreach ($semuaSakramen as $sakramen) {
             $id = $sakramen->id_sakramen;
-
             $hasPenerimaan = PenerimaanSakramen::where('nik', $nik)
                 ->where('id_sakramen', $id)
                 ->exists();
-
             $status = $hasPenerimaan ? 'Sudah' : 'Belum';
-
             switch ((int)$id) {
                 case 1:
                     $umat->status_baptis = $status;
@@ -136,7 +118,6 @@ class PenerimaanSakramenController extends Controller
                     break;
             }
         }
-
         $umat->save();
     }
 }

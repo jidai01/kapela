@@ -33,9 +33,7 @@ class KegiatanWilayahController extends Controller
         ], [
             'id_wilayah.required' => 'The nama wilayah field is required',
         ]);
-
         KegiatanWilayah::create($validasi);
-
         return redirect('kelola/data-kegiatan-wilayah');
     }
 
@@ -43,16 +41,13 @@ class KegiatanWilayahController extends Controller
     {
         $title = "Edit Data Kegiatan Wilayah";
         $kegiatanwilayah = KegiatanWilayah::find($id);
-
         $wilayahlist = Wilayah::all();
-
         return view('data-edit/edit-kegiatanwilayah', compact('title', 'kegiatanwilayah', 'wilayahlist'));
     }
 
     public function update(Request $request): RedirectResponse
     {
         $id_kegiatan_wilayah = $request->id_kegiatan_wilayah;
-
         $validasi = $request->validate([
             'nama_kegiatan_wilayah' => 'required|string',
             'id_wilayah' => 'required',
@@ -61,11 +56,8 @@ class KegiatanWilayahController extends Controller
         ], [
             'id_wilayah.required' => 'The nama wilayah field is required',
         ]);
-
         $kegiatanwilayah = KegiatanWilayah::where('id_kegiatan_wilayah', $id_kegiatan_wilayah)->firstOrFail();
-
         $kegiatanwilayah->update($validasi);
-
         return redirect('kelola/data-kegiatan-wilayah');
     }
 

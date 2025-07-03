@@ -28,9 +28,7 @@ class PengumumanController extends Controller
             'isi_pengumuman' => 'required',
             'tanggal_terbit' => 'required|date',
         ]);
-
         Pengumuman::create($validasi);
-
         return redirect('kelola/data-pengumuman');
     }
 
@@ -38,24 +36,19 @@ class PengumumanController extends Controller
     {
         $title = "Edit Data Pengumuman";
         $pengumuman = Pengumuman::find($id);
-
         return view('data-edit/edit-pengumuman', compact('title', 'pengumuman'));
     }
 
     public function update(Request $request): RedirectResponse
     {
         $id_pengumuman = $request->id_pengumuman;
-
         $validasi = $request->validate([
             'judul_pengumuman' => 'required|unique:pengumuman,judul_pengumuman,' . $id_pengumuman . ',id_pengumuman',
             'isi_pengumuman' => 'required',
             'tanggal_terbit' => 'required|date',
         ]);
-
         $pengumuman = Pengumuman::where('id_pengumuman', $id_pengumuman)->firstOrFail();
-
         $pengumuman->update($validasi);
-
         return redirect('kelola/data-pengumuman');
     }
 

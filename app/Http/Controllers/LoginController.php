@@ -21,12 +21,9 @@ class LoginController extends Controller
             'password' => ['required'],
             'role' => ['required'],
         ]);
-
         $credentials = $request->only('email', 'password');
-
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
             $user = Auth::user();
             if ($user->role === $request->role) {
                 switch ($user->role) {
@@ -43,13 +40,11 @@ class LoginController extends Controller
                         ]);
                 }
             }
-
             Auth::logout();
             return back()->withErrors([
                 'role' => 'Role tidak sesuai dengan akun.',
             ])->onlyInput('email');
         }
-
         return back()->withErrors([
             'email' => 'Email atau password salah.',
         ])->onlyInput('email');
@@ -58,11 +53,8 @@ class LoginController extends Controller
     function logout(Request $request): RedirectResponse
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 }

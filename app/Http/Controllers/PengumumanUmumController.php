@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
-use Illuminate\Http\Request;
 
 class PengumumanUmumController extends Controller
 {
@@ -20,11 +19,9 @@ class PengumumanUmumController extends Controller
     {
         $title = "Detail Pengumuman";
         $pengumuman = Pengumuman::where('slug', $slug)->first();
-
         if (!$pengumuman) {
             abort(404, 'Pengumuman tidak ditemukan');
         }
-
         return view('view-umum/pengumuman/detail-pengumuman', compact('title', 'pengumuman'));
     }
 }

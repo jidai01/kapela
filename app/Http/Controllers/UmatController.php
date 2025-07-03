@@ -21,10 +21,8 @@ class UmatController extends Controller
     {
         $title = "Detail Data Umat";
         $umat = Umat::find($id);
-
         $kublist = Kub::all();
         $wilayahlist = Wilayah::all();
-
         return view('data-display/detail-umat', compact('title',  'umat', 'kublist', 'wilayahlist'));
     }
 
@@ -54,26 +52,21 @@ class UmatController extends Controller
         ], [
             'id_kub.required' => 'The field nama KUB is required',
         ]);
-
         if ($request->nik === '0000000000000000') {
             $lastNik = Umat::where('nik', '>=', '1000000000000000')
                 ->orderBy('nik', 'desc')
                 ->first();
-
             if ($lastNik) {
                 $newNik = strval((int)$lastNik->nik + 1);
             } else {
                 $newNik = '1000000000000000';
             }
-
             $validasi['nik'] = $newNik;
         } else {
             $validasi['nik'] = $request->nik;
         }
-
         $kub = Kub::findOrFail($request->id_kub);
         $validasi['id_wilayah'] = $kub->id_wilayah;
-
         $validasi['tanggal_lahir'] = $validasi['tanggal_lahir'] ?? null;
         $validasi['alamat'] = $validasi['alamat'] ?? '-';
         $validasi['nomor_telepon'] = $validasi['nomor_telepon'] ?? '-';
@@ -82,9 +75,7 @@ class UmatController extends Controller
         $validasi['status_komuni'] = $validasi['status_komuni'] ?? 'Belum';
         $validasi['status_krisma'] = $validasi['status_krisma'] ?? 'Belum';
         $validasi['status_nikah'] = $validasi['status_nikah'] ?? 'Belum';
-
         Umat::create($validasi);
-
         return redirect('kelola/data-umat');
     }
 
@@ -92,17 +83,14 @@ class UmatController extends Controller
     {
         $title = "Edit Data Umat";
         $umat = Umat::find($id);
-
         $kublist = Kub::all();
         $wilayahlist = Wilayah::all();
-
         return view('data-edit/edit-umat', compact('title', 'umat', 'kublist', 'wilayahlist'));
     }
 
     public function update(Request $request): RedirectResponse
     {
         $nik_lama = $request->nik_lama;
-
         $validasi = $request->validate([
             'nik' => 'required|digits:16',
             'nama_lengkap' => 'required',
@@ -119,18 +107,15 @@ class UmatController extends Controller
         ], [
             'id_kub.required' => 'The field nama KUB is required',
         ]);
-
         if ($request->nik === '0000000000000000') {
             $lastNik = Umat::where('nik', '>=', '1000000000000000')
                 ->orderBy('nik', 'desc')
                 ->first();
-
             if ($lastNik) {
                 $newNik = strval((int)$lastNik->nik + 1);
             } else {
                 $newNik = '1000000000000000';
             }
-
             $validasi['nik'] = $newNik;
         } else {
             if ($request->nik !== $nik_lama) {
@@ -139,13 +124,10 @@ class UmatController extends Controller
                     return back()->withErrors(['nik' => 'NIK sudah digunakan oleh pengguna lain.'])->withInput();
                 }
             }
-
             $validasi['nik'] = $request->nik;
         }
-
         $kub = Kub::findOrFail($request->id_kub);
         $validasi['id_wilayah'] = $kub->id_wilayah;
-
         $validasi['tanggal_lahir'] = $validasi['tanggal_lahir'] ?? null;
         $validasi['alamat'] = $validasi['alamat'] ?? '-';
         $validasi['nomor_telepon'] = $validasi['nomor_telepon'] ?? '-';
@@ -154,24 +136,19 @@ class UmatController extends Controller
         $validasi['status_komuni'] = $validasi['status_komuni'] ?? 'Belum';
         $validasi['status_krisma'] = $validasi['status_krisma'] ?? 'Belum';
         $validasi['status_nikah'] = $validasi['status_nikah'] ?? 'Belum';
-
         $umat = Umat::where('nik', $nik_lama)->firstOrFail();
         $umat->update($validasi);
-
         return redirect('kelola/data-umat');
     }
 
     public function delete($id): RedirectResponse
     {
         $umat = Umat::with('penerimaansakramen')->where('nik', $id)->firstOrFail();
-
         if ($umat->penerimaansakramen->count() > 0) {
             session()->flash('error', 'Tidak dapat menghapus Umat karena memiliki data penerimaan sakramen.');
             return redirect()->back();
         }
-
         $umat->delete();
-
         session()->flash('success', 'Data Umat berhasil dihapus.');
         return redirect('kelola/data-umat');
     }
