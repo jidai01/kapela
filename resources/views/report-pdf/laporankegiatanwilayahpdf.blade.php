@@ -7,33 +7,37 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
-            font-size: 12px;
-            background-color: #ffffff;
+            font-size: 11px;
             color: #212529;
-            padding: 30px;
+            margin: 20px;
+            padding: 0;
         }
 
         h2 {
             text-align: center;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             color: #1f2d5a;
-            margin-bottom: 5px;
+            margin-bottom: 2px;
         }
 
         .subtitle {
             text-align: center;
-            font-size: 12px;
+            font-size: 11px;
             color: #6c757d;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .divider {
-            height: 2px;
+            height: 1.5px;
             background-color: #1f2d5a;
-            width: 80px;
+            width: 60px;
             margin: 0 auto 20px auto;
         }
 
@@ -41,49 +45,46 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
-            font-size: 12px;
         }
 
         th,
         td {
             border: 1px solid #dee2e6;
-            padding: 8px 10px;
-            text-align: center;
+            padding: 6px 8px;
+            vertical-align: top;
         }
 
         th {
             background-color: #e9ecef;
-            color: #212529;
             font-weight: 600;
+            text-align: center;
         }
 
-        tr:nth-child(even) {
+        td {
+            text-align: left;
+        }
+
+        tr:nth-child(even) td {
             background-color: #f8f9fa;
         }
 
-        .empty-row {
+        .text-center {
             text-align: center;
-            font-style: italic;
+        }
+
+        .text-muted {
             color: #6c757d;
         }
 
         .footer {
-            margin-top: 30px;
+            margin-top: 40px;
             text-align: right;
-            font-size: 11px;
+            font-size: 10px;
             color: #999;
         }
 
-        @media print {
-            body {
-                margin: 0;
-            }
-
-            .footer {
-                position: fixed;
-                bottom: 10px;
-                right: 30px;
-            }
+        .page-break {
+            page-break-after: always;
         }
     </style>
 </head>
@@ -98,25 +99,25 @@
     <table>
         <thead>
             <tr>
-                <th>No</th>
-                <th>Nama Kegiatan Wilayah</th>
-                <th>Nama Wilayah</th>
-                <th>Deskripsi</th>
-                <th>Tanggal Kegiatan</th>
+                <th style="width: 5%;">No</th>
+                <th style="width: 25%;">Nama Kegiatan</th>
+                <th style="width: 20%;">Nama Wilayah</th>
+                <th style="width: 30%;">Deskripsi</th>
+                <th style="width: 20%;">Tanggal Kegiatan</th>
             </tr>
         </thead>
         <tbody>
             @forelse ($kegiatanwilayah as $index => $row)
                 <tr>
-                    <td>{{ $index + 1 }}</td>
+                    <td class="text-center">{{ $index + 1 }}</td>
                     <td>{{ $row->nama_kegiatan_wilayah }}</td>
                     <td>{{ $row->wilayah->nama_wilayah }}</td>
                     <td>{{ $row->deskripsi }}</td>
-                    <td>{{ \Carbon\Carbon::parse($row->tanggal_kegiatan)->format('d-m-Y') }}</td>
+                    <td class="text-center">{{ \Carbon\Carbon::parse($row->tanggal_kegiatan)->format('d-m-Y') }}</td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="5" class="empty-row">Tidak ada data kegiatan wilayah.</td>
+                    <td colspan="5" class="text-center text-muted"><em>Tidak ada data kegiatan wilayah.</em></td>
                 </tr>
             @endforelse
         </tbody>
