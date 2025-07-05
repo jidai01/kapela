@@ -12,7 +12,9 @@ class KegiatanWilayahController extends Controller
     public function index()
     {
         $title = "Data Kegiatan Wilayah";
-        $kegiatanwilayah = KegiatanWilayah::all();
+        $kegiatanwilayah = KegiatanWilayah::orderBy('tanggal_kegiatan', 'desc')
+            ->orderBy('id_kegiatan_wilayah', 'desc')
+            ->paginate(50);
         return view('data-display/kegiatanwilayah', compact('title', 'kegiatanwilayah'));
     }
 
@@ -34,7 +36,7 @@ class KegiatanWilayahController extends Controller
             'id_wilayah.required' => 'The nama wilayah field is required',
         ]);
         KegiatanWilayah::create($validasi);
-        return redirect('kelola/data-kegiatan-wilayah');
+        return redirect('kelola/data-kegiatan-wilayah')->with('success', 'Data Kegiatan Wilayah berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -58,12 +60,12 @@ class KegiatanWilayahController extends Controller
         ]);
         $kegiatanwilayah = KegiatanWilayah::where('id_kegiatan_wilayah', $id_kegiatan_wilayah)->firstOrFail();
         $kegiatanwilayah->update($validasi);
-        return redirect('kelola/data-kegiatan-wilayah');
+        return redirect('kelola/data-kegiatan-wilayah')->with('success', 'Data Kegiatan Wilayah berhasil diubah');
     }
 
     public function delete($id): RedirectResponse
     {
         KegiatanWilayah::where('id_kegiatan_wilayah', $id)->delete();
-        return redirect('kelola/data-kegiatan-wilayah');
+        return redirect('kelola/data-kegiatan-wilayah')->with('success', 'Data Kegiatan Wilayah berhasil dihapus');
     }
 }
