@@ -69,6 +69,6 @@
     </div>
 
     <div class="footer-bottom text-center py-2">
-        <small class="footerh6style2 text-white">© 2025 Kapela St. Agustinus Bello</small>
+        <small class="footerh6style2 text-white">&copy; {{ now()->year }} Kapela St. Agustinus Bello</small>
     </div>
 </footer>
