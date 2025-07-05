@@ -11,7 +11,9 @@ class UserController extends Controller
     public function index()
     {
         $title = "Data User";
-        $user = User::select('id_user', 'name', 'email', 'role')->get();
+        $user = User::select('id_user', 'name', 'email', 'role')
+            ->orderBy('name')
+            ->paginate(10);
         return view('data-display/user', compact('title', 'user'));
     }
 

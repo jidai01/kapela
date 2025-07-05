@@ -113,7 +113,7 @@
             </div>
 
             <div class="card-body bg-light p-0">
-                <div class="table-responsive">
+                <div class="table-responsive d-flex flex-column justify-content-center align-items-center">
                     <table class="table table-bordered table-striped m-0">
                         <thead>
                             <tr>
@@ -152,6 +152,9 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="mt-4">
+                        {{ $user->links() }}
+                    </div>
                 </div>
             </div>
         </div>
