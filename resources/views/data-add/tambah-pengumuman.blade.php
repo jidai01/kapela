@@ -86,10 +86,15 @@
 
             {{-- Success or error message --}}
             @if (session('error'))
-                <div class="alert alert-danger text-center">{{ session('error') }}</div>
+                <div class="alert alert-danger text-center mt-3">
+                    {{ session('error') }}
+                </div>
             @endif
+
             @if (session('success'))
-                <div class="alert alert-success text-center">{{ session('success') }}</div>
+                <div class="alert alert-success text-center mt-3">
+                    {{ session('success') }}
+                </div>
             @endif
 
             <form action="/kelola/kirim-pengumuman" method="post">
@@ -136,14 +141,17 @@
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script>
-        var quill = new Quill('#editor', {
-            theme: 'snow'
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+            var quill = new Quill('#editor', {
+                theme: 'snow'
+            });
 
-        var form = document.querySelector('form');
-        form.onsubmit = function() {
-            var isi = document.querySelector('input[name=isi_pengumuman]');
-            isi.value = quill.root.innerHTML;
-        };
+            var hiddenInput = document.querySelector('#isi_pengumuman');
+            hiddenInput.value = quill.root.innerHTML;
+
+            document.querySelector('form').onsubmit = function() {
+                hiddenInput.value = quill.root.innerHTML;
+            };
+        });
     </script>
 @endsection

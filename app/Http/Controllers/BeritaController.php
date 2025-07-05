@@ -14,7 +14,7 @@ class BeritaController extends Controller
         $title = "Data Berita";
         $berita = Berita::orderBy('tanggal_terbit', 'desc')
             ->orderBy('id_berita', 'desc')
-            ->get();
+            ->paginate(50);
         return view('data-display/berita', compact('title', 'berita'));
     }
 
@@ -35,7 +35,7 @@ class BeritaController extends Controller
         $path = $request->file('foto')->storePublicly('berita', 'public');
         $validasi['foto'] = $path;
         Berita::create($validasi);
-        return redirect('kelola/data-berita');
+        return redirect('kelola/data-berita')->with('success', 'Data Berita berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -63,7 +63,7 @@ class BeritaController extends Controller
             $validasi['foto'] = $path;
         }
         $berita->update($validasi);
-        return redirect('kelola/data-berita');
+        return redirect('kelola/data-berita')->with('success', 'Data Berita berhasil diubah.');
     }
 
     public function delete($id): RedirectResponse
@@ -73,6 +73,6 @@ class BeritaController extends Controller
             Storage::disk('public')->delete($berita->foto);
         }
         $berita->delete();
-        return redirect('kelola/data-berita');
+        return redirect('kelola/data-berita')->with('success', 'Data Berita berhasil dihapus.');
     }
 }

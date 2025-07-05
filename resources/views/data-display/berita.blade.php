@@ -120,22 +120,22 @@
                     <table class="table table-bordered table-striped m-0">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Judul Berita</th>
-                                <th>Isi Berita</th>
-                                <th>Slug</th>
-                                <th>Tanggal Terbit</th>
-                                <th>Foto</th>
-                                <th>Aksi</th>
+                                <th style="width: 5%">No</th>
+                                <th style="width: 20%">Judul Berita</th>
+                                <th style="width: 40%">Isi Berita</th>
+                                <th style="width: 10%">Tanggal Terbit</th>
+                                <th style="width: 10%">Foto</th>
+                                <th style="width: 15%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($berita as $index => $row)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ ($berita->currentPage() - 1) * $berita->perPage() + $loop->iteration }}</td>
                                     <td class="truncate" title="{{ $row->judul_berita }}">{{ $row->judul_berita }}</td>
-                                    <td class="truncate" title="{{ $row->isi_berita }}">{{ $row->isi_berita }}</td>
-                                    <td class="truncate" title="{{ $row->slug }}">{{ $row->slug }}</td>
+                                    <td class="truncate" title="{{ strip_tags($row->isi_berita) }}">
+                                        {{ \Illuminate\Support\Str::limit(strip_tags($row->isi_berita), 100) }}
+                                    </td>
                                     <td>{{ \Carbon\Carbon::parse($row->tanggal_terbit)->format('d-m-Y') }}</td>
                                     <td>
                                         <img class="img-thumbnail" width="60" height="60"
@@ -155,13 +155,16 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="text-center text-muted py-3">
+                                    <td colspan="6" class="text-center text-muted py-3">
                                         Tidak ada {{ $title }}.
                                     </td>
                                 </tr>
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-center mt-4">
+                        {{ $berita->links() }}
+                    </div>
                 </div>
             </div>
         </div>

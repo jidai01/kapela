@@ -9,10 +9,77 @@
 @endsection
 
 @section('content')
-    <div class="container d-flex justify-content-center align-items-start mt-5 my-2" style="min-height: 100vh;">
-        <div class="card shadow p-4" style="width: 100%; max-width: 600px;">
-            <h4 class="bg-dark text-light text-center mb-4 p-2 rounded">Form {{ $title }}</h4>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap');
 
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .form-card {
+            width: 100%;
+            max-width: 600px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+        }
+
+        .form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #212d5a;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 6px;
+        }
+
+        .btn-submit {
+            background-color: #212d5a;
+            color: #fff;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #f4f6fa;
+            color: #212d5a;
+        }
+
+        .btn-back {
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .ql-editor {
+            min-height: 200px;
+        }
+
+        .img-preview {
+            max-height: 200px;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+    </style>
+
+    <div class="container d-flex justify-content-center align-items-start mt-5 my-2" style="min-height: 100vh;">
+        <div class="form-card">
+            <div class="form-title">Form {{ $title }}</div>
+
+            {{-- Validation Errors --}}
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul class="mb-0">
@@ -23,14 +90,25 @@
                 </div>
             @endif
 
+            {{-- Flash Messages --}}
+            @if (session('error'))
+                <div class="alert alert-danger text-center">{{ session('error') }}</div>
+            @endif
+            @if (session('success'))
+                <div class="alert alert-success text-center">{{ session('success') }}</div>
+            @endif
+
             <form action="/kelola/update-berita" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                <div class="mb-1">
-                    <label class="form-label"><span class="text-danger">*</span><em class="text-muted"> (data wajib diisi)</em></label>
-                </div>
-
                 <input type="hidden" name="id_berita" value="{{ $berita->id_berita }}">
+
+                <div class="mb-2">
+                    <label class="form-label">
+                        <span class="text-danger">*</span>
+                        <em class="text-muted">(data wajib diisi)</em>
+                    </label>
+                </div>
 
                 <div class="mb-3">
                     <label for="judul_berita" class="form-label">Judul Berita<span class="text-danger">*</span></label>
@@ -40,19 +118,16 @@
 
                 <div class="mb-3">
                     <label for="isi_berita" class="form-label">Isi Berita<span class="text-danger">*</span></label>
-                    <div id="editor" style="height: 200px;">
-                        {!! old('isi_berita', $berita->isi_berita ?? '') !!}
-                    </div>
+                    <div id="editor">{!! old('isi_berita', $berita->isi_berita ?? '') !!}</div>
                     <input type="hidden" name="isi_berita" id="isi_berita">
                 </div>
 
                 <div class="mb-3">
                     <label for="foto" class="form-label">Foto<span class="text-danger">*</span></label>
-                    <input type="file" class="form-control mb-2" name="foto" placeholder="foto">
+                    <input type="file" class="form-control mb-2" name="foto" id="foto">
                     @if ($berita->foto)
-                        <p>Foto Saat Ini:</p>
-                        <img src="{{ asset('storage/' . $berita->foto) }}" class="img-fluid mb-3"
-                            style="max-height: 200px;">
+                        <p class="mt-2">Foto Saat Ini:</p>
+                        <img src="{{ asset('storage/' . $berita->foto) }}" class="img-fluid img-preview mb-3">
                     @endif
                 </div>
 
@@ -62,22 +137,30 @@
                         value="{{ old('tanggal_terbit', $berita->tanggal_terbit) }}" required>
                 </div>
 
-                <button type="submit" class="btn btn-dark w-100 mb-2"><i class="bi bi-save"></i> Simpan Perubahan</button>
-                <a href="/kelola/data-berita" class="btn btn-outline-secondary w-100"><i
-                        class="bi bi-arrow-return-left"></i> Kembali</a>
+                <button type="submit" class="btn btn-submit w-100 mb-3">
+                    <i class="bi bi-save"></i> Simpan Perubahan
+                </button>
+
+                <a href="/kelola/data-berita" class="btn btn-outline-secondary w-100 btn-back">
+                    <i class="bi bi-arrow-return-left"></i> Kembali
+                </a>
             </form>
         </div>
     </div>
+
+    {{-- Quill Editor --}}
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var quill = new Quill('#editor', {
                 theme: 'snow'
             });
-            var form = document.querySelector('form');
+
             var hiddenInput = document.querySelector('#isi_berita');
             hiddenInput.value = quill.root.innerHTML;
-            form.onsubmit = function() {
+
+            document.querySelector('form').onsubmit = function() {
                 hiddenInput.value = quill.root.innerHTML;
             };
         });

@@ -86,10 +86,15 @@
 
             {{-- Success or error message --}}
             @if (session('error'))
-                <div class="alert alert-danger text-center">{{ session('error') }}</div>
+                <div class="alert alert-danger text-center mt-3">
+                    {{ session('error') }}
+                </div>
             @endif
+
             @if (session('success'))
-                <div class="alert alert-success text-center">{{ session('success') }}</div>
+                <div class="alert alert-success text-center mt-3">
+                    {{ session('success') }}
+                </div>
             @endif
 
             <form action="/kelola/update-pengumuman" method="POST">
