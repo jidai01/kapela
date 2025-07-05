@@ -94,7 +94,7 @@ class LaporanController extends Controller
 
     public function kegiatankub(Request $request)
     {
-        $title = 'Kegiatan KUB';
+        $title = 'Laporan Kegiatan KUB';
         $id_kub = $request->input('id_kub');
         $tanggal_mulai = $request->input('tanggal_mulai');
         $tanggal_selesai = $request->input('tanggal_selesai');
@@ -110,7 +110,7 @@ class LaporanController extends Controller
                 }
             })
             ->latest('tanggal_kegiatan')
-            ->get();
+            ->paginate(50);
         $kub = Kub::all();
         return view('report-display/laporankegiatankub', compact('kegiatankub', 'title', 'kub'));
     }
@@ -140,21 +140,33 @@ class LaporanController extends Controller
         $zipPath = storage_path('app/public/' . $zipFilename);
         $zip = new ZipArchive;
         if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
+            $pdfPaths = [];
             foreach ($chunks as $index => $chunk) {
                 $filename = 'laporan_kegiatan_kub_' . ($index + 1) . '.pdf';
                 $pdf = Pdf::loadView('report-pdf.laporankegiatankubpdf', [
                     'kegiatankub' => $chunk,
                     'title' => $title,
                 ])->setPaper('a4', 'landscape');
-                $pdfPath = storage_path('app/temp' . $filename);
+                $pdfPath = storage_path('app/temp/' . $filename);
                 file_put_contents($pdfPath, $pdf->output());
                 $zip->addFile($pdfPath, $filename);
+                $pdfPaths[] = $pdfPath;
             }
             $zip->close();
-            Storage::deleteDirectory('temp');
-            return response()->download($zipPath)->deleteFileAfterSend(true);
+            register_shutdown_function(function () use ($pdfPaths, $zipPath) {
+                foreach ($pdfPaths as $file) {
+                    if (file_exists($file)) {
+                        unlink($file);
+                    }
+                }
+
+                if (file_exists($zipPath)) {
+                    unlink($zipPath);
+                }
+            });
+            return response()->download($zipPath);
         } else {
-            return response()->json(['error' => 'Gagal membuat file ZIP.'], 500);
+            return redirect('laporan/kegiatan-kub')->with('error', 'Gagal membuat file ZIP.');
         }
     }
 

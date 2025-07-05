@@ -78,6 +78,18 @@
                 Daftar {{ $title }}
             </div>
 
+            @if (session('error'))
+                <div class="alert alert-danger text-center mt-3">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="alert alert-success text-center mt-3">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             <div class="card-body bg-dark">
                 <form action="" method="GET" class="row g-3">
                     <div class="col-md-4">
@@ -118,17 +130,18 @@
                     <table class="table table-bordered m-0">
                         <thead class="table-secondary">
                             <tr>
-                                <th>No</th>
-                                <th>Nama Kegiatan KUB</th>
-                                <th>Nama KUB</th>
-                                <th>Deskripsi</th>
-                                <th>Tanggal Kegiatan</th>
+                                <th style="width: 5%">No</th>
+                                <th style="width: 20%">Nama Kegiatan KUB</th>
+                                <th style="width: 20%">Nama KUB</th>
+                                <th style="width: 45%">Deskripsi</th>
+                                <th style="width: 10%">Tanggal Kegiatan</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($kegiatankub as $index => $row)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ ($kegiatankub->currentPage() - 1) * $kegiatankub->perPage() + $loop->iteration }}
+                                    </td>
                                     <td>{{ $row->nama_kegiatan_kub }}</td>
                                     <td>{{ $row->kub->nama_kub }}</td>
                                     <td>{{ $row->deskripsi }}</td>
@@ -142,6 +155,9 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-center mt-4">
+                        {{ $kegiatankub->links() }}
+                    </div>
                 </div>
             </div>
         </div>
