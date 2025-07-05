@@ -32,11 +32,11 @@ class UserController extends Controller
         if ($request->role === 'ketua') {
             $cekKetua = User::where('role', 'ketua')->first();
             if ($cekKetua) {
-                return back()->withErrors(['role' => 'Hanya boleh ada satu user dengan peran Ketua'])->withInput();
+                return back()->with('error', 'Hanya boleh ada satu user dengan peran Ketua!')->withInput();
             }
         }
         User::create($validasi);
-        return redirect('kelola/data-user');
+        return redirect('kelola/data-user')->with('success', 'Data User berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -59,7 +59,7 @@ class UserController extends Controller
         if ($request->role === 'ketua' && $user->role !== 'ketua') {
             $cekKetua = User::where('role', 'ketua')->where('id_user', '!=', $id_user)->first();
             if ($cekKetua) {
-                return back()->withErrors(['role' => 'Hanya boleh ada satu user dengan peran Ketua'])->withInput();
+                return back()->with('error', 'Hanya boleh ada satu user dengan peran Ketua!')->withInput();
             }
         }
         if (!empty($request->password)) {
@@ -68,12 +68,12 @@ class UserController extends Controller
             $validasi['password'] = $user->password;
         }
         $user->update($validasi);
-        return redirect('kelola/data-user');
+        return redirect('kelola/data-user')->with('success', 'Data User berhasil diubah.');
     }
 
     public function delete($id): RedirectResponse
     {
         User::where('id_user', $id)->delete();
-        return redirect('kelola/data-user');
+        return redirect('kelola/data-user')->with('success', 'Data User berhasil dihapus.');
     }
 }
