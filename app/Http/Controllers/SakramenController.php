@@ -8,12 +8,12 @@ use App\Models\Sakramen;
 
 class SakramenController extends Controller
 {
-    public function index()
-    {
-        $title = "Data Sakramen";
-        $sakramen = Sakramen::all();
-        return view('data-display/sakramen', compact('title',  'sakramen'));
-    }
+    // public function index()
+    // {
+    //     $title = "Data Sakramen";
+    //     $sakramen = Sakramen::all();
+    //     return view('data-display/sakramen', compact('title',  'sakramen'));
+    // }
 
     // public function tambah()
     // {

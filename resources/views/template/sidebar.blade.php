@@ -130,7 +130,7 @@
                                     ['href' => '/kelola/data-user', 'label' => 'Data User'],
                                     ['href' => '/kelola/data-wilayah', 'label' => 'Data Wilayah'],
                                     ['href' => '/kelola/data-kub', 'label' => 'Data KUB'],
-                                    ['href' => '/kelola/data-sakramen', 'label' => 'Data Sakramen'],
+                                    // ['href' => '/kelola/data-sakramen', 'label' => 'Data Sakramen'],
                                     ['href' => '/kelola/data-umat', 'label' => 'Data Umat'],
                                     ['href' => '/kelola/data-kegiatan-wilayah', 'label' => 'Data Kegiatan Wilayah'],
                                     ['href' => '/kelola/data-kegiatan-kub', 'label' => 'Data Kegiatan KUB'],

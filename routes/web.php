@@ -95,7 +95,7 @@ Route::middleware([CekLogin::class])->group(function () {
           Route::get('/delete-kub/{id}', [KubController::class, 'delete']);
 
           // Data Sakramen
-          Route::get('/data-sakramen', [SakramenController::class, 'index']);
+          // Route::get('/data-sakramen', [SakramenController::class, 'index']);
           // Route::get('/tambah-sakramen', [SakramenController::class, 'tambah']);
           // Route::post('/kirim-sakramen', [SakramenController::class, 'kirim']);
           // Route::get('/edit-sakramen/{id}', [SakramenController::class, 'edit']);
