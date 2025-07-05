@@ -21,8 +21,8 @@ class WilayahFactory extends Factory
     {
         return [
             'nama_wilayah' => $this->faker->city,
-            'ketua_wilayah' => $this->faker->name,
-            'jumlah_anggota' => $this->faker->numberBetween(10, 100),
+            'ketua_wilayah' => '-',
+            'jumlah_anggota' => 0,
         ];
     }
 }

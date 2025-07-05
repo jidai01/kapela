@@ -105,21 +105,21 @@
             </div>
 
             <div class="card-body bg-light p-0">
-                <div class="table-responsive">
+                <div class="table-responsive d-flex flex-column justify-content-center align-items-center">
                     <table class="table table-bordered table-striped m-0">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Nama Wilayah</th>
-                                <th>Ketua Wilayah</th>
-                                <th>Jumlah Anggota</th>
-                                <th>Aksi</th>
+                                <th style="width: 5%">No</th>
+                                <th style="width: 30%">Nama Wilayah</th>
+                                <th style="width: 30%">Ketua Wilayah</th>
+                                <th style="width: 20%">Jumlah Anggota</th>
+                                <th style="width: 15%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($wilayah as $index => $row)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ ($wilayah->currentPage() - 1) * $wilayah->perPage() + $loop->iteration }}</td>
                                     <td>{{ $row->nama_wilayah }}</td>
                                     <td>{{ $row->ketua_wilayah }}</td>
                                     <td>{{ $row->jumlah_anggota }}</td>
@@ -144,6 +144,9 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="mt-4">
+                        {{ $wilayah->links() }}
+                    </div>
                 </div>
             </div>
         </div>

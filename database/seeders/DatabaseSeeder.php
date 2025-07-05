@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Buat akun pengguna
+        // Buat user manual
         User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@example.com',
@@ -39,41 +39,41 @@ class DatabaseSeeder extends Seeder
             'role' => 'humas',
         ]);
 
-        // Jalankan seeder Sakramen (isi data manual di SakramenSeeder) dan seeder Pengumuman dan Berita
+        // Seeder lain
         $this->call([
             SakramenSeeder::class,
             PengumumanSeeder::class,
             BeritaSeeder::class,
         ]);
 
-        // Ambil data sakramen dari database
+        // Ambil sakramen
         $sakramens = Sakramen::all();
 
-        // Generate data wilayah dan relasi terkait
-        Wilayah::factory()->count(5)->create()->each(function ($wilayah) use ($sakramens) {
-            // Kegiatan Wilayah
-            KegiatanWilayah::factory()->count(600)->create([
+        // Buat Wilayah
+        Wilayah::factory()->count(10)->create()->each(function ($wilayah) use ($sakramens) {
+            // Kegiatan wilayah
+            KegiatanWilayah::factory()->count(10)->create([
                 'id_wilayah' => $wilayah->id_wilayah,
             ]);
 
-            // Kub dan turunannya
-            Kub::factory()->count(5)->create([
+            // Buat 2–4 kub untuk tiap wilayah
+            Kub::factory()->count(rand(2, 4))->create([
                 'id_wilayah' => $wilayah->id_wilayah,
             ])->each(function ($kub) use ($wilayah, $sakramens) {
-                // Kegiatan KUB
-                KegiatanKub::factory()->count(120)->create([
+                // Kegiatan kub
+                KegiatanKub::factory()->count(5)->create([
                     'id_kub' => $kub->id_kub,
                 ]);
 
-                // Umat
-                $umats = Umat::factory()->count(30)->create([
+                // Buat 5–15 umat per kub
+                $umats = Umat::factory()->count(rand(5, 15))->create([
                     'id_kub' => $kub->id_kub,
                     'id_wilayah' => $wilayah->id_wilayah,
                 ]);
 
-                // Penerimaan Sakramen
+                // Set penerimaan sakramen untuk umat
                 $umats->each(function ($umat) use ($sakramens) {
-                    $sakramens->random(4)->each(function ($sakramen) use ($umat) {
+                    $sakramens->random(rand(1, $sakramens->count()))->each(function ($sakramen) use ($umat) {
                         PenerimaanSakramen::factory()->create([
                             'nik' => $umat->nik,
                             'id_sakramen' => $sakramen->id_sakramen,
@@ -81,6 +81,25 @@ class DatabaseSeeder extends Seeder
                     });
                 });
             });
+
+            // Refresh umat wilayah (gabungan semua umat dari kub)
+            $allUmat = $wilayah->umat()->get();
+            $jumlah = $allUmat->count();
+
+            if ($jumlah === 0) {
+                $ketua = '-';
+            } elseif ($jumlah === 1) {
+                $ketua = $allUmat->first()->nama_lengkap;
+            } else {
+                // Pilih ketua secara acak dari umat yang tersedia
+                $ketua = $allUmat->random()->nama_lengkap;
+            }
+
+            // Update wilayah dengan data aktual
+            $wilayah->update([
+                'jumlah_anggota' => $jumlah,
+                'ketua_wilayah' => $ketua,
+            ]);
         });
     }
 }

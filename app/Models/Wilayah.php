@@ -17,7 +17,8 @@ class Wilayah extends Model
         'jumlah_anggota',
     ];
     public $timestamps = false;
-    function kub() : HasMany {
+    function kub(): HasMany
+    {
         return $this->hasMany(Kub::class, 'id_wilayah', 'id_wilayah');
     }
 
@@ -29,5 +30,25 @@ class Wilayah extends Model
     public function kegiatanwilayah(): HasMany
     {
         return $this->hasMany(KegiatanWilayah::class, 'id_wilayah', 'id_wilayah');
+    }
+
+    public function updateJumlahAnggota()
+    {
+        $umatList = $this->umat()->get();
+        $jumlah = $umatList->count();
+
+        if ($jumlah === 0) {
+            $this->ketua_wilayah = '-';
+        } elseif ($jumlah === 1) {
+            $this->ketua_wilayah = $umatList->first()->nama_lengkap;
+        } else {
+            $isStillExist = $umatList->contains('nama_lengkap', $this->ketua_wilayah);
+            if (!$isStillExist) {
+                $this->ketua_wilayah = '-';
+            }
+        }
+
+        $this->jumlah_anggota = $jumlah;
+        $this->save();
     }
 }
