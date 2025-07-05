@@ -117,11 +117,11 @@
                     <table class="table table-bordered table-striped m-0">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Nama User</th>
-                                <th>Email</th>
-                                <th>Peran</th>
-                                <th>Aksi</th>
+                                <th style="width: 5%">No</th>
+                                <th style="width: 30%">Nama User</th>
+                                <th style="width: 30%">Email</th>
+                                <th style="width: 20%">Peran</th>
+                                <th style="width: 15%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
