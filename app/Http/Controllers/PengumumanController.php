@@ -13,7 +13,7 @@ class PengumumanController extends Controller
         $title = "Data Pengumuman";
         $pengumuman = Pengumuman::orderBy('tanggal_terbit', 'desc')
             ->orderBy('id_pengumuman', 'desc')
-            ->get();
+            ->paginate(50);
         return view('data-display/pengumuman', compact('title', 'pengumuman'));
     }
 
@@ -31,7 +31,7 @@ class PengumumanController extends Controller
             'tanggal_terbit' => 'required|date',
         ]);
         Pengumuman::create($validasi);
-        return redirect('kelola/data-pengumuman');
+        return redirect('kelola/data-pengumuman')->with('success', 'Data Pengumuman berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -51,12 +51,12 @@ class PengumumanController extends Controller
         ]);
         $pengumuman = Pengumuman::where('id_pengumuman', $id_pengumuman)->firstOrFail();
         $pengumuman->update($validasi);
-        return redirect('kelola/data-pengumuman');
+        return redirect('kelola/data-pengumuman')->with('success', 'Data Pengumuman berhasil diubah.');
     }
 
     public function delete($id): RedirectResponse
     {
         Pengumuman::where('id_pengumuman', $id)->delete();
-        return redirect('kelola/data-pengumuman');
+        return redirect('kelola/data-pengumuman')->with('success', 'Data Pengumuman berhasil dihapus.');
     }
 }

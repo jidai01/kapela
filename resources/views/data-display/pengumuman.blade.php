@@ -119,22 +119,23 @@
                     <table class="table table-bordered table-striped m-0">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Judul Pengumuman</th>
-                                <th>Isi Pengumuman</th>
-                                <th>Slug</th>
-                                <th>Tanggal Terbit</th>
-                                <th>Aksi</th>
+                                <th style="width: 5%">No</th>
+                                <th style="width: 25%">Judul Pengumuman</th>
+                                <th style="width: 40%">Isi Pengumuman</th>
+                                <th style="width: 15%">Tanggal Terbit</th>
+                                <th style="width: 15%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($pengumuman as $index => $row)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ ($pengumuman->currentPage() - 1) * $pengumuman->perPage() + $loop->iteration }}
+                                    </td>
                                     <td class="truncate" title="{{ $row->judul_pengumuman }}">{{ $row->judul_pengumuman }}
                                     </td>
-                                    <td class="truncate" title="{{ $row->isi_pengumuman }}">{{ $row->isi_pengumuman }}</td>
-                                    <td class="truncate" title="{{ $row->slug }}">{{ $row->slug }}</td>
+                                    <td class="truncate" title="{{ strip_tags($row->isi_pengumuman) }}">
+                                        {{ \Illuminate\Support\Str::limit(strip_tags($row->isi_pengumuman), 100) }}
+                                    </td>
                                     <td>{{ \Carbon\Carbon::parse($row->tanggal_terbit)->format('d-m-Y') }}</td>
                                     <td class="d-flex justify-content-center gap-2 btn-action-group">
                                         <a href="/kelola/edit-pengumuman/{{ $row->id_pengumuman }}"
@@ -157,6 +158,9 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-center mt-4">
+                        {{ $pengumuman->links() }}
+                    </div>
                 </div>
             </div>
         </div>
