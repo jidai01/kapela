@@ -124,7 +124,7 @@
                         <tbody>
                             @forelse ($kegiatanwilayah as $index => $row)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ ($kegiatanwilayah->currentPage() - 1) * $kegiatanwilayah->perPage() + $loop->iteration }}</td>
                                     <td>{{ $row->nama_kegiatan_wilayah }}</td>
                                     <td>{{ $row->wilayah->nama_wilayah }}</td>
                                     <td>{{ $row->deskripsi }}</td>

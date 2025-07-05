@@ -14,7 +14,9 @@ class PenerimaanSakramenController extends Controller
     public function index()
     {
         $title = "Data Penerimaan Sakramen";
-        $penerimaansakramen = PenerimaanSakramen::all();
+        $penerimaansakramen = PenerimaanSakramen::orderBy('tanggal_penerimaan_sakramen', 'desc')
+            ->orderBy('id', 'desc')
+            ->paginate(50);
         return view('data-display/penerimaansakramen', compact('title', 'penerimaansakramen'));
     }
 
@@ -44,7 +46,7 @@ class PenerimaanSakramenController extends Controller
         ]);
         PenerimaanSakramen::create($validasi);
         $this->updateStatusUmat($request->nik, $request->id_sakramen);
-        return redirect('kelola/data-penerimaan-sakramen');
+        return redirect('kelola/data-penerimaan-sakramen')->with('success', 'Data Penerimaan Sakramen berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -76,7 +78,7 @@ class PenerimaanSakramenController extends Controller
         $penerimaansakramen = PenerimaanSakramen::findOrFail($id);
         $penerimaansakramen->update($validasi);
         $this->updateStatusUmat($request->nik, $request->id_sakramen);
-        return redirect('kelola/data-penerimaan-sakramen');
+        return redirect('kelola/data-penerimaan-sakramen')->with('success', 'Data Penerimaan Sakramen berhasil diubah.');
     }
 
     public function delete($id): RedirectResponse
@@ -87,7 +89,7 @@ class PenerimaanSakramenController extends Controller
             $penerimaan->delete();
             $this->updateStatusUmat($nik);
         }
-        return redirect('kelola/data-penerimaan-sakramen');
+        return redirect('kelola/data-penerimaan-sakramen')->with('success', 'Data Penerimaan Sakramen berhasil dihapus.');
     }
 
     private function updateStatusUmat($nik, $id_sakramen = null)

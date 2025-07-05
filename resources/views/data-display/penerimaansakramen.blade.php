@@ -112,17 +112,17 @@
                     <table class="table table-bordered table-striped m-0">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Nama Sakramen</th>
-                                <th>Nama Umat</th>
-                                <th>Tanggal Penerimaan</th>
-                                <th>Aksi</th>
+                                <th style="width: 5%">No</th>
+                                <th style="width: 30%">Nama Sakramen</th>
+                                <th style="width: 35%">Nama Umat</th>
+                                <th style="width: 15%">Tanggal Penerimaan</th>
+                                <th style="width: 15%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($penerimaansakramen as $index => $row)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ ($penerimaansakramen->currentPage() - 1) * $penerimaansakramen->perPage() + $loop->iteration }}</td>
                                     <td>{{ $row->sakramen->nama_sakramen }}</td>
                                     <td>{{ $row->umat->nama_lengkap }}</td>
                                     <td>{{ \Carbon\Carbon::parse($row->tanggal_penerimaan_sakramen)->format('d-m-Y') }}</td>
@@ -147,6 +147,9 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-center mt-4">
+                        {{ $penerimaansakramen->links() }}
+                    </div>
                 </div>
             </div>
         </div>
