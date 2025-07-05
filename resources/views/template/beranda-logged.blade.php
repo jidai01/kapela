@@ -41,7 +41,7 @@
 
         .btn-logout {
             background-color: #fff;
-            color: #dc3545;
+            color: #1a2348;
             font-weight: 600;
             border-radius: 6px;
             transition: all 0.3s;
@@ -55,11 +55,14 @@
 
     <div class="container my-5">
         @if (Auth::check())
-            @php $role = Auth::user()->role; @endphp
+            @php
+                $role = Auth::user()->role;
+                $name = Auth::user()->name;
+            @endphp
 
             <div class="card shadow-lg border-0 mt-4">
                 <div class="card-header text-white text-center">
-                    <h1 class="dashboard-title mb-0">Selamat Datang {{ ucfirst(strtolower($role)) }}</h1>
+                    <h1 class="dashboard-title mb-0">Selamat Datang {{ ucfirst(strtolower($name)) }} ({{ ucfirst(strtolower($role)) }})</h1>
                 </div>
 
                 <div class="card-body bg-light p-4">
@@ -87,7 +90,10 @@
                                         ['title' => 'Data Umat', 'url' => '/kelola/data-umat'],
                                         ['title' => 'Data Kegiatan Wilayah', 'url' => '/kelola/data-kegiatan-wilayah'],
                                         ['title' => 'Data Kegiatan KUB', 'url' => '/kelola/data-kegiatan-kub'],
-                                        ['title' => 'Data Penerimaan Sakramen', 'url' => '/kelola/data-penerimaan-sakramen'],
+                                        [
+                                            'title' => 'Data Penerimaan Sakramen',
+                                            'url' => '/kelola/data-penerimaan-sakramen',
+                                        ],
                                     ];
                                 @endphp
 
@@ -156,7 +162,7 @@
                         <div class="col">
                             <div class="card h-100 shadow-sm bg-danger text-white">
                                 <div class="card-body d-flex flex-column justify-content-between">
-                                    <h5 class="card-title">Logout</h5>
+                                    <h5 class="card-title text-white">Logout</h5>
                                     <a class="btn btn-logout mt-3" href="/logout"
                                         onclick="return confirm('Yakin ingin keluar?')">
                                         <i class="bi bi-box-arrow-right"></i> Keluar
