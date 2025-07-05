@@ -78,6 +78,18 @@
                 Daftar {{ $title }}
             </div>
 
+            @if (session('error'))
+                <div class="alert alert-danger text-center mt-3">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="alert alert-success text-center mt-3">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             <div class="card-body bg-dark">
                 <form action="" method="GET" class="row g-3">
                     <div class="col-md-4">
@@ -119,17 +131,18 @@
                     <table class="table table-bordered m-0">
                         <thead class="table-secondary">
                             <tr>
-                                <th>No</th>
-                                <th>Nama Kegiatan Wilayah</th>
-                                <th>Nama Wilayah</th>
-                                <th>Deskripsi</th>
-                                <th>Tanggal Kegiatan</th>
+                                <th style="width: 5%">No</th>
+                                <th style="width: 20%">Nama Kegiatan Wilayah</th>
+                                <th style="width: 20%">Nama Wilayah</th>
+                                <th style="width: 45%">Deskripsi</th>
+                                <th style="width: 10%">Tanggal Kegiatan</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($kegiatanwilayah as $index => $row)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ ($kegiatanwilayah->currentPage() - 1) * $kegiatanwilayah->perPage() + $loop->iteration }}
+                                    </td>
                                     <td>{{ $row->nama_kegiatan_wilayah }}</td>
                                     <td>{{ $row->wilayah->nama_wilayah }}</td>
                                     <td>{{ $row->deskripsi }}</td>
@@ -143,6 +156,9 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-center mt-4">
+                        {{ $kegiatanwilayah->links() }}
+                    </div>
                 </div>
             </div>
         </div>
