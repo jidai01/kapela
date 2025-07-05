@@ -159,7 +159,6 @@ class LaporanController extends Controller
                         unlink($file);
                     }
                 }
-
                 if (file_exists($zipPath)) {
                     unlink($zipPath);
                 }
@@ -172,7 +171,7 @@ class LaporanController extends Controller
 
     public function penerimaansakramen(Request $request)
     {
-        $title = 'Penerimaan Sakramen';
+        $title = 'Laporan Penerimaan Sakramen';
         $id = $request->input('id');
         $tanggal_mulai = $request->input('tanggal_mulai');
         $tanggal_selesai = $request->input('tanggal_selesai');
@@ -188,7 +187,7 @@ class LaporanController extends Controller
                 }
             })
             ->latest('tanggal_penerimaan_sakramen')
-            ->get();
+            ->paginate(50);
         return view('report-display/laporanpenerimaansakramen', compact('penerimaansakramen', 'title'));
     }
 
@@ -217,26 +216,32 @@ class LaporanController extends Controller
         $zipPath = storage_path('app/public/' . $zipFilename);
         $zip = new ZipArchive;
         if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) === TRUE) {
+            $pdfPaths = [];
             foreach ($chunks as $index => $chunk) {
                 $filename = 'laporan_penerimaan_sakramen_' . ($index + 1) . '.pdf';
                 $pdf = Pdf::loadView('report-pdf.laporanpenerimaansakramenpdf', [
                     'penerimaansakramen' => $chunk,
                     'title' => $title,
                 ])->setPaper('a4', 'landscape');
-
-                $pdfPath = storage_path('app/temp' . $filename);
+                $pdfPath = storage_path('app/temp/' . $filename);
                 file_put_contents($pdfPath, $pdf->output());
-
                 $zip->addFile($pdfPath, $filename);
+                $pdfPaths[] = $pdfPath;
             }
-
             $zip->close();
-
-            Storage::deleteDirectory('temp');
-
-            return response()->download($zipPath)->deleteFileAfterSend(true);
+            register_shutdown_function(function () use ($pdfPaths, $zipPath) {
+                foreach ($pdfPaths as $file) {
+                    if (file_exists($file)) {
+                        unlink($file);
+                    }
+                }
+                if (file_exists($zipPath)) {
+                    unlink($zipPath);
+                }
+            });
+            return response()->download($zipPath);
         } else {
-            return response()->json(['error' => 'Gagal membuat file ZIP.'], 500);
+            return redirect('laporan/penerimaan-sakramen')->with('error', 'Gagal membuat file ZIP.');
         }
     }
 }
