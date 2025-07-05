@@ -112,12 +112,12 @@
                     <table class="table table-bordered table-striped m-0">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Nama Kegiatan KUB</th>
-                                <th>Nama KUB</th>
-                                <th>Deskripsi</th>
-                                <th>Tanggal Kegiatan</th>
-                                <th>Aksi</th>
+                                <th style="width: 5%">No</th>
+                                <th style="width: 20%">Nama Kegiatan KUB</th>
+                                <th style="width: 15%">Nama KUB</th>
+                                <th style="width: 35%">Deskripsi</th>
+                                <th style="width: 10%">Tanggal Kegiatan</th>
+                                <th style="width: 15%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -149,6 +149,9 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-center mt-4">
+                        {{ $kegiatankub->links() }}
+                    </div>
                 </div>
             </div>
         </div>

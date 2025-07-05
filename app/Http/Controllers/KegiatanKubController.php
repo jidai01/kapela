@@ -11,8 +11,10 @@ class KegiatanKubController extends Controller
 {
     public function index()
     {
-        $title = "Data Kegiatan Kub";
-        $kegiatankub = KegiatanKub::all();
+        $title = "Data Kegiatan KUB";
+        $kegiatankub = KegiatanKub::orderBy('tanggal_kegiatan', 'desc')
+            ->orderBy('id_kegiatan_kub', 'desc')
+            ->paginate(50);
         return view('data-display/kegiatankub', compact('title', 'kegiatankub'));
     }
 
@@ -34,7 +36,7 @@ class KegiatanKubController extends Controller
             'id_kub.required' => 'The nama kub field is required',
         ]);
         KegiatanKub::create($validasi);
-        return redirect('kelola/data-kegiatan-kub');
+        return redirect('kelola/data-kegiatan-kub')->with('success', 'Data Kegiatan KUB berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -58,12 +60,12 @@ class KegiatanKubController extends Controller
         ]);
         $kegiatankub = KegiatanKub::where('id_kegiatan_kub', $id_kegiatan_kub)->firstOrFail();
         $kegiatankub->update($validasi);
-        return redirect('kelola/data-kegiatan-kub');
+        return redirect('kelola/data-kegiatan-kub')->with('success', 'Data Kegiatan KUB berhasil diubah.');
     }
 
     public function delete($id): RedirectResponse
     {
         KegiatanKub::where('id_kegiatan_kub', $id)->delete();
-        return redirect('kelola/data-kegiatan-kub');
+        return redirect('kelola/data-kegiatan-kub')->with('success', 'Data Kegiatan KUB berhasil dihapus.');
     }
 }
