@@ -104,9 +104,6 @@
                 <li class="nav-item">
                     <a class="navbarnavlinkstyle nav-link text-center" href="/berita">Berita</a>
                 </li>
-                <li class="nav-item">
-                    <a id="login" class="navbarloginbuttonstyle btn text-center" href="/login">LOGIN</a>
-                </li>
             </ul>
         </div>
     </div>

@@ -25,36 +25,25 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             $user = Auth::user();
-            if ($user->role === $request->role) {
-                switch ($user->role) {
-                    case 'admin':
-                        return redirect()->route('beranda/admin');
-                    case 'ketua':
-                        return redirect()->route('beranda/ketua');
-                    case 'humas':
-                        return redirect()->route('beranda/humas');
-                    default:
-                        Auth::logout();
-                        return back()->withErrors([
-                            'role' => 'Role tidak dikenali.',
-                        ]);
-                }
+            if ($user->role !== $request->role) {
+                Auth::logout();
+                return back()->with('error', 'Role tidak sesuai dengan akun.')->withInput();
             }
-            Auth::logout();
-            return back()->withErrors([
-                'role' => 'Role tidak sesuai dengan akun.',
-            ])->onlyInput('email');
+            return match ($user->role) {
+                'admin' => redirect('/beranda/admin'),
+                'ketua' => redirect('/beranda/ketua'),
+                'humas' => redirect('/beranda/humas'),
+                default => back()->with('error', 'Role tidak dikenali.'),
+            };
         }
-        return back()->withErrors([
-            'email' => 'Email atau password salah.',
-        ])->onlyInput('email');
+        return back()->with('error', 'Email atau password salah.')->withInput();
     }
 
-    function logout(Request $request): RedirectResponse
+    public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/login')->with('success', 'Berhasil logout.');
     }
 }

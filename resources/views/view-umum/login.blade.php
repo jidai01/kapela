@@ -73,10 +73,22 @@
             <form method="POST" action="/autentikasi">
                 @csrf
 
+                @if (session('error'))
+                    <div class="alert alert-danger text-center mt-3 mb-3 rounded">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
+                @if (session('success'))
+                    <div class="alert alert-success text-center mt-3 mb-3 rounded">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="contoh@email.com"
-                        required>
+                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}"
+                        placeholder="contoh@email.com" required>
                 </div>
 
                 <div class="mb-3">
@@ -96,9 +108,9 @@
                     <label for="role" class="form-label">Peran</label>
                     <select class="form-select" id="role" name="role" required>
                         <option value="">-- Pilih Peran --</option>
-                        <option value="admin">Admin</option>
-                        <option value="ketua">Ketua</option>
-                        <option value="humas">Humas</option>
+                        <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                        <option value="ketua" {{ old('role') == 'ketua' ? 'selected' : '' }}>Ketua</option>
+                        <option value="humas" {{ old('role') == 'humas' ? 'selected' : '' }}>Humas</option>
                     </select>
                 </div>
 
@@ -108,7 +120,7 @@
             </form>
 
             <a href="/" class="btn btn-outline-secondary w-100 btn-kembali">
-                <i class="bi bi-arrow-return-left"></i> Kembali ke Halaman Utama
+                <i class="bi bi-arrow-return-left"></i> Halaman Utama SANBELLO
             </a>
         </div>
     </div>
