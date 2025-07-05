@@ -86,7 +86,7 @@
                                     $adminMenus = [
                                         ['title' => 'Data Wilayah', 'url' => '/kelola/data-wilayah'],
                                         ['title' => 'Data KUB', 'url' => '/kelola/data-kub'],
-                                        ['title' => 'Data Sakramen', 'url' => '/kelola/data-sakramen'],
+                                        // ['title' => 'Data Sakramen', 'url' => '/kelola/data-sakramen'],
                                         ['title' => 'Data Umat', 'url' => '/kelola/data-umat'],
                                         ['title' => 'Data Kegiatan Wilayah', 'url' => '/kelola/data-kegiatan-wilayah'],
                                         ['title' => 'Data Kegiatan KUB', 'url' => '/kelola/data-kegiatan-kub'],
