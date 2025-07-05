@@ -80,20 +80,22 @@ class DatabaseSeeder extends Seeder
                         ]);
                     });
                 });
+
+                // Hitung jumlah anggota & pilih ketua KUB
+                $kubUmat = $kub->umat()->get();
+                $jumlahKub = $kubUmat->count();
+                $ketuaKub = $jumlahKub === 0 ? '-' : $kubUmat->random()->nama_lengkap;
+
+                $kub->update([
+                    'jumlah_anggota' => $jumlahKub,
+                    'ketua_kub' => $ketuaKub,
+                ]);
             });
 
             // Refresh umat wilayah (gabungan semua umat dari kub)
             $allUmat = $wilayah->umat()->get();
             $jumlah = $allUmat->count();
-
-            if ($jumlah === 0) {
-                $ketua = '-';
-            } elseif ($jumlah === 1) {
-                $ketua = $allUmat->first()->nama_lengkap;
-            } else {
-                // Pilih ketua secara acak dari umat yang tersedia
-                $ketua = $allUmat->random()->nama_lengkap;
-            }
+            $ketua = $jumlah === 0 ? '-' : $allUmat->random()->nama_lengkap;
 
             // Update wilayah dengan data aktual
             $wilayah->update([

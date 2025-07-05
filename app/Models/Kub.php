@@ -31,4 +31,24 @@ class Kub extends Model
     {
         return $this->belongsTo(KegiatanKub::class, 'id_kub', 'id_kub');
     }
+
+    public function updateJumlahAnggota()
+    {
+        $umatList = $this->umat()->get();
+        $jumlah = $umatList->count();
+
+        if ($jumlah === 0) {
+            $this->ketua_kub = '-';
+        } elseif ($jumlah === 1) {
+            $this->ketua_kub = $umatList->first()->nama_lengkap;
+        } else {
+            $isStillExist = $umatList->contains('nama_lengkap', $this->ketua_kub);
+            if (!$isStillExist) {
+                $this->ketua_kub = '-';
+            }
+        }
+
+        $this->jumlah_anggota = $jumlah;
+        $this->save();
+    }
 }

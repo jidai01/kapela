@@ -15,7 +15,7 @@ class WilayahController extends Controller
         $title = "Data Wilayah";
         $wilayah = Wilayah::with('umat')
             ->orderBy('nama_wilayah')
-            ->paginate(5);
+            ->paginate(10);
         $wilayah->each(function ($row) {
             $row->updateJumlahAnggota();
         });
@@ -35,7 +35,7 @@ class WilayahController extends Controller
             'ketua_wilayah' => 'nullable|string',
             'jumlah_anggota' => 'nullable|integer|min:0',
         ]);
-        $validasi['ketua_wilayah'] = $validasi['ketua_wilayah'] ?? '-';
+        $validasi['ketua_wilayah'] = '-';
         $validasi['jumlah_anggota'] = 0;
         Wilayah::create($validasi);
         return redirect('kelola/data-wilayah')->with('success', 'Data Wilayah berhasil ditambahkan.');
@@ -58,6 +58,7 @@ class WilayahController extends Controller
             'nama_wilayah' => 'required|unique:wilayah,nama_wilayah,' . $id_wilayah . ',id_wilayah',
             'ketua_wilayah' => 'nullable|string',
         ]);
+        $validasi['ketua_wilayah'] = $request->ketua_wilayah ?? '-';
         $wilayah = Wilayah::where('id_wilayah', $id_wilayah)->firstOrFail();
         $wilayah->update($validasi);
         return redirect('kelola/data-wilayah')->with('success', 'Data Wilayah berhasil diubah.');
@@ -71,7 +72,6 @@ class WilayahController extends Controller
         }
         $wilayah->kegiatanwilayah()->delete();
         $wilayah->delete();
-        session()->flash('success', 'Data Wilayah dan kegiatan terkait berhasil dihapus.');
-        return redirect('kelola/data-wilayah')->with('success', 'Data Wilayah berhasil dihapus.');
+        return redirect('kelola/data-wilayah')->with('success', 'Data Wilayah dan kegiatan terkait berhasil dihapus.');
     }
 }

@@ -23,8 +23,8 @@ class KubFactory extends Factory
         return [
             'id_wilayah' => Wilayah::factory(), // relasi
             'nama_kub' => $this->faker->word,
-            'ketua_kub' => $this->faker->name,
-            'jumlah_anggota' => $this->faker->numberBetween(5, 50),
+            'ketua_kub' => '-',
+            'jumlah_anggota' => 0,
         ];
     }
 }

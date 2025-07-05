@@ -88,13 +88,13 @@
             </div>
 
             @if (session('error'))
-                <div class="alert alert-danger text-center mt-3">
+                <div class="alert alert-danger text-center mt-3 mb-0 rounded-0">
                     {{ session('error') }}
                 </div>
             @endif
 
             @if (session('success'))
-                <div class="alert alert-success text-center mt-3">
+                <div class="alert alert-success text-center mt-3 mb-0 rounded-0">
                     {{ session('success') }}
                 </div>
             @endif
@@ -106,22 +106,22 @@
             </div>
 
             <div class="card-body bg-light p-0">
-                <div class="table-responsive">
+                <div class="table-responsive d-flex flex-column justify-content-center align-items-center">
                     <table class="table table-bordered table-striped m-0">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Nama KUB</th>
-                                <th>Ketua KUB</th>
-                                <th>Nama Wilayah</th>
-                                <th>Jumlah Anggota</th>
-                                <th>Aksi</th>
+                                <th style="width: 5%">No</th>
+                                <th style="width: 20%">Nama KUB</th>
+                                <th style="width: 20%">Ketua KUB</th>
+                                <th style="width: 25%">Nama Wilayah</th>
+                                <th style="width: 15%">Jumlah Anggota</th>
+                                <th style="width: 15%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($kub as $index => $row)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ ($kub->currentPage() - 1) * $kub->perPage() + $loop->iteration }}</td>
                                     <td>{{ $row->nama_kub }}</td>
                                     <td>{{ $row->ketua_kub }}</td>
                                     <td>{{ $row->wilayah->nama_wilayah }}</td>
@@ -147,6 +147,9 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="mt-4">
+                        {{ $kub->links() }}
+                    </div>
                 </div>
             </div>
         </div>
