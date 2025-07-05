@@ -73,18 +73,6 @@
                 Detail Data Umat
             </div>
 
-            @if (session('error'))
-                <div class="alert alert-danger text-center mt-3">
-                    {{ session('error') }}
-                </div>
-            @endif
-
-            @if (session('success'))
-                <div class="alert alert-success text-center mt-3">
-                    {{ session('success') }}
-                </div>
-            @endif
-
             <div class="card-body bg-white">
                 <div class="row mb-3">
                     <div class="col-md-6">
@@ -160,13 +148,13 @@
                     <a href="/kelola/data-umat" class="btn btn-secondary m-1">
                         <i class="bi bi-arrow-left-circle"></i> Kembali
                     </a>
-                    <a href="/kelola/edit-umat/{{ $umat->nik }}" class="btn btn-warning text-dark m-1">
+                    {{-- <a href="/kelola/edit-umat/{{ $umat->nik }}" class="btn btn-warning text-dark m-1">
                         <i class="bi bi-pencil"></i> Edit
                     </a>
                     <a href="/kelola/delete-umat/{{ $umat->nik }}" class="btn btn-danger text-white m-1"
                         onclick="return confirm('Yakin ingin menghapus?')">
                         <i class="bi bi-trash"></i> Delete
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>

@@ -122,20 +122,20 @@
                     <table class="table table-bordered table-striped m-0">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>NIK</th>
-                                <th>Nama Lengkap</th>
-                                <th>Tanggal Lahir</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Nama KUB</th>
-                                <th>Nama Wilayah</th>
-                                <th>Aksi</th>
+                                <th style="width: 5%">No</th>
+                                <th style="width: 10%">NIK</th>
+                                <th style="width: 20%">Nama Lengkap</th>
+                                <th style="width: 10%">Tanggal Lahir</th>
+                                <th style="width: 10%">Jenis Kelamin</th>
+                                <th style="width: 15%">Nama KUB</th>
+                                <th style="width: 15%">Nama Wilayah</th>
+                                <th style="width: 15%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($umat as $index => $row)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ ($umat->currentPage() - 1) * $umat->perPage() + $loop->iteration }}</td>
                                     <td>{{ $row->nik }}</td>
                                     <td>{{ $row->nama_lengkap }}</td>
                                     <td>{{ \Carbon\Carbon::parse($row->tanggal_lahir)->format('d-m-Y') }}</td>
@@ -167,6 +167,9 @@
                             @endforelse
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-center mt-4">
+                        {{ $umat->links() }}
+                    </div>
                 </div>
             </div>
         </div>

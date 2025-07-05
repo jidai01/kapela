@@ -105,7 +105,7 @@
             </div>
 
             <div class="card-body bg-light p-0">
-                <div class="table-responsive d-flex flex-column justify-content-center align-items-center">
+                <div class="table-responsive">
                     <table class="table table-bordered table-striped m-0">
                         <thead>
                             <tr>
@@ -144,7 +144,7 @@
                             @endforelse
                         </tbody>
                     </table>
-                    <div class="mt-4">
+                    <div class="d-flex justify-content-center mt-4">
                         {{ $wilayah->links() }}
                     </div>
                 </div>

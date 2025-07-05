@@ -79,7 +79,7 @@
             text-align: center;
         }
 
-        .table-striped > tbody > tr:nth-of-type(odd) {
+        .table-striped>tbody>tr:nth-of-type(odd) {
             background-color: #f9f9f9;
         }
 
@@ -113,7 +113,7 @@
             </div>
 
             <div class="card-body bg-light p-0">
-                <div class="table-responsive d-flex flex-column justify-content-center align-items-center">
+                <div class="table-responsive">
                     <table class="table table-bordered table-striped m-0">
                         <thead>
                             <tr>
@@ -127,7 +127,7 @@
                         <tbody>
                             @forelse ($user as $index => $row)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ ($user->currentPage() - 1) * $user->perPage() + $loop->iteration }}</td>
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->email }}</td>
                                     <td>{{ ucfirst($row->role) }}</td>
@@ -152,7 +152,7 @@
                             @endforelse
                         </tbody>
                     </table>
-                    <div class="mt-4">
+                    <div class="d-flex justify-content-center mt-4">
                         {{ $user->links() }}
                     </div>
                 </div>
