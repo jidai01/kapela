@@ -32,10 +32,8 @@ class WilayahController extends Controller
     {
         $validasi = $request->validate([
             'nama_wilayah' => 'required|unique:wilayah,nama_wilayah',
-            'ketua_wilayah' => 'nullable|string',
             'jumlah_anggota' => 'nullable|integer|min:0',
         ]);
-        $validasi['ketua_wilayah'] = '-';
         $validasi['jumlah_anggota'] = 0;
         Wilayah::create($validasi);
         return redirect('kelola/data-wilayah')->with('success', 'Data Wilayah berhasil ditambahkan.');
@@ -45,10 +43,7 @@ class WilayahController extends Controller
     {
         $title = "Edit Data Wilayah";
         $wilayah = Wilayah::findOrFail($id);
-        $umatlist = Umat::where('id_wilayah', $wilayah->id_wilayah)
-            ->orderBy('nama_lengkap')
-            ->get();
-        return view('data-edit/edit-wilayah', compact('title', 'wilayah', 'umatlist'));
+        return view('data-edit/edit-wilayah', compact('title', 'wilayah'));
     }
 
     public function update(Request $request): RedirectResponse
@@ -56,9 +51,7 @@ class WilayahController extends Controller
         $id_wilayah = $request->id_wilayah;
         $validasi = $request->validate([
             'nama_wilayah' => 'required|unique:wilayah,nama_wilayah,' . $id_wilayah . ',id_wilayah',
-            'ketua_wilayah' => 'nullable|string',
         ]);
-        $validasi['ketua_wilayah'] = $request->ketua_wilayah ?? '-';
         $wilayah = Wilayah::where('id_wilayah', $id_wilayah)->firstOrFail();
         $wilayah->update($validasi);
         return redirect('kelola/data-wilayah')->with('success', 'Data Wilayah berhasil diubah.');

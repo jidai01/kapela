@@ -111,7 +111,6 @@
                             <tr>
                                 <th style="width: 5%">No</th>
                                 <th style="width: 30%">Nama Wilayah</th>
-                                <th style="width: 30%">Ketua Wilayah</th>
                                 <th style="width: 20%">Jumlah Anggota</th>
                                 <th style="width: 15%">Aksi</th>
                             </tr>
@@ -121,7 +120,6 @@
                                 <tr>
                                     <td>{{ ($wilayah->currentPage() - 1) * $wilayah->perPage() + $loop->iteration }}</td>
                                     <td>{{ $row->nama_wilayah }}</td>
-                                    <td>{{ $row->ketua_wilayah }}</td>
                                     <td>{{ $row->jumlah_anggota }}</td>
                                     <td class="d-flex justify-content-center align-items-center gap-2 action-buttons">
                                         <a href="/kelola/edit-wilayah/{{ $row->id_wilayah }}"

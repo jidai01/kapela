@@ -36,18 +36,6 @@ class Wilayah extends Model
     {
         $umatList = $this->umat()->get();
         $jumlah = $umatList->count();
-
-        if ($jumlah === 0) {
-            $this->ketua_wilayah = '-';
-        } elseif ($jumlah === 1) {
-            $this->ketua_wilayah = $umatList->first()->nama_lengkap;
-        } else {
-            $isStillExist = $umatList->contains('nama_lengkap', $this->ketua_wilayah);
-            if (!$isStillExist) {
-                $this->ketua_wilayah = '-';
-            }
-        }
-
         $this->jumlah_anggota = $jumlah;
         $this->save();
     }

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('wilayah', function (Blueprint $table) {
             $table->id('id_wilayah');
             $table->string('nama_wilayah');
-            $table->string('ketua_wilayah');
             $table->integer('jumlah_anggota');
         });
     }

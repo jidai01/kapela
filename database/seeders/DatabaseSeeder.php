@@ -53,15 +53,15 @@ class DatabaseSeeder extends Seeder
             BeritaSeeder::class,
         ]);
 
-        // // Ambil sakramen
-        // $sakramens = Sakramen::all();
+        // Ambil sakramen
+        $sakramens = Sakramen::all();
 
-        // // Buat Wilayah
-        // Wilayah::factory()->count(10)->create()->each(function ($wilayah) use ($sakramens) {
-        //     // Kegiatan wilayah
-        //     KegiatanWilayah::factory()->count(10)->create([
-        //         'id_wilayah' => $wilayah->id_wilayah,
-        //     ]);
+        // Buat Wilayah
+        Wilayah::factory()->count(10)->create()->each(function ($wilayah) use ($sakramens) {
+            // Kegiatan wilayah
+            KegiatanWilayah::factory()->count(10)->create([
+                'id_wilayah' => $wilayah->id_wilayah,
+            ]);
 
         //     // Buat 2–4 kub untuk tiap wilayah
         //     Kub::factory()->count(rand(2, 4))->create([
@@ -109,6 +109,6 @@ class DatabaseSeeder extends Seeder
         //         'jumlah_anggota' => $jumlah,
         //         'ketua_wilayah' => $ketua,
         //     ]);
-        // });
+        });
     }
 }

@@ -110,26 +110,6 @@
                         value="{{ old('nama_wilayah', $wilayah->nama_wilayah) }}" placeholder="nama wilayah" required>
                 </div>
 
-                <div class="mb-3">
-                    <label for="ketua_wilayah" class="form-label">Ketua Wilayah</label>
-                    @if ($umatlist->count() > 0)
-                        <select id="ketua_wilayah" name="ketua_wilayah" class="form-select">
-                            <option value="">-- Pilih Ketua Wilayah --</option>
-                            @foreach ($umatlist as $umat)
-                                <option value="{{ $umat->nama_lengkap }}"
-                                    {{ old('ketua_wilayah', $wilayah->ketua_wilayah) == $umat->nama_lengkap ? 'selected' : '' }}>
-                                    {{ $umat->nama_lengkap }}
-                                </option>
-                            @endforeach
-                        </select>
-                    @else
-                        <div class="alert alert-warning mt-2 mb-0">
-                            Tidak ada umat dalam wilayah ini. Harap tambahkan umat terlebih dahulu untuk memilih ketua
-                            wilayah.
-                        </div>
-                    @endif
-                </div>
-
                 <button type="submit" class="btn btn-submit w-100 mb-3">
                     <i class="bi bi-save"></i> Simpan Perubahan
                 </button>
@@ -139,20 +119,4 @@
             </form>
         </div>
     </div>
-
-    {{-- Tom Select --}}
-    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
-    <script>
-        @if ($umatlist->count() > 0)
-            new TomSelect("#ketua_wilayah", {
-                create: false,
-                sortField: {
-                    field: "text",
-                    direction: "asc"
-                },
-                placeholder: "-- Pilih Ketua Wilayah --"
-            });
-        @endif
-    </script>
 @endsection
