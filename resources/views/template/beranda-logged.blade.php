@@ -66,7 +66,7 @@
         }
     </style>
 
-    <div class="container my-5">
+    <div class="container-fluid my-5">
         @if (Auth::check())
             @php
                 $name = Auth::user()->name;
@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="card-body bg-light p-4">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 text-center">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 text-center">
                         @if (in_array($role, ['admin', 'humas', 'pengurus']))
                             @if ($role === 'admin')
                                 {{-- Data User --}}
