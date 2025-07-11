@@ -51,13 +51,27 @@
             background-color: #f8d7da;
             color: #dc3545;
         }
+
+        .btn-profil {
+            background-color: #fff;
+            color: #1a2348;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .btn-profil:hover {
+            background-color: #d4edda;
+            color: #28a745;
+        }
     </style>
 
     <div class="container my-5">
         @if (Auth::check())
             @php
-                $role = Auth::user()->role;
                 $name = Auth::user()->name;
+                $role = Auth::user()->role;
+                $email = Auth::user()->email;
             @endphp
 
             <div class="card shadow-lg border-0 mt-4">
@@ -181,6 +195,18 @@
                                 </div>
                             @endforeach
                         @endif
+
+                        {{-- Profil --}}
+                        <div class="col">
+                            <div class="card h-100 shadow-sm bg-success text-white">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <h5 class="card-title text-white">Profil</h5>
+                                    <a class="btn btn-profil mt-3" href="/profil/{{ $email }}">
+                                        <i class="bi bi-box-arrow-left"></i> Lihat Profil
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
                         {{-- Logout --}}
                         <div class="col">

@@ -19,7 +19,8 @@ use App\Http\Controllers\{
      SakramenController,
      UmatController,
      UserController,
-     WilayahController
+    UserProfileController,
+    WilayahController
 };
 
 /*
@@ -72,6 +73,10 @@ Route::middleware([CekLogin::class])->group(function () {
      Route::get('/beranda/humas', [BerandaController::class, 'index_humas'])
           ->middleware(CheckRole::class . ':humas')
           ->name('beranda/humas');
+
+     // Profil User
+     Route::get('/profil/{email}', [UserProfileController::class, 'index']);
+     Route::post('/profil/update', [UserProfileController::class, 'update']);
 
      // Data User
      Route::prefix('kelola')->group(function () {

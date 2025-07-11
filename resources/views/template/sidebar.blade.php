@@ -110,6 +110,16 @@
         background-color: #dc3545;
         color: #fff;
     }
+
+    .sidebar-nav .btn-outline-success {
+        color: #fff;
+        border-color: #28a745;
+    }
+
+    .sidebar-nav .btn-outline-success:hover {
+        background-color: #28a745;
+        color: #fff;
+    }
 </style>
 
 <!-- Toggle Button -->
@@ -190,6 +200,12 @@
                         <li><a class="nav-link" href="/laporan/kegiatan-kub">Laporan Kegiatan KUB</a></li>
                         <li><a class="nav-link" href="/laporan/penerimaan-sakramen">Laporan Penerimaan Sakramen</a></li>
                     @endif
+
+                    <li class="nav-item mt-2">
+                        <a class="btn btn-outline-success w-100 text-start" href="/profil/{{ Auth::user()->email }}">
+                            <i class="bi bi-box-arrow-left me-1"></i> PROFIL
+                        </a>
+                    </li>
 
                     <li class="nav-item mt-2">
                         <a class="btn btn-outline-danger w-100 text-start"
