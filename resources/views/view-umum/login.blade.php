@@ -110,7 +110,8 @@
                         <option value="">-- Pilih Peran --</option>
                         <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
                         <option value="ketua" {{ old('role') == 'ketua' ? 'selected' : '' }}>Ketua</option>
-                        <option value="humas" {{ old('role') == 'humas' ? 'selected' : '' }}>Humas</option>
+                        <option value="pengurus" {{ old('role') == 'pengurus' ? 'selected' : '' }}>Pengurus</option>
+                        <option value="humas" {{ old('role') == 'humas' ? 'selected' : '' }}>HUMAS</option>
                     </select>
                 </div>
 

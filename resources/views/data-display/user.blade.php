@@ -130,7 +130,7 @@
                                     <td>{{ ($user->currentPage() - 1) * $user->perPage() + $loop->iteration }}</td>
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->email }}</td>
-                                    <td>{{ ucfirst($row->role) }}</td>
+                                    <td>{{ $row->role }}</td>
                                     <td class="d-flex justify-content-center gap-2 btn-action-group">
                                         <a href="/kelola/edit-user/{{ $row->id_user }}"
                                             class="btn btn-sm btn-warning text-dark">

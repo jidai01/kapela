@@ -33,6 +33,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory()->create([
+            'name' => 'Pengurus',
+            'email' => 'pengurus]@example.com',
+            'password' => Hash::make('password'),
+            'role' => 'pengurus',
+        ]);
+
+        User::factory()->create([
             'name' => 'Humas',
             'email' => 'humas@example.com',
             'password' => Hash::make('password'),
@@ -46,62 +53,62 @@ class DatabaseSeeder extends Seeder
             BeritaSeeder::class,
         ]);
 
-        // Ambil sakramen
-        $sakramens = Sakramen::all();
+        // // Ambil sakramen
+        // $sakramens = Sakramen::all();
 
-        // Buat Wilayah
-        Wilayah::factory()->count(10)->create()->each(function ($wilayah) use ($sakramens) {
-            // Kegiatan wilayah
-            KegiatanWilayah::factory()->count(10)->create([
-                'id_wilayah' => $wilayah->id_wilayah,
-            ]);
+        // // Buat Wilayah
+        // Wilayah::factory()->count(10)->create()->each(function ($wilayah) use ($sakramens) {
+        //     // Kegiatan wilayah
+        //     KegiatanWilayah::factory()->count(10)->create([
+        //         'id_wilayah' => $wilayah->id_wilayah,
+        //     ]);
 
-            // Buat 2–4 kub untuk tiap wilayah
-            Kub::factory()->count(rand(2, 4))->create([
-                'id_wilayah' => $wilayah->id_wilayah,
-            ])->each(function ($kub) use ($wilayah, $sakramens) {
-                // Kegiatan kub
-                KegiatanKub::factory()->count(5)->create([
-                    'id_kub' => $kub->id_kub,
-                ]);
+        //     // Buat 2–4 kub untuk tiap wilayah
+        //     Kub::factory()->count(rand(2, 4))->create([
+        //         'id_wilayah' => $wilayah->id_wilayah,
+        //     ])->each(function ($kub) use ($wilayah, $sakramens) {
+        //         // Kegiatan kub
+        //         KegiatanKub::factory()->count(5)->create([
+        //             'id_kub' => $kub->id_kub,
+        //         ]);
 
-                // Buat 5–15 umat per kub
-                $umats = Umat::factory()->count(rand(5, 15))->create([
-                    'id_kub' => $kub->id_kub,
-                    'id_wilayah' => $wilayah->id_wilayah,
-                ]);
+        //         // Buat 5–15 umat per kub
+        //         $umats = Umat::factory()->count(rand(5, 15))->create([
+        //             'id_kub' => $kub->id_kub,
+        //             'id_wilayah' => $wilayah->id_wilayah,
+        //         ]);
 
-                // Set penerimaan sakramen untuk umat
-                $umats->each(function ($umat) use ($sakramens) {
-                    $sakramens->random(rand(1, $sakramens->count()))->each(function ($sakramen) use ($umat) {
-                        PenerimaanSakramen::factory()->create([
-                            'nik' => $umat->nik,
-                            'id_sakramen' => $sakramen->id_sakramen,
-                        ]);
-                    });
-                });
+        //         // Set penerimaan sakramen untuk umat
+        //         $umats->each(function ($umat) use ($sakramens) {
+        //             $sakramens->random(rand(1, $sakramens->count()))->each(function ($sakramen) use ($umat) {
+        //                 PenerimaanSakramen::factory()->create([
+        //                     'nik' => $umat->nik,
+        //                     'id_sakramen' => $sakramen->id_sakramen,
+        //                 ]);
+        //             });
+        //         });
 
-                // Hitung jumlah anggota & pilih ketua KUB
-                $kubUmat = $kub->umat()->get();
-                $jumlahKub = $kubUmat->count();
-                $ketuaKub = $jumlahKub === 0 ? '-' : $kubUmat->random()->nama_lengkap;
+        //         // Hitung jumlah anggota & pilih ketua KUB
+        //         $kubUmat = $kub->umat()->get();
+        //         $jumlahKub = $kubUmat->count();
+        //         $ketuaKub = $jumlahKub === 0 ? '-' : $kubUmat->random()->nama_lengkap;
 
-                $kub->update([
-                    'jumlah_anggota' => $jumlahKub,
-                    'ketua_kub' => $ketuaKub,
-                ]);
-            });
+        //         $kub->update([
+        //             'jumlah_anggota' => $jumlahKub,
+        //             'ketua_kub' => $ketuaKub,
+        //         ]);
+        //     });
 
-            // Refresh umat wilayah (gabungan semua umat dari kub)
-            $allUmat = $wilayah->umat()->get();
-            $jumlah = $allUmat->count();
-            $ketua = $jumlah === 0 ? '-' : $allUmat->random()->nama_lengkap;
+        //     // Refresh umat wilayah (gabungan semua umat dari kub)
+        //     $allUmat = $wilayah->umat()->get();
+        //     $jumlah = $allUmat->count();
+        //     $ketua = $jumlah === 0 ? '-' : $allUmat->random()->nama_lengkap;
 
-            // Update wilayah dengan data aktual
-            $wilayah->update([
-                'jumlah_anggota' => $jumlah,
-                'ketua_wilayah' => $ketua,
-            ]);
-        });
+        //     // Update wilayah dengan data aktual
+        //     $wilayah->update([
+        //         'jumlah_anggota' => $jumlah,
+        //         'ketua_wilayah' => $ketua,
+        //     ]);
+        // });
     }
 }
