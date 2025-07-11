@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="container d-flex justify-content-center align-items-start mt-5 my-2" style="min-height: 100vh;">
+    <div class="container-fluid d-flex justify-content-center align-items-start mt-5 my-2" style="min-height: 100vh;">
         <div class="card shadow p-4" style="width: 100%; max-width: 600px;">
             <h4 class="bg-dark text-light text-center mb-4 p-2 rounded">Form {{ $title }}</h4>
 

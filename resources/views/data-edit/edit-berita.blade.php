@@ -75,7 +75,7 @@
         }
     </style>
 
-    <div class="container d-flex justify-content-center align-items-start mt-5 my-2" style="min-height: 100vh;">
+    <div class="container-fluid d-flex justify-content-center align-items-start mt-5 my-2" style="min-height: 100vh;">
         <div class="form-card">
             <div class="form-title">Form {{ $title }}</div>
 
