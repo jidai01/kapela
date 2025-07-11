@@ -110,7 +110,7 @@
                         <thead>
                             <tr>
                                 <th style="width: 5%">No</th>
-                                <th style="width: 30%">Nama Wilayah</th>
+                                <th style="width: 60%">Nama Wilayah</th>
                                 <th style="width: 20%">Jumlah Anggota</th>
                                 <th style="width: 15%">Aksi</th>
                             </tr>

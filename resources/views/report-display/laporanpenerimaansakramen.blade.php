@@ -80,12 +80,24 @@
 
             <div class="card-body bg-dark">
                 <form action="" method="GET" class="row g-3">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <label for="id_sakramen" class="form-label">Sakramen</label>
+                        <select id="id_sakramen" class="form-select bg-light text-dark" name="id_sakramen">
+                            <option value="">Semua Sakramen</option>
+                            @foreach ($sakramen as $s)
+                                <option value="{{ $s->id_sakramen }}"
+                                    {{ request('id_sakramen') == $s->id_sakramen ? 'selected' : '' }}>
+                                    {{ $s->nama_sakramen }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-4">
                         <label for="tanggal_mulai" class="form-label">Tanggal Mulai</label>
                         <input type="date" id="tanggal_mulai" name="tanggal_mulai"
                             class="form-control bg-light text-dark" value="{{ request('tanggal_mulai') }}">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="tanggal_selesai" class="form-label">Tanggal Selesai</label>
                         <input type="date" id="tanggal_selesai" name="tanggal_selesai"
                             class="form-control bg-light text-dark" value="{{ request('tanggal_selesai') }}">
@@ -120,7 +132,8 @@
                                     </td>
                                     <td>{{ $row->umat->nama_lengkap ?? '-' }}</td>
                                     <td>{{ $row->sakramen->nama_sakramen ?? '-' }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($row->tanggal_penerimaan_sakramen)->format('d-m-Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($row->tanggal_penerimaan_sakramen)->format('d-m-Y') }}
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
@@ -137,4 +150,18 @@
             </div>
         </div>
     </div>
+
+    {{-- TomSelect (Opsional jika ingin dropdown lebih rapi) --}}
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
+    <script>
+        new TomSelect("#id_sakramen", {
+            create: false,
+            sortField: {
+                field: "text",
+                direction: "asc"
+            },
+            placeholder: "Pilih Sakramen"
+        });
+    </script>
 @endsection

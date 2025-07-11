@@ -114,7 +114,7 @@
                                 @php
                                     $pengurusMenus = [
                                         ['title' => 'Data Umat', 'url' => '/kelola/data-umat'],
-                                        ['title' => 'Data Kegiatan Wilayah', 'url' => '/kelola/data-kegiatan-wiilayah'],
+                                        ['title' => 'Data Kegiatan Wilayah', 'url' => '/kelola/data-kegiatan-wilayah'],
                                         ['title' => 'Data Kegiatan KUB', 'url' => '/kelola/data-kegiatan-kub'],
                                     ];
                                 @endphp

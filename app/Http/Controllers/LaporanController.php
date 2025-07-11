@@ -172,12 +172,12 @@ class LaporanController extends Controller
     public function penerimaansakramen(Request $request)
     {
         $title = 'Laporan Penerimaan Sakramen';
-        $id = $request->input('id');
+        $id_sakramen = $request->input('id_sakramen');
         $tanggal_mulai = $request->input('tanggal_mulai');
         $tanggal_selesai = $request->input('tanggal_selesai');
         $penerimaansakramen = PenerimaanSakramen::with(['umat', 'sakramen'])
-            ->when($id, function ($query) use ($id) {
-                return $query->where('id', $id);
+            ->when($id_sakramen, function ($query) use ($id_sakramen) {
+                return $query->where('id_sakramen', $id_sakramen);
             })
             ->when($tanggal_mulai, function ($query) use ($tanggal_mulai, $tanggal_selesai) {
                 if ($tanggal_selesai) {
@@ -188,7 +188,8 @@ class LaporanController extends Controller
             })
             ->latest('tanggal_penerimaan_sakramen')
             ->paginate(50);
-        return view('report-display/laporanpenerimaansakramen', compact('penerimaansakramen', 'title'));
+        $sakramen = \App\Models\Sakramen::all();
+        return view('report-display/laporanpenerimaansakramen', compact('penerimaansakramen', 'title', 'sakramen'));
     }
 
     public function cetakpenerimaansakramen(Request $request)
