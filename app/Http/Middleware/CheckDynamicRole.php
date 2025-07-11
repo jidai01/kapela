@@ -7,20 +7,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CekLogin
+class CheckDynamicRole
 {
     /**
      * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): \Symfony\Component\HttpFoundation\Response  $next
-     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check()) {
+        $roleFromUrl = $request->route('role'); // ambil role dari parameter URL
+
+        // Jika belum login atau role tidak cocok
+        if (!Auth::check() || Auth::user()->role !== $roleFromUrl) {
             return redirect('/login')->withErrors([
-                'akses' => 'Silakan login untuk melanjutkan.'
+                'akses' => 'Anda tidak memiliki izin untuk mengakses halaman ini.'
             ]);
         }
 

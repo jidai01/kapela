@@ -16,31 +16,17 @@ class BerandaController extends Controller
         return view('view-umum/beranda', compact('title', 'content', 'pengumuman', 'berita'));
     }
 
-    public function index_admin()
+    public function index_dashboard($role)
     {
-        $title = "Beranda Admin";
-        $content = "Halaman Beranda Admin";
-        return view('view-admin/beranda-admin', compact('title', 'content'));
-    }
+        $allowed = ['admin', 'ketua', 'pengurus', 'humas'];
 
-    public function index_ketua()
-    {
-        $title = "Beranda Ketua";
-        $content = "Halaman Beranda Ketua";
-        return view('view-ketua/beranda-ketua', compact('title', 'content'));
-    }
+        if (!in_array(strtolower($role), $allowed)) {
+            redirect('/login')->with('error', 'Role tidak dikenali.');
+        }
 
-    public function index_pengurus()
-    {
-        $title = "Beranda Pengurus";
-        $content = "Halaman Beranda Pengurus";
-        return view('view-pengurus/beranda-pengurus', compact('title', 'content'));
-    }
+        $title = "Beranda " . ucfirst($role);
+        $content = "Halaman Beranda " . ucfirst($role);
 
-    public function index_humas()
-    {
-        $title = "Beranda Humas";
-        $content = "Halaman Beranda Humas";
-        return view('view-humas/beranda-humas', compact('title', 'content'));
+        return view('view-user/logged-user', compact('title', 'content'));
     }
 }

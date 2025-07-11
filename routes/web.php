@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CekLogin;
-use App\Http\Middleware\CheckRole;
+use App\Http\Middleware\CheckDynamicRole;
 use App\Http\Controllers\{
      BerandaController,
      BeritaController,
@@ -19,8 +19,8 @@ use App\Http\Controllers\{
      SakramenController,
      UmatController,
      UserController,
-    UserProfileController,
-    WilayahController
+     UserProfileController,
+     WilayahController
 };
 
 /*
@@ -58,25 +58,17 @@ Route::get('/berita/{slug}', [BeritaUmumController::class, 'detail']);
 Route::middleware([CekLogin::class])->group(function () {
 
      // Dashboard sesuai Role
-     Route::get('/beranda/admin', [BerandaController::class, 'index_admin'])
-          ->middleware(CheckRole::class . ':admin')
-          ->name('beranda/admin');
-
-     Route::get('/beranda/ketua', [BerandaController::class, 'index_ketua'])
-          ->middleware(CheckRole::class . ':ketua')
-          ->name('beranda/ketua');
-
-     Route::get('/beranda/pengurus', [BerandaController::class, 'index_pengurus'])
-          ->middleware(CheckRole::class . ':pengurus')
-          ->name('beranda/pengurus');
-
-     Route::get('/beranda/humas', [BerandaController::class, 'index_humas'])
-          ->middleware(CheckRole::class . ':humas')
-          ->name('beranda/humas');
-
+     Route::middleware([CheckDynamicRole::class])->group(function () {
+          Route::get('/beranda/{role}', [BerandaController::class, 'index_dashboard'])
+               ->where('role', 'admin|ketua|pengurus|humas')
+               ->name('beranda.dynamic');
+     });
+     
      // Profil User
-     Route::get('/profil/{email}', [UserProfileController::class, 'index']);
-     Route::post('/profil/update', [UserProfileController::class, 'update']);
+     Route::prefix('profil')->group(function () {
+          Route::get('/{email}', [UserProfileController::class, 'index']);
+          Route::post('/update', [UserProfileController::class, 'update']);
+     });
 
      // Data User
      Route::prefix('kelola')->group(function () {
@@ -102,15 +94,6 @@ Route::middleware([CekLogin::class])->group(function () {
           Route::get('/edit-kub/{id}', [KubController::class, 'edit']);
           Route::post('/update-kub', [KubController::class, 'update']);
           Route::get('/delete-kub/{id}', [KubController::class, 'delete']);
-
-          // Data Sakramen
-          // Route::get('/data-sakramen', [SakramenController::class, 'index']);
-          // Route::get('/tambah-sakramen', [SakramenController::class, 'tambah']);
-          // Route::post('/kirim-sakramen', [SakramenController::class, 'kirim']);
-          // Route::get('/edit-sakramen/{id}', [SakramenController::class, 'edit']);
-          // Route::post('/update-sakramen', [SakramenController::class, 'update']);
-          // Route::get('/delete-sakramen/{id}', [SakramenController::class, 'delete']);
-          // Delete sakramen dinonaktifkan untuk menjaga keutuhan data sakramen
 
           // Data Umat
           Route::get('/data-umat', [UmatController::class, 'index']);
