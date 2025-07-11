@@ -201,8 +201,8 @@
                             <div class="card h-100 shadow-sm bg-success text-white">
                                 <div class="card-body d-flex flex-column justify-content-between">
                                     <h5 class="card-title text-white">Profil</h5>
-                                    <a class="btn btn-profil mt-3" href="/profil/{{ $email }}">
-                                        <i class="bi bi-box-arrow-left"></i> Lihat Profil
+                                    <a class="btn btn-profil mt-3" href="/profil-user/{{ $email }}">
+                                        <i class="bi bi-person-circle"></i> Lihat Profil
                                     </a>
                                 </div>
                             </div>

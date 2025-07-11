@@ -65,10 +65,8 @@ Route::middleware([CekLogin::class])->group(function () {
      });
      
      // Profil User
-     Route::prefix('profil')->group(function () {
-          Route::get('/{email}', [UserProfileController::class, 'index']);
-          Route::post('/update', [UserProfileController::class, 'update']);
-     });
+     Route::get('/profil-user/{email}', [UserProfileController::class, 'index']);
+     Route::post('/profil-user/update', [UserProfileController::class, 'update']);
 
      // Data User
      Route::prefix('kelola')->group(function () {

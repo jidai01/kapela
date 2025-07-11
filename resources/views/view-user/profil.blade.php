@@ -99,7 +99,7 @@
                 </div>
             @endif
 
-            <form action="/profil/update" method="POST">
+            <form action="/profil-user/update" method="POST">
                 @csrf
 
                 <input type="hidden" name="id_user" value="{{ $user->id_user }}">
@@ -162,6 +162,9 @@
                 <button type="submit" class="btn btn-submit w-100 mb-3">
                     <i class="bi bi-save"></i> Simpan Profil {{ $user->name }}
                 </button>
+                <a href="{{ url('/beranda/' . $user->role) }}" class="btn btn-outline-secondary w-100 btn-back">
+                    <i class="bi bi-arrow-return-left"></i> Beranda {{ ucfirst(strtolower($user->role)) }}
+                </a>
             </form>
         </div>
     </div>

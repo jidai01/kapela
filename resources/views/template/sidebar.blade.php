@@ -13,9 +13,20 @@
     }
 
     #sidebar {
+        width: 25rem;
         padding-top: 60px;
         background-color: #212d5a;
         color: #fff;
+        transition: width 0.3s ease;
+        overflow: hidden;
+    }
+
+    #sidebar.collapsed {
+        width: 0 !important;
+    }
+
+    #sidebar.collapsed #sidebar-show {
+        display: none;
     }
 
     .navbar-toggler {
@@ -67,6 +78,7 @@
     }
 
     .sidebar-header {
+        width: 20rem;
         min-height: 80px;
         border-bottom: 2px solid #fff;
         text-align: center;
@@ -202,8 +214,8 @@
                     @endif
 
                     <li class="nav-item mt-2">
-                        <a class="btn btn-outline-success w-100 text-start" href="/profil/{{ Auth::user()->email }}">
-                            <i class="bi bi-box-arrow-left me-1"></i> PROFIL
+                        <a class="btn btn-outline-success w-100 text-start" href="/profil-user/{{ Auth::user()->email }}">
+                            <i class="bi bi-person-circle me-1"></i> PROFIL
                         </a>
                     </li>
 
@@ -223,10 +235,10 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const toggleButton = document.getElementById("sidebarToggle");
-        const sidebarCollapse = document.getElementById("sidebar-show");
+        const sidebar = document.getElementById("sidebar");
 
         toggleButton.addEventListener("click", function() {
-            sidebarCollapse.classList.toggle("show");
+            sidebar.classList.toggle("collapsed");
         });
     });
 

@@ -50,6 +50,6 @@ class UserProfileController extends Controller
         // Simpan perubahan
         $user->update($dataUpdate);
 
-        return redirect('profil/' . $user->email)->with('success', 'Profil berhasil diubah.');
+        return redirect('profil-user/' . $user->email)->with('success', 'Profil berhasil diubah.');
     }
 }
