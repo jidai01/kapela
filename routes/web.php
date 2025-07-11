@@ -65,6 +65,10 @@ Route::middleware([CekLogin::class])->group(function () {
           ->middleware(CheckRole::class . ':ketua')
           ->name('beranda/ketua');
 
+     Route::get('/beranda/pengurus', [BerandaController::class, 'index_pengurus'])
+          ->middleware(CheckRole::class . ':pengurus')
+          ->name('beranda/pengurus');
+
      Route::get('/beranda/humas', [BerandaController::class, 'index_humas'])
           ->middleware(CheckRole::class . ':humas')
           ->name('beranda/humas');

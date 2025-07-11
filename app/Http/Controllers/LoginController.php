@@ -32,6 +32,7 @@ class LoginController extends Controller
             return match ($user->role) {
                 'admin' => redirect('/beranda/admin'),
                 'ketua' => redirect('/beranda/ketua'),
+                'pengurus' => redirect('/beranda/pengurus'),
                 'humas' => redirect('/beranda/humas'),
                 default => back()->with('error', 'Role tidak dikenali.'),
             };

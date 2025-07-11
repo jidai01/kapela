@@ -62,12 +62,13 @@
 
             <div class="card shadow-lg border-0 mt-4">
                 <div class="card-header text-white text-center">
-                    <h1 class="dashboard-title mb-0">Selamat Datang {{ ucfirst(strtolower($name)) }} ({{ ucfirst(strtolower($role)) }})</h1>
+                    <h1 class="dashboard-title mb-0">Selamat Datang {{ ucfirst(strtolower($name)) }}
+                        ({{ ucfirst(strtolower($role)) }})</h1>
                 </div>
 
                 <div class="card-body bg-light p-4">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 text-center">
-                        @if (in_array($role, ['admin', 'humas']))
+                        @if (in_array($role, ['admin', 'humas', 'pengurus']))
                             @if ($role === 'admin')
                                 {{-- Data User --}}
                                 <div class="col">
@@ -86,7 +87,6 @@
                                     $adminMenus = [
                                         ['title' => 'Data Wilayah', 'url' => '/kelola/data-wilayah'],
                                         ['title' => 'Data KUB', 'url' => '/kelola/data-kub'],
-                                        // ['title' => 'Data Sakramen', 'url' => '/kelola/data-sakramen'],
                                         ['title' => 'Data Umat', 'url' => '/kelola/data-umat'],
                                         ['title' => 'Data Kegiatan Wilayah', 'url' => '/kelola/data-kegiatan-wilayah'],
                                         ['title' => 'Data Kegiatan KUB', 'url' => '/kelola/data-kegiatan-kub'],
@@ -109,30 +109,53 @@
                                         </div>
                                     </div>
                                 @endforeach
+                            @elseif ($role === 'pengurus')
+                                {{-- Menu Pengurus --}}
+                                @php
+                                    $pengurusMenus = [
+                                        ['title' => 'Data Umat', 'url' => '/kelola/data-umat'],
+                                        ['title' => 'Data Kegiatan KUB', 'url' => '/kelola/data-kegiatan-kub'],
+                                    ];
+                                @endphp
+
+                                @foreach ($pengurusMenus as $menu)
+                                    <div class="col">
+                                        <div class="card h-100 shadow-sm">
+                                            <div class="card-body d-flex flex-column justify-content-between">
+                                                <h5 class="card-title">{{ $menu['title'] }}</h5>
+                                                <a class="btn btn-dashboard mt-3" href="{{ $menu['url'] }}">
+                                                    <i class="bi bi-arrow-right"></i> Masuk
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             @endif
 
-                            {{-- Menu Admin & Humas --}}
-                            <div class="col">
-                                <div class="card h-100 shadow-sm">
-                                    <div class="card-body d-flex flex-column justify-content-between">
-                                        <h5 class="card-title">Data Pengumuman</h5>
-                                        <a class="btn btn-dashboard mt-3" href="/kelola/data-pengumuman">
-                                            <i class="bi bi-arrow-right"></i> Masuk
-                                        </a>
+                            @if (in_array($role, ['admin', 'humas']))
+                                {{-- Menu Admin & Humas --}}
+                                <div class="col">
+                                    <div class="card h-100 shadow-sm">
+                                        <div class="card-body d-flex flex-column justify-content-between">
+                                            <h5 class="card-title">Data Pengumuman</h5>
+                                            <a class="btn btn-dashboard mt-3" href="/kelola/data-pengumuman">
+                                                <i class="bi bi-arrow-right"></i> Masuk
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col">
-                                <div class="card h-100 shadow-sm">
-                                    <div class="card-body d-flex flex-column justify-content-between">
-                                        <h5 class="card-title">Data Berita</h5>
-                                        <a class="btn btn-dashboard mt-3" href="/kelola/data-berita">
-                                            <i class="bi bi-arrow-right"></i> Masuk
-                                        </a>
+                                <div class="col">
+                                    <div class="card h-100 shadow-sm">
+                                        <div class="card-body d-flex flex-column justify-content-between">
+                                            <h5 class="card-title">Data Berita</h5>
+                                            <a class="btn btn-dashboard mt-3" href="/kelola/data-berita">
+                                                <i class="bi bi-arrow-right"></i> Masuk
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
                         @endif
 
                         @if (in_array($role, ['admin', 'ketua']))

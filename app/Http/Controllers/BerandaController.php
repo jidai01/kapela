@@ -30,6 +30,13 @@ class BerandaController extends Controller
         return view('view-ketua/beranda-ketua', compact('title', 'content'));
     }
 
+    public function index_pengurus()
+    {
+        $title = "Beranda Pengurus";
+        $content = "Halaman Beranda Pengurus";
+        return view('view-pengurus/beranda-pengurus', compact('title', 'content'));
+    }
+
     public function index_humas()
     {
         $title = "Beranda Humas";

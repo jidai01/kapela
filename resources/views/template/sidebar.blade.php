@@ -36,19 +36,34 @@
         border-radius: 0.125rem;
     }
 
-    .change .bar1 {
+    .bar1 {
         background-color: white;
-        transform: translateY(0.55rem) rotate(-45deg);
+        transform: translateY(0.55rem) rotate(45deg);
     }
 
-    .change .bar2 {
+    .bar2 {
         background-color: white;
         opacity: 0;
     }
 
-    .change .bar3 {
+    .bar3 {
         background-color: white;
-        transform: translateY(-0.55rem) rotate(45deg);
+        transform: translateY(-0.55rem) rotate(-45deg);
+    }
+
+    .change .bar1 {
+        background-color: #212d5a;
+        transform: rotate(0);
+    }
+
+    .change .bar2 {
+        background-color: #212d5a;
+        opacity: 1;
+    }
+
+    .change .bar3 {
+        background-color: #212d5a;
+        transform: rotate(0);
     }
 
     .sidebar-header {
@@ -107,7 +122,7 @@
 
 <!-- Sidebar Navigation -->
 <nav class="navbar navbar-expand-lg d-flex flex-column min-vh-100 shadow" id="sidebar">
-    <div class="collapse" id="sidebar-show">
+    <div class="collapse show" id="sidebar-show">
         <div class="container-fluid sidebar-header d-flex flex-column align-items-center justify-content-center p-3">
             <img src="{{ asset('storage/img/logo.png') }}" alt="logo-sanbello">
             <h6 class="responsive-heading">Kapela St. Agustinus Bello</h6>
@@ -123,14 +138,13 @@
                         </a>
                     </li>
 
-                    @if (in_array($role, ['admin', 'humas']))
+                    @if (in_array($role, ['admin', 'humas', 'pengurus']))
                         @if ($role === 'admin')
                             @php
                                 $adminLinks = [
                                     ['href' => '/kelola/data-user', 'label' => 'Data User'],
                                     ['href' => '/kelola/data-wilayah', 'label' => 'Data Wilayah'],
                                     ['href' => '/kelola/data-kub', 'label' => 'Data KUB'],
-                                    // ['href' => '/kelola/data-sakramen', 'label' => 'Data Sakramen'],
                                     ['href' => '/kelola/data-umat', 'label' => 'Data Umat'],
                                     ['href' => '/kelola/data-kegiatan-wilayah', 'label' => 'Data Kegiatan Wilayah'],
                                     ['href' => '/kelola/data-kegiatan-kub', 'label' => 'Data Kegiatan KUB'],
@@ -147,10 +161,28 @@
                                     </a>
                                 </li>
                             @endforeach
+                        @elseif ($role === 'pengurus')
+                            @php
+                                $pengurusLinks = [
+                                    ['href' => '/kelola/data-umat', 'label' => 'Data Umat'],
+                                    ['href' => '/kelola/data-kegiatan-kub', 'label' => 'Data Kegiatan KUB'],
+                                ];
+                            @endphp
+                            @foreach ($pengurusLinks as $link)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ $link['href'] }}">
+                                        {{ $link['label'] }}
+                                    </a>
+                                </li>
+                            @endforeach
                         @endif
+                    @endif
+
+                    @if (in_array($role, ['admin', 'humas']))
                         <li><a class="nav-link" href="/kelola/data-pengumuman">Data Pengumuman</a></li>
                         <li><a class="nav-link" href="/kelola/data-berita">Data Berita</a></li>
                     @endif
+
 
                     @if (in_array($role, ['admin', 'ketua']))
                         <li><a class="nav-link" href="/laporan/kegiatan-wilayah">Laporan Kegiatan Wilayah</a></li>
