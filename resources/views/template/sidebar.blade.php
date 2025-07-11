@@ -165,6 +165,7 @@
                             @php
                                 $pengurusLinks = [
                                     ['href' => '/kelola/data-umat', 'label' => 'Data Umat'],
+                                    ['href' => '/kelola/data-kegiatan-wilayah', 'label' => 'Data Kegiatan Wilayah'],
                                     ['href' => '/kelola/data-kegiatan-kub', 'label' => 'Data Kegiatan KUB'],
                                 ];
                             @endphp
